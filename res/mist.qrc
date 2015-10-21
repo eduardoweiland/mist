@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="unisc">mist/unisc.png</file>
+    </qresource>
+</RCC>
