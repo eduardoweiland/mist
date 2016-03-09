@@ -11,16 +11,28 @@ TEMPLATE = app
 # Source files
 SOURCES += \
     src/main.cpp \
+    src/embeddeddatabase.cpp \
     src/ui/aboutdialog.cpp \
-    src/ui/mainwindow.cpp
+    src/ui/connectionlistwidget.cpp \
+    src/ui/mainwindow.cpp \
+    src/model/connectionmodel.cpp \
+    src/entity/connection.cpp \
+    src/ui/createconnectiondialog.cpp
 
 HEADERS += \
+    src/embeddeddatabase.h \
     src/ui/aboutdialog.h \
-    src/ui/mainwindow.h
+    src/ui/connectionlistwidget.h \
+    src/ui/mainwindow.h \
+    src/model/connectionmodel.h \
+    src/entity/connection.h \
+    src/ui/createconnectiondialog.h
 
 FORMS += \
     ui/aboutdialog.ui \
-    ui/mainwindow.ui
+    ui/connectionlistwidget.ui \
+    ui/mainwindow.ui \
+    ui/createconnectiondialog.ui
 
 RESOURCES += \
     res/paomedia-small-n-flat/iconset.qrc \

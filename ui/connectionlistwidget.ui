@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConnectionListWidget</class>
+ <widget class="QWidget" name="ConnectionListWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>444</width>
+    <height>329</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ScrollArea</string>
+  </property>
+  <property name="widgetResizable" stdset="0">
+   <bool>false</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="buttonAddConnection">
+       <property name="text">
+        <string>Add</string>
+       </property>
+       <property name="icon">
+        <iconset theme="list-add" resource="../res/paomedia-small-n-flat/iconset.qrc">
+         <normaloff>:/svg/sign-add</normaloff>:/svg/sign-add</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="buttonRemoveConnection">
+       <property name="text">
+        <string>Remove</string>
+       </property>
+       <property name="icon">
+        <iconset theme="list-remove" resource="../res/paomedia-small-n-flat/iconset.qrc">
+         <normaloff>:/svg/sign-delete</normaloff>:/svg/sign-delete</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QListView" name="listView"/>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../res/paomedia-small-n-flat/iconset.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonAddConnection</sender>
+   <signal>clicked()</signal>
+   <receiver>ConnectionListWidget</receiver>
+   <slot>addConnection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>19</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonRemoveConnection</sender>
+   <signal>clicked()</signal>
+   <receiver>ConnectionListWidget</receiver>
+   <slot>removeConnection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>42</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addConnection()</slot>
+  <slot>removeConnection()</slot>
+ </slots>
+</ui>

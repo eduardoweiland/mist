@@ -2,9 +2,13 @@
 #include <QTranslator>
 
 #include "ui/mainwindow.h"
+#include "entity/connection.h"
 
 int main(int argc, char *argv[])
 {
+    qRegisterMetaType<Connection>("Connection");
+    qRegisterMetaTypeStreamOperators<Connection>("Connection");
+
     QApplication app(argc, argv);
 
     app.setApplicationName("MIST");
