@@ -74,3 +74,29 @@ DEFINES += BINDIR=\\\"$${BINDIR}\\\" \
            CONFDIR=\\\"$${CONFDIR}\\\" \
            DOCDIR=\\\"$${DOCDIR}\\\" \
            LANGDIR=\\\"$${LANGDIR}\\\" \
+
+
+
+
+###
+### Configuração da biblioteca MySQL
+###
+MYSQL_CONFIG = $$(MYSQL_CONFIG)
+
+if (isEmpty(MYSQL_CONFIG)) {
+    error(Variável MYSQL_CONFIG não foi especificada. Deve conter o caminho para o script mysql_config);
+} else {
+    message(Usando MYSQL_CONFIG = $$MYSQL_CONFIG);
+}
+
+QMAKE_CXXFLAGS += $$system($$MYSQL_CONFIG --cxxflags)
+LIBS += $$system($$MYSQL_CONFIG --libmysqld-libs)
+
+MYSQL_VERSION = $$system($$MYSQL_CONFIG --version)
+MYSQL_VERSION_PARTS = $$split(MYSQL_VERSION, .)
+MYSQL_VERSION_MAJOR = $$member(MYSQL_VERSION_PARTS, 0)
+MYSQL_VERSION_MINOR = $$member(MYSQL_VERSION_PARTS, 1)
+
+if (lessThan(MYSQL_VERSION_MAJOR, 5)|lessThan(MYSQL_VERSION_MINOR, 7)) {
+    error('Versão mínima suportada do MySQL é 5.7, encontrado $$MYSQL_VERSION');
+}
