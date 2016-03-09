@@ -11,12 +11,12 @@ TEMPLATE = app
 # Source files
 SOURCES += \
     src/main.cpp \
-    src/aboutdialog.cpp \
-    src/mainwindow.cpp
+    src/ui/aboutdialog.cpp \
+    src/ui/mainwindow.cpp
 
 HEADERS += \
-    src/aboutdialog.h \
-    src/mainwindow.h
+    src/ui/aboutdialog.h \
+    src/ui/mainwindow.h
 
 FORMS += \
     ui/aboutdialog.ui \

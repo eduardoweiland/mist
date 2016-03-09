@@ -82,6 +82,13 @@ QDialog {
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="mysqlVersion">
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
