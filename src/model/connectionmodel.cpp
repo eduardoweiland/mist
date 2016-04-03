@@ -1,4 +1,3 @@
-#include <iostream>
 #include <QSettings>
 
 #include "connectionmodel.h"
