@@ -11,6 +11,7 @@ TEMPLATE = app
 # Source files
 SOURCES += \
     src/main.cpp \
+    src/core/embeddeddatabase.cpp \
     src/core/loghandler.cpp \
     src/ui/aboutdialog.cpp \
     src/ui/connectionlistwidget.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     src/entity/connection.cpp
 
 HEADERS += \
+    src/core/embeddeddatabase.h \
     src/core/loghandler.h \
     src/ui/aboutdialog.h \
     src/ui/connectionlistwidget.h \
