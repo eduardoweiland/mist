@@ -9,9 +9,90 @@
         <translation>Sobre o MIST</translation>
     </message>
     <message>
-        <location filename="../src/aboutdialog.cpp" line="8"/>
+        <location filename="../src/ui/aboutdialog.cpp" line="10"/>
         <source>Version %1</source>
         <translation>Versão %1</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/aboutdialog.cpp" line="11"/>
+        <source>MySQL Server version: %1</source>
+        <translation>Versão do Servidor MySQL: %1</translation>
+    </message>
+</context>
+<context>
+    <name>ConnectionListWidget</name>
+    <message>
+        <location filename="../ui/connectionlistwidget.ui" line="14"/>
+        <source>ScrollArea</source>
+        <translation>ScrollArea</translation>
+    </message>
+    <message>
+        <location filename="../ui/connectionlistwidget.ui" line="31"/>
+        <source>Add</source>
+        <translation>Adicionar</translation>
+    </message>
+    <message>
+        <location filename="../ui/connectionlistwidget.ui" line="42"/>
+        <source>Remove</source>
+        <translation>Remover</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/connectionlistwidget.cpp" line="27"/>
+        <source>Remove connection</source>
+        <translation>Remover conexão</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/connectionlistwidget.cpp" line="28"/>
+        <source>Do you really want to remove this connection?</source>
+        <translation>Você realmente deseja remover esta conexão?</translation>
+    </message>
+</context>
+<context>
+    <name>CreateConnectionDialog</name>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="14"/>
+        <source>Create connection</source>
+        <translation>Criar conexão</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="20"/>
+        <source>Host name</source>
+        <translation>Endereço do servidor</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="30"/>
+        <source>Port number</source>
+        <translation>Número da porta</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="47"/>
+        <source>User name</source>
+        <translation>Nome de usuário</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="57"/>
+        <source>Password</source>
+        <translation>Senha</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="71"/>
+        <source>Database</source>
+        <translation>Nome do banco de dados</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="96"/>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="107"/>
+        <source>Save</source>
+        <translation>Salvar</translation>
+    </message>
+    <message>
+        <location filename="../ui/createconnectiondialog.ui" line="126"/>
+        <source>Name</source>
+        <translation>Nome</translation>
     </message>
 </context>
 <context>
@@ -23,6 +104,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="28"/>
+        <location filename="../ui/mainwindow.ui" line="316"/>
         <source>&amp;File</source>
         <translation>&amp;Arquivo</translation>
     </message>
@@ -37,154 +119,294 @@
         <translation>&amp;Ferramentas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="49"/>
+        <location filename="../ui/mainwindow.ui" line="51"/>
         <source>&amp;Window</source>
         <translation>&amp;Janela</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="54"/>
+        <location filename="../ui/mainwindow.ui" line="56"/>
+        <location filename="../ui/mainwindow.ui" line="327"/>
         <source>&amp;Help</source>
         <translation>Aj&amp;uda</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="63"/>
+        <location filename="../ui/mainwindow.ui" line="65"/>
         <source>&amp;View</source>
         <translation>E&amp;xibir</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="67"/>
+        <location filename="../ui/mainwindow.ui" line="69"/>
         <source>&amp;Toolbars</source>
         <translation>&amp;Barras de ferramentas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="94"/>
-        <source>toolBar</source>
-        <translation></translation>
+        <location filename="../ui/mainwindow.ui" line="77"/>
+        <source>&amp;Panes</source>
+        <translation>Painéis</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="111"/>
+        <location filename="../ui/mainwindow.ui" line="94"/>
+        <source>File</source>
+        <translation>Arquivo</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="109"/>
+        <source>Server</source>
+        <translation>Servidor</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="122"/>
+        <source>Help</source>
+        <translation>Ajuda</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="135"/>
+        <source>Ope&amp;rations</source>
+        <translation>Ope&amp;rações</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="145"/>
+        <source>1. Load log file</source>
+        <translation>1. Carregar arquivo de log</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="167"/>
+        <location filename="../ui/mainwindow.ui" line="338"/>
+        <source>&amp;Log</source>
+        <translation>&amp;Log</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="207"/>
         <source>&amp;New project</source>
         <translation>&amp;Novo projeto</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="114"/>
+        <location filename="../ui/mainwindow.ui" line="210"/>
         <source>Creates a new project</source>
         <translation>Cria um novo projeto</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="117"/>
+        <location filename="../ui/mainwindow.ui" line="213"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="126"/>
+        <location filename="../ui/mainwindow.ui" line="222"/>
         <source>&amp;Open project</source>
         <translation>&amp;Abrir projeto</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="129"/>
+        <location filename="../ui/mainwindow.ui" line="225"/>
         <source>Open an existing project</source>
         <translation>Abre um projeto existente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="132"/>
+        <location filename="../ui/mainwindow.ui" line="228"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="137"/>
+        <location filename="../ui/mainwindow.ui" line="237"/>
         <source>&amp;Quit</source>
         <translation>&amp;Sair</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="140"/>
+        <location filename="../ui/mainwindow.ui" line="240"/>
         <source>Quit this application</source>
         <translation>Sai da aplicação</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="143"/>
+        <location filename="../ui/mainwindow.ui" line="243"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="152"/>
+        <location filename="../ui/mainwindow.ui" line="252"/>
         <source>&amp;Save</source>
         <translation>&amp;Salvar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="155"/>
+        <location filename="../ui/mainwindow.ui" line="255"/>
         <source>Save currently open project</source>
         <translation>Salva o projeto atualmente aberto</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="158"/>
+        <location filename="../ui/mainwindow.ui" line="258"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="167"/>
+        <location filename="../ui/mainwindow.ui" line="267"/>
         <source>&amp;Preferences</source>
         <translation>&amp;Preferências</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="170"/>
+        <location filename="../ui/mainwindow.ui" line="270"/>
         <source>Set preferences for working in the application</source>
         <translation>Configura as preferências para trabalhar com a aplicação</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="173"/>
+        <location filename="../ui/mainwindow.ui" line="273"/>
         <source>Ctrl+Alt+P</source>
         <translation>Ctrl+Alt+P</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="182"/>
+        <location filename="../ui/mainwindow.ui" line="282"/>
         <source>&amp;Contents</source>
         <translation>Conteúdos</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="185"/>
+        <location filename="../ui/mainwindow.ui" line="285"/>
         <source>Get help on using this software</source>
         <translation>Obter ajuda para utilizar o software</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="188"/>
+        <location filename="../ui/mainwindow.ui" line="288"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="197"/>
+        <location filename="../ui/mainwindow.ui" line="297"/>
         <source>&amp;About</source>
         <translation>&amp;Sobre</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="200"/>
+        <location filename="../ui/mainwindow.ui" line="300"/>
         <source>About this program</source>
         <translation>Sobre este programa</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="203"/>
+        <location filename="../ui/mainwindow.ui" line="303"/>
         <source>Shift+F1</source>
         <translation>Shift+F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="208"/>
+        <location filename="../ui/mainwindow.ui" line="308"/>
         <source>About &amp;Qt</source>
         <translation>Sobre &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="216"/>
-        <source>&amp;File toolbar</source>
-        <translation>Barra de ferramentas de arquivo</translation>
+        <location filename="../ui/mainwindow.ui" line="319"/>
+        <source>Toggle visibility of File toolbar</source>
+        <translation>Altera a visibilidade da barra de ferramentas de Arquivo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="219"/>
-        <source>Toggle visibility of file toolbar</source>
-        <translation>Exibir/ocultar barra de ferramentas de arquivos</translation>
+        <location filename="../ui/mainwindow.ui" line="330"/>
+        <source>Toggle visibility of Help toolbar</source>
+        <translation>Altera a visibilidade da barra de ferramentas de Ajuda</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="21"/>
+        <location filename="../ui/mainwindow.ui" line="341"/>
+        <source>Toggle visibility of Log pane</source>
+        <translation>Altera a visibilidade do painel de Log</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="349"/>
+        <source>&amp;Operations</source>
+        <translation>&amp;Operações</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="352"/>
+        <source>Toggle visibility of Operations pane</source>
+        <translation>Altera a visibilidade do painel de Operações</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="361"/>
+        <source>&amp;Start server</source>
+        <translation>&amp;Iniciar servidor</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="370"/>
+        <source>S&amp;top server</source>
+        <translation>&amp;Parar servidor</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="373"/>
+        <source>Stop running MySQL server</source>
+        <translation>Para a execução do servidor MySQL</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="381"/>
+        <source>&amp;Server</source>
+        <translation>&amp;Servidor</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="384"/>
+        <source>Toggle visibility of Server toolbar</source>
+        <translation>Altera a visibilidade da barra de ferramentas de Servidor</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="39"/>
         <source>About Qt</source>
         <translation>Sobre Qt</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="46"/>
+        <source>Select SQL log file</source>
+        <translation>Selecionar arquivo de log SQL</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="48"/>
+        <source>SQL file (*.sql)</source>
+        <translation>Arquivo SQL (*.sql)</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="55"/>
+        <source>SQL log file %1 selected</source>
+        <translation>Arquivo de log SQL %1 selecionado</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="61"/>
+        <source>Error parsing selected file %1</source>
+        <translation>Erro ao analisar arquivo selecionado %1</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="65"/>
+        <source>Error opening file</source>
+        <translation>Erro ao abrir arquivo</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="66"/>
+        <source>There was an error parsing the SQL log file. Check if you have permissions to read it.</source>
+        <translation>Houve um erro ao ler o arquivo de log SQL. Verifique se você possui permissão de leitura.</translation>
+    </message>
+</context>
+<context>
+    <name>QCoreApplication</name>
+    <message>
+        <location filename="../src/core/embeddeddatabase.cpp" line="31"/>
+        <source>Initializing MySQL library</source>
+        <translation>Inicializando biblioteca MySQL</translation>
+    </message>
+    <message>
+        <location filename="../src/core/embeddeddatabase.cpp" line="33"/>
+        <source>Could not initialize MySQL library</source>
+        <translation>Não foi possível inicializar a biblioteca MySQL</translation>
+    </message>
+    <message>
+        <location filename="../src/core/embeddeddatabase.cpp" line="37"/>
+        <source>MySQL library successfully initialized</source>
+        <translation>Biblioteca MySQL inicializada com sucesso</translation>
+    </message>
+    <message>
+        <location filename="../src/core/embeddeddatabase.cpp" line="47"/>
+        <source>MySQL Server is not running, cleaning up library</source>
+        <translation>Servidor MySQL não está em execução, finalizando a biblioteca</translation>
+    </message>
+    <message>
+        <location filename="../src/core/embeddeddatabase.cpp" line="54"/>
+        <source>Starting MySQL server</source>
+        <translation>Iniciando servidor MySQL</translation>
+    </message>
+    <message>
+        <location filename="../src/core/embeddeddatabase.cpp" line="70"/>
+        <source>MySQL server stopped</source>
+        <translation>Servidor MySQL parado</translation>
+    </message>
+    <message>
+        <location filename="../src/core/embeddeddatabase.cpp" line="75"/>
+        <source>Connecting to database %1</source>
+        <translation>Conectando ao banco de dados %1</translation>
     </message>
 </context>
 </TS>

@@ -23,7 +23,12 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
     QString locale = QLocale::system().name();
+
+#ifdef QT_DEBUG
+    translator.load(locale, app.applicationDirPath() + "/lang");
+#else
     translator.load(locale, LANGDIR);
+#endif
     app.installTranslator(&translator);
 
     MainWindow win;
