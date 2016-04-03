@@ -11,22 +11,22 @@ TEMPLATE = app
 # Source files
 SOURCES += \
     src/main.cpp \
-    src/embeddeddatabase.cpp \
+    src/core/loghandler.cpp \
     src/ui/aboutdialog.cpp \
     src/ui/connectionlistwidget.cpp \
     src/ui/mainwindow.cpp \
+    src/ui/createconnectiondialog.cpp \
     src/model/connectionmodel.cpp \
-    src/entity/connection.cpp \
-    src/ui/createconnectiondialog.cpp
+    src/entity/connection.cpp
 
 HEADERS += \
-    src/embeddeddatabase.h \
+    src/core/loghandler.h \
     src/ui/aboutdialog.h \
     src/ui/connectionlistwidget.h \
     src/ui/mainwindow.h \
+    src/ui/createconnectiondialog.h \
     src/model/connectionmodel.h \
-    src/entity/connection.h \
-    src/ui/createconnectiondialog.h
+    src/entity/connection.h
 
 FORMS += \
     ui/aboutdialog.ui \
