@@ -2,7 +2,8 @@
 
 #include "querylogreader.h"
 
-QueryLogReader::QueryLogReader()
+QueryLogReader::QueryLogReader() :
+    AbstractXmlReader()
 {
 }
 
@@ -15,7 +16,7 @@ const QList<Query>& QueryLogReader::getQueries() const
     return this->queries;
 }
 
-bool QueryLogReader::parse(QFile *file)
+bool QueryLogReader::parse(QIODevice *file)
 {
     xml.setDevice(file);
 
@@ -29,14 +30,6 @@ bool QueryLogReader::parse(QFile *file)
     }
 
     return !xml.error();
-}
-
-QString QueryLogReader::getError() const
-{
-    return QObject::tr("%1 (line %2, column %3)")
-            .arg(xml.errorString())
-            .arg(xml.lineNumber())
-            .arg(xml.columnNumber());
 }
 
 void QueryLogReader::readQueries()

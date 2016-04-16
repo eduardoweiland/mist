@@ -2,7 +2,8 @@
 
 #include "schemadefinitionreader.h"
 
-SchemaDefinitionReader::SchemaDefinitionReader()
+SchemaDefinitionReader::SchemaDefinitionReader() :
+    AbstractXmlReader()
 {
 }
 
@@ -15,7 +16,7 @@ const QList<Table>& SchemaDefinitionReader::getTables() const
     return this->tables;
 }
 
-bool SchemaDefinitionReader::parse(QFile *file)
+bool SchemaDefinitionReader::parse(QIODevice *file)
 {
     xml.setDevice(file);
 
@@ -29,14 +30,6 @@ bool SchemaDefinitionReader::parse(QFile *file)
     }
 
     return !xml.error();
-}
-
-QString SchemaDefinitionReader::getError() const
-{
-    return QObject::tr("%1 (line %2, column %3)")
-            .arg(xml.errorString())
-            .arg(xml.lineNumber())
-            .arg(xml.columnNumber());
 }
 
 void SchemaDefinitionReader::readTables()

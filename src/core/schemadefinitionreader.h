@@ -5,15 +5,15 @@
 #include <QXmlStreamReader>
 
 #include "../entity/table.h"
+#include "abstractxmlreader.h"
 
-class SchemaDefinitionReader
+class SchemaDefinitionReader : public AbstractXmlReader
 {
 public:
     SchemaDefinitionReader();
     virtual ~SchemaDefinitionReader();
 
-    bool parse(QFile *file);
-    QString getError() const;
+    bool parse(QIODevice *file);
 
     const QList<Table>& getTables() const;
 

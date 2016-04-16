@@ -11,6 +11,7 @@ TEMPLATE = app
 # Source files
 SOURCES += \
     src/main.cpp \
+    src/core/abstractxmlreader.cpp \
     src/core/embeddeddatabase.cpp \
     src/core/loghandler.cpp \
     src/core/querylogreader.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
     src/entity/tablecolumn.cpp
 
 HEADERS += \
+    src/core/abstractxmlreader.h \
     src/core/embeddeddatabase.h \
     src/core/loghandler.h \
     src/core/querylogreader.h \

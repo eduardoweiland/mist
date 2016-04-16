@@ -5,15 +5,15 @@
 #include <QXmlStreamReader>
 
 #include "../entity/query.h"
+#include "abstractxmlreader.h"
 
-class QueryLogReader
+class QueryLogReader : public AbstractXmlReader
 {
 public:
     QueryLogReader();
     virtual ~QueryLogReader();
 
-    bool parse(QFile *file);
-    QString getError() const;
+    bool parse(QIODevice *file);
 
     const QList<Query>& getQueries() const;
 
