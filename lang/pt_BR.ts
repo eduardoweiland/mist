@@ -342,33 +342,55 @@
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cpp" line="46"/>
-        <source>Select SQL log file</source>
-        <translation>Selecionar arquivo de log SQL</translation>
+        <source>Select query log file</source>
+        <translation>Selecione o arquivo de log de consultas</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cpp" line="48"/>
-        <source>SQL file (*.sql)</source>
-        <translation>Arquivo SQL (*.sql)</translation>
+        <source>MIST Query Log File (*.mqlf)</source>
+        <translation>Arquivo de Log de Consultas do MIST (*.mqlf)</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cpp" line="55"/>
-        <source>SQL log file %1 selected</source>
-        <translation>Arquivo de log SQL %1 selecionado</translation>
+        <source>Query log file %1 selected</source>
+        <translation>Arquivo de log de consultas %1 selecionado</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainwindow.cpp" line="61"/>
-        <source>Error parsing selected file %1</source>
-        <translation>Erro ao analisar arquivo selecionado %1</translation>
+        <location filename="../src/ui/mainwindow.cpp" line="59"/>
+        <source>Error opening selected file %1</source>
+        <translation>Erro ao abrir arquivo selecionado %1</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainwindow.cpp" line="65"/>
+        <location filename="../src/ui/mainwindow.cpp" line="64"/>
+        <source>There was an error opening the selected query log file. Check if you have permissions to read it.</source>
+        <translation>Houve um erro ao abrir o arquivo de log de consultas selecionado. Verifique se você possui permissões para ler esse arquivo.</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="71"/>
+        <source>Error parsing selected file %1: %2</source>
+        <translation>Erro ao ler o arquivo selecionado %1: %2</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="78"/>
+        <source>There was an error parsing the selected log file:
+%1</source>
+        <translation>Houve um erro ao ler o arquivo de log selecionado:\n%1</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="84"/>
+        <source>File loaded</source>
+        <translation>Arquivo carregado</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="85"/>
+        <source>Successfully loaded %1 queries from log file</source>
+        <translation>%1 consultas carregadas com sucesso do arquivo de log</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainwindow.cpp" line="63"/>
+        <location filename="../src/ui/mainwindow.cpp" line="77"/>
         <source>Error opening file</source>
         <translation>Erro ao abrir arquivo</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainwindow.cpp" line="66"/>
-        <source>There was an error parsing the SQL log file. Check if you have permissions to read it.</source>
-        <translation>Houve um erro ao ler o arquivo de log SQL. Verifique se você possui permissão de leitura.</translation>
     </message>
 </context>
 <context>
@@ -399,14 +421,58 @@
         <translation>Iniciando servidor MySQL</translation>
     </message>
     <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="70"/>
+        <location filename="../src/core/embeddeddatabase.cpp" line="71"/>
         <source>MySQL server stopped</source>
         <translation>Servidor MySQL parado</translation>
     </message>
     <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="75"/>
+        <location filename="../src/core/embeddeddatabase.cpp" line="76"/>
         <source>Connecting to database %1</source>
         <translation>Conectando ao banco de dados %1</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../src/core/querylogreader.cpp" line="29"/>
+        <source>The file is not a valid MIST Query Log File.</source>
+        <translation>O arquivo não é um log de consultas do MIST válido.</translation>
+    </message>
+    <message>
+        <location filename="../src/core/querylogreader.cpp" line="38"/>
+        <source>%1 (line %2, column %3)</source>
+        <translation>%1 (linha %2, coluna %3)</translation>
+    </message>
+    <message>
+        <location filename="../src/core/querylogreader.cpp" line="53"/>
+        <location filename="../src/core/querylogreader.cpp" line="84"/>
+        <location filename="../src/core/querylogreader.cpp" line="119"/>
+        <location filename="../src/core/querylogreader.cpp" line="155"/>
+        <location filename="../src/core/querylogreader.cpp" line="191"/>
+        <location filename="../src/core/querylogreader.cpp" line="221"/>
+        <location filename="../src/core/querylogreader.cpp" line="240"/>
+        <source>Unknown tag found: %1</source>
+        <translation>Tag desconhecida encontrada: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/core/querylogreader.cpp" line="111"/>
+        <source>Invalid join type found: %1</source>
+        <translation>Type de join inválido encontrado: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/core/querylogreader.cpp" line="148"/>
+        <source>Invalid join condition type found: %1</source>
+        <translation>Tipo de condição de join inválido encontrado: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/core/querylogreader.cpp" line="184"/>
+        <source>Invalid where condition type found: %1</source>
+        <translation>Tipo de condição de where inválido encontrado: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/core/querylogreader.cpp" line="214"/>
+        <source>Invalid order by direction found: %1</source>
+        <translation>Direção de ordenação inválida encontrada: %1</translation>
     </message>
 </context>
 </TS>

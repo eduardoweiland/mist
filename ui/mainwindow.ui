@@ -130,6 +130,38 @@
    <addaction name="actionContents"/>
    <addaction name="actionAbout"/>
   </widget>
+  <widget class="QDockWidget" name="dockOperations">
+   <property name="windowTitle">
+    <string>Ope&amp;rations</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="buttonLoadLogFile">
+       <property name="text">
+        <string>1. Load log file</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <widget class="QDockWidget" name="dockLog">
    <property name="windowTitle">
     <string>&amp;Log</string>
@@ -391,6 +423,22 @@
    </hints>
   </connection>
   <connection>
+   <sender>buttonLoadLogFile</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadLogFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>555</x>
+     <y>313</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>actionFileToolbar</sender>
    <signal>toggled(bool)</signal>
    <receiver>fileToolbar</receiver>
@@ -439,6 +487,22 @@
    </hints>
   </connection>
   <connection>
+   <sender>actionOperationsPane</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>dockOperations</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>118</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>dockLog</sender>
    <signal>visibilityChanged(bool)</signal>
    <receiver>actionLogPane</receiver>
@@ -447,6 +511,22 @@
     <hint type="sourcelabel">
      <x>420</x>
      <y>493</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dockOperations</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionOperationsPane</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>242</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -538,6 +618,7 @@
  <slots>
   <slot>about()</slot>
   <slot>aboutQt()</slot>
+  <slot>loadLogFile()</slot>
   <slot>startServer()</slot>
  </slots>
 </ui>

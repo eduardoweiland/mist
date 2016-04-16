@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<queries version="1.0">
+    <!--
+        SELECT
+            user.firstname,
+            user.lastname,
+            sale.date,
+            sale.value,
+            sale.status
+        FROM
+            user
+        INNER JOIN sale
+            ON sale.user_id = user.id
+        WHERE
+            sale.date BETWEEN '2016-04-01' AND '2016-04-11'
+        AND
+            sale.status IN ('payment', 'shipping')
+        AND
+            user.firstname LIKE '%Eduardo%'
+        ORDER BY
+            user.firstname ASC,
+            user.lastname ASC,
+        GROUP BY
+            user.id
+    -->
+    <query id="1" count="42">
+        <from>user</from>
+        <joins>
+            <join type="inner" table="sale">
+                <condition field="user_id" type="exactmatch"/>
+            </join>
+        </joins>
+        <where>
+            <condition table="sale" field="date" type="range"/>
+            <condition table="sale" field="status" type="list"/>
+            <condition table="user" field="firstname" type="like"/>
+        </where>
+        <orderby>
+            <field table="user" field="firstname" dir="asc"/>
+            <field table="user" field="lastname" dir="asc"/>
+        </orderby>
+        <groupby>
+            <field table="user" field="id"/>
+        </groupby>
+    </query>
+</queries>
+

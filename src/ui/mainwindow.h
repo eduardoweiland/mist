@@ -21,6 +21,8 @@ private slots:
     //! \brief Shows a dialog containing information about Qt version used.
     void aboutQt(void);
 
+    void loadLogFile(void);
+
     void startServer(void);
 
 private slots:

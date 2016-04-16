@@ -13,22 +13,34 @@ SOURCES += \
     src/main.cpp \
     src/core/embeddeddatabase.cpp \
     src/core/loghandler.cpp \
+    src/core/querylogreader.cpp \
     src/ui/aboutdialog.cpp \
     src/ui/connectionlistwidget.cpp \
     src/ui/mainwindow.cpp \
     src/ui/createconnectiondialog.cpp \
     src/model/connectionmodel.cpp \
-    src/entity/connection.cpp
+    src/entity/connection.cpp \
+    src/entity/filtercondition.cpp \
+    src/entity/groupbyfield.cpp \
+    src/entity/jointable.cpp \
+    src/entity/orderbyfield.cpp \
+    src/entity/query.cpp
 
 HEADERS += \
     src/core/embeddeddatabase.h \
     src/core/loghandler.h \
+    src/core/querylogreader.h \
     src/ui/aboutdialog.h \
     src/ui/connectionlistwidget.h \
     src/ui/mainwindow.h \
     src/ui/createconnectiondialog.h \
     src/model/connectionmodel.h \
-    src/entity/connection.h
+    src/entity/connection.h \
+    src/entity/filtercondition.h \
+    src/entity/groupbyfield.h \
+    src/entity/jointable.h \
+    src/entity/orderbyfield.h \
+    src/entity/query.h
 
 FORMS += \
     ui/aboutdialog.ui \
