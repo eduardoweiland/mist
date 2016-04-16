@@ -140,9 +140,16 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
+      <widget class="QPushButton" name="buttonLoadSchemaFile">
+       <property name="text">
+        <string>1. Load schema file</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="buttonLoadLogFile">
        <property name="text">
-        <string>1. Load log file</string>
+        <string>2. Load log file</string>
        </property>
       </widget>
      </item>
@@ -614,11 +621,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonLoadSchemaFile</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadSchemaFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>about()</slot>
   <slot>aboutQt()</slot>
   <slot>loadLogFile()</slot>
   <slot>startServer()</slot>
+  <slot>loadSchemaFile()</slot>
  </slots>
 </ui>

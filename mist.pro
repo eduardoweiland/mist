@@ -14,6 +14,7 @@ SOURCES += \
     src/core/embeddeddatabase.cpp \
     src/core/loghandler.cpp \
     src/core/querylogreader.cpp \
+    src/core/schemadefinitionreader.cpp \
     src/ui/aboutdialog.cpp \
     src/ui/connectionlistwidget.cpp \
     src/ui/mainwindow.cpp \
@@ -21,15 +22,20 @@ SOURCES += \
     src/model/connectionmodel.cpp \
     src/entity/connection.cpp \
     src/entity/filtercondition.cpp \
+    src/entity/foreignkey.cpp \
+    src/entity/foreignkeycolumn.cpp \
     src/entity/groupbyfield.cpp \
     src/entity/jointable.cpp \
     src/entity/orderbyfield.cpp \
-    src/entity/query.cpp
+    src/entity/query.cpp \
+    src/entity/table.cpp \
+    src/entity/tablecolumn.cpp
 
 HEADERS += \
     src/core/embeddeddatabase.h \
     src/core/loghandler.h \
     src/core/querylogreader.h \
+    src/core/schemadefinitionreader.h \
     src/ui/aboutdialog.h \
     src/ui/connectionlistwidget.h \
     src/ui/mainwindow.h \
@@ -37,10 +43,14 @@ HEADERS += \
     src/model/connectionmodel.h \
     src/entity/connection.h \
     src/entity/filtercondition.h \
+    src/entity/foreignkey.h \
+    src/entity/foreignkeycolumn.h \
     src/entity/groupbyfield.h \
     src/entity/jointable.h \
     src/entity/orderbyfield.h \
-    src/entity/query.h
+    src/entity/query.h \
+    src/entity/table.h \
+    src/entity/tablecolumn.h
 
 FORMS += \
     ui/aboutdialog.ui \

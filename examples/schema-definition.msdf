@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema version="1.0">
+    <table name="user" row-count="500">
+        <column name="id" type="integer" nullable="false" distinct-values="500"/>
+        <column name="firstname" type="text" length="60" nullable="false" distinct-values="320"/>
+        <column name="lastname" type="text" length="80" nullable="true" distinct-values="465"/>
+
+        <primary-key>
+            <column name="id"/>
+        </primary-key>
+    </table>
+
+    <table name="sale" row-count="2400">
+        <column name="id" type="integer" nullable="false" distinct-values="2400"/>
+        <column name="user_id" type="integer" nullable="false" distinct-values="430"/>
+        <column name="date" type="date" nullable="false" distinct-values="630"/>
+        <column name="value" type="decimal" length="10" precision="2" nullable="false" distinct-values="2130"/>
+        <column name="status" type="text" length="1" nullable="false" distinct-values="4"/>
+        <column name="address" type="text" length="200" nullable="true" distinct-values="380"/>
+
+        <primary-key>
+            <column name="id"/>
+        </primary-key>
+        <foreign-key table="user">
+            <column name="user_id" referenced="id"/>
+        </foreign-key>
+    </table>
+</schema>

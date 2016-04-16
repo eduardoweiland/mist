@@ -1,6 +1,4 @@
-#include <QDebug>
 #include <QFile>
-#include <QXmlStreamReader>
 
 #include "querylogreader.h"
 

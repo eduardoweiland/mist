@@ -22,6 +22,7 @@ private slots:
     void aboutQt(void);
 
     void loadLogFile(void);
+    void loadSchemaFile(void);
 
     void startServer(void);
 

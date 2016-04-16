@@ -9,6 +9,7 @@
 #include "connectionlistwidget.h"
 #include "../core/embeddeddatabase.h"
 #include "../core/querylogreader.h"
+#include "../core/schemadefinitionreader.h"
 #include "../core/loghandler.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -37,6 +38,52 @@ void MainWindow::about()
 void MainWindow::aboutQt()
 {
     QMessageBox::aboutQt(this, tr("About Qt"));
+}
+
+void MainWindow::loadSchemaFile()
+{
+    QString filename = QFileDialog::getOpenFileName(
+                this,
+                tr("Select schema definition file"),
+                QDir::homePath(),
+                tr("MIST Schema Definition File (*.msdf)"));
+
+    if (filename.isNull()) {
+        // No file selected
+        return;
+    }
+
+    qInfo() << tr("Schema definition file %1 selected").arg(filename);
+
+    QFile logFile(filename);
+    if (!logFile.open(QFile::ReadOnly | QFile::Text)) {
+        qCritical() << tr("Error opening selected file %1").arg(filename);
+
+        QMessageBox::critical(
+                    this,
+                    tr("Error opening file"),
+                    tr("There was an error opening the selected schema definition file. "
+                       "Check if you have permissions to read it."));
+        return;
+    }
+
+    SchemaDefinitionReader reader;
+    if (!reader.parse(&logFile)) {
+        qCritical() << tr("Error parsing selected file %1: %2")
+                       .arg(filename)
+                       .arg(reader.getError());
+
+        QMessageBox::critical(
+                    this,
+                    tr("Error opening file"),
+                    tr("There was an error parsing the selected schema file:\n%1").arg(reader.getError()));
+        return;
+    }
+
+    QMessageBox::information(
+                this,
+                tr("File loaded"),
+                tr("Successfully loaded %1 tables from definition file").arg(reader.getTables().size()));
 }
 
 void MainWindow::loadLogFile()

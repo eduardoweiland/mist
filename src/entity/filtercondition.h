@@ -1,5 +1,5 @@
-#ifndef WHERECONDITION_H
-#define WHERECONDITION_H
+#ifndef FILTERCONDITION_H
+#define FILTERCONDITION_H
 
 #include <QString>
 
@@ -30,4 +30,4 @@ private:
     Type type;
 };
 
-#endif // WHERECONDITION_H
+#endif // FILTERCONDITION_H
