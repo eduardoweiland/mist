@@ -42,94 +42,82 @@ void MainWindow::aboutQt()
 
 void MainWindow::loadSchemaFile()
 {
-    QString filename = QFileDialog::getOpenFileName(
-                this,
-                tr("Select schema definition file"),
-                QDir::homePath(),
-                tr("MIST Schema Definition File (*.msdf)"));
-
-    if (filename.isNull()) {
-        // No file selected
-        return;
-    }
-
-    qInfo() << tr("Schema definition file %1 selected").arg(filename);
-
-    QFile logFile(filename);
-    if (!logFile.open(QFile::ReadOnly | QFile::Text)) {
-        qCritical() << tr("Error opening selected file %1").arg(filename);
-
-        QMessageBox::critical(
-                    this,
-                    tr("Error opening file"),
-                    tr("There was an error opening the selected schema definition file. "
-                       "Check if you have permissions to read it."));
-        return;
-    }
-
     SchemaDefinitionReader reader;
-    if (!reader.parse(&logFile)) {
-        qCritical() << tr("Error parsing selected file %1: %2")
-                       .arg(filename)
-                       .arg(reader.getError());
 
-        QMessageBox::critical(
-                    this,
-                    tr("Error opening file"),
-                    tr("There was an error parsing the selected schema file:\n%1").arg(reader.getError()));
-        return;
+    bool loaded = selectAndParseFile(
+        tr("Select schema definition file"),
+        tr("MIST Schema Definition File (*.msdf)"),
+        &reader
+    );
+
+    if (loaded) {
+        QMessageBox::information(
+            this,
+            tr("File loaded"),
+            tr("Successfully loaded %1 tables from definition file").arg(reader.getTables().size())
+        );
     }
-
-    QMessageBox::information(
-                this,
-                tr("File loaded"),
-                tr("Successfully loaded %1 tables from definition file").arg(reader.getTables().size()));
 }
 
 void MainWindow::loadLogFile()
 {
-    QString filename = QFileDialog::getOpenFileName(
-                this,
-                tr("Select query log file"),
-                QDir::homePath(),
-                tr("MIST Query Log File (*.mqlf)"));
+    QueryLogReader reader;
+
+    bool loaded = selectAndParseFile(
+        tr("Select query log file"),
+        tr("MIST Query Log File (*.mqlf)"),
+        &reader
+    );
+
+    if (loaded) {
+        QMessageBox::information(
+            this,
+            tr("File loaded"),
+            tr("Successfully loaded %1 queries from log file").arg(reader.getQueries().size())
+        );
+    }
+}
+
+bool MainWindow::selectAndParseFile(const QString &title, const QString &filter, AbstractXmlReader *parser)
+{
+    QString filename = QFileDialog::getOpenFileName(this, title, QDir::homePath(), filter);
 
     if (filename.isNull()) {
         // No file selected
-        return;
+        return false;
     }
 
-    qInfo() << tr("Query log file %1 selected").arg(filename);
+    qInfo() << tr("Selected file: %1").arg(filename);
 
     QFile logFile(filename);
     if (!logFile.open(QFile::ReadOnly | QFile::Text)) {
         qCritical() << tr("Error opening selected file %1").arg(filename);
 
         QMessageBox::critical(
-                    this,
-                    tr("Error opening file"),
-                    tr("There was an error opening the selected query log file. "
-                       "Check if you have permissions to read it."));
-        return;
+            this,
+            tr("Error opening file"),
+            tr("There was an error opening the selected schema definition file. "
+               "Check if you have permissions to read it.")
+        );
+
+        return false;
     }
 
-    QueryLogReader reader;
-    if (!reader.parse(&logFile)) {
+    if (!parser->parse(&logFile)) {
         qCritical() << tr("Error parsing selected file %1: %2")
                        .arg(filename)
-                       .arg(reader.getError());
+                       .arg(parser->getError());
 
         QMessageBox::critical(
-                    this,
-                    tr("Error opening file"),
-                    tr("There was an error parsing the selected log file:\n%1").arg(reader.getError()));
-        return;
+            this,
+            tr("Error opening file"),
+            tr("There was an error parsing the selected file:\n%1").arg(parser->getError())
+        );
+
+        return false;
     }
 
-    QMessageBox::information(
-                this,
-                tr("File loaded"),
-                tr("Successfully loaded %1 queries from log file").arg(reader.getQueries().size()));
+    return true;
 }
 
 void MainWindow::startServer()
@@ -138,6 +126,11 @@ void MainWindow::startServer()
     db.start();
 }
 
+void MainWindow::stopServer()
+{
+    EmbeddedDatabase db;
+    db.stop();
+}
 
 void MainWindow::logHandler(const QString &msg)
 {

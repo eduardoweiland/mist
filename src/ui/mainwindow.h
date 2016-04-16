@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 
 enum QtMsgType;
+class AbstractXmlReader;
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
@@ -25,9 +26,13 @@ private slots:
     void loadSchemaFile(void);
 
     void startServer(void);
+    void stopServer(void);
 
 private slots:
     void logHandler(const QString &msg);
+
+private:
+    bool selectAndParseFile(const QString &title, const QString &filter, AbstractXmlReader *parser);
 };
 
 #endif // MAINWINDOW_H

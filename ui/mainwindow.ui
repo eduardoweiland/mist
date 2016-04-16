@@ -637,6 +637,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionStopServer</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>stopServer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>about()</slot>
@@ -644,5 +660,6 @@
   <slot>loadLogFile()</slot>
   <slot>startServer()</slot>
   <slot>loadSchemaFile()</slot>
+  <slot>stopServer()</slot>
  </slots>
 </ui>
