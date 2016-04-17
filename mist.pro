@@ -16,12 +16,6 @@ SOURCES += \
     src/core/loghandler.cpp \
     src/core/querylogreader.cpp \
     src/core/schemadefinitionreader.cpp \
-    src/ui/aboutdialog.cpp \
-    src/ui/connectionlistwidget.cpp \
-    src/ui/mainwindow.cpp \
-    src/ui/createconnectiondialog.cpp \
-    src/model/connectionmodel.cpp \
-    src/entity/connection.cpp \
     src/entity/filtercondition.cpp \
     src/entity/foreignkey.cpp \
     src/entity/foreignkeycolumn.cpp \
@@ -30,7 +24,9 @@ SOURCES += \
     src/entity/orderbyfield.cpp \
     src/entity/query.cpp \
     src/entity/table.cpp \
-    src/entity/tablecolumn.cpp
+    src/entity/tablecolumn.cpp \
+    src/ui/aboutdialog.cpp \
+    src/ui/mainwindow.cpp
 
 HEADERS += \
     src/core/abstractxmlreader.h \
@@ -38,12 +34,6 @@ HEADERS += \
     src/core/loghandler.h \
     src/core/querylogreader.h \
     src/core/schemadefinitionreader.h \
-    src/ui/aboutdialog.h \
-    src/ui/connectionlistwidget.h \
-    src/ui/mainwindow.h \
-    src/ui/createconnectiondialog.h \
-    src/model/connectionmodel.h \
-    src/entity/connection.h \
     src/entity/filtercondition.h \
     src/entity/foreignkey.h \
     src/entity/foreignkeycolumn.h \
@@ -52,13 +42,13 @@ HEADERS += \
     src/entity/orderbyfield.h \
     src/entity/query.h \
     src/entity/table.h \
-    src/entity/tablecolumn.h
+    src/entity/tablecolumn.h \
+    src/ui/aboutdialog.h \
+    src/ui/mainwindow.h
 
 FORMS += \
     ui/aboutdialog.ui \
-    ui/connectionlistwidget.ui \
-    ui/mainwindow.ui \
-    ui/createconnectiondialog.ui
+    ui/mainwindow.ui
 
 RESOURCES += \
     res/paomedia-small-n-flat/iconset.qrc \
@@ -80,7 +70,7 @@ lang.path = $$LANGDIR
 conf.files = conf/*
 conf.path = $$CONFDIR
 
-doc.files = README.md LICENSE
+doc.files = README.md LICENSE examples/*
 doc.path = $$DOCDIR
 
 INSTALLS += target lang conf doc

@@ -2,16 +2,12 @@
 #include <QTranslator>
 
 #include "ui/mainwindow.h"
-#include "entity/connection.h"
 #include "core/loghandler.h"
 
 int main(int argc, char *argv[])
 {
     qSetMessagePattern("%{time h:mm:ss.zzz t} %{type}: %{message}");
     qInstallMessageHandler(&LogHandler::handle);
-
-    qRegisterMetaType<Connection>("Connection");
-    qRegisterMetaTypeStreamOperators<Connection>("Connection");
 
     QApplication app(argc, argv);
 

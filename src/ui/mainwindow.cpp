@@ -6,7 +6,6 @@
 
 #include "mainwindow.h"
 #include "aboutdialog.h"
-#include "connectionlistwidget.h"
 #include "../core/embeddeddatabase.h"
 #include "../core/querylogreader.h"
 #include "../core/schemadefinitionreader.h"
@@ -16,8 +15,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
     setupUi(this);
-
-//    setCentralWidget(new ConnectionListWidget(this));
 
     connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(LogHandler::getInstance(), SIGNAL(message(QString)), this, SLOT(logHandler(QString)));
