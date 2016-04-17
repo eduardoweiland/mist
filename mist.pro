@@ -15,6 +15,7 @@ SOURCES += \
     src/core/embeddeddatabase.cpp \
     src/core/loghandler.cpp \
     src/core/querylogreader.cpp \
+    src/core/schemacreator.cpp \
     src/core/schemadefinitionreader.cpp \
     src/entity/filtercondition.cpp \
     src/entity/foreignkey.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     src/core/embeddeddatabase.h \
     src/core/loghandler.h \
     src/core/querylogreader.h \
+    src/core/schemacreator.h \
     src/core/schemadefinitionreader.h \
     src/entity/filtercondition.h \
     src/entity/foreignkey.h \

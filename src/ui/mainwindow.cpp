@@ -10,6 +10,7 @@
 #include "../core/querylogreader.h"
 #include "../core/schemadefinitionreader.h"
 #include "../core/loghandler.h"
+#include "../core/schemacreator.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
@@ -53,6 +54,11 @@ void MainWindow::loadSchemaFile()
             tr("File loaded"),
             tr("Successfully loaded %1 tables from definition file").arg(reader.getTables().size())
         );
+
+        SchemaCreator creator;
+        foreach (Table table, reader.getTables()) {
+            qDebug() << creator.getCreateTable(&table);
+        }
     }
 }
 
