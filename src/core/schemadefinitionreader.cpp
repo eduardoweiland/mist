@@ -80,11 +80,54 @@ void SchemaDefinitionReader::readColumn(Table *table)
 
     TableColumn column;
     column.setName(xml.attributes().value("name").toString());
-    column.setType(xml.attributes().value("type").toString());
     column.setNullable(xml.attributes().value("nullable") == "true");
     column.setLength(xml.attributes().value("length").toInt());
     column.setPrecision(xml.attributes().value("precision").toInt());
     column.setDistinctValues(xml.attributes().value("distinct-values").toInt());
+
+    if (xml.attributes().value("type") == "varchar") {
+        column.setType(TableColumn::VARCHAR);
+    }
+    else if (xml.attributes().value("type") == "char") {
+        column.setType(TableColumn::CHAR);
+    }
+    else if (xml.attributes().value("type") == "text") {
+        column.setType(TableColumn::TEXT);
+    }
+    else if (xml.attributes().value("type") == "integer") {
+        column.setType(TableColumn::INTEGER);
+    }
+    else if (xml.attributes().value("type") == "smallint") {
+        column.setType(TableColumn::SMALLINT);
+    }
+    else if (xml.attributes().value("type") == "bigint") {
+        column.setType(TableColumn::BIGINT);
+    }
+    else if (xml.attributes().value("type") == "boolean") {
+        column.setType(TableColumn::BOOLEAN);
+    }
+    else if (xml.attributes().value("type") == "decimal") {
+        column.setType(TableColumn::DECIMAL);
+    }
+    else if (xml.attributes().value("type") == "date") {
+        column.setType(TableColumn::DATE);
+    }
+    else if (xml.attributes().value("type") == "time") {
+        column.setType(TableColumn::TIME);
+    }
+    else if (xml.attributes().value("type") == "datetime") {
+        column.setType(TableColumn::DATETIME);
+    }
+    else if (xml.attributes().value("type") == "float") {
+        column.setType(TableColumn::FLOAT);
+    }
+    else if (xml.attributes().value("type") == "blob") {
+        column.setType(TableColumn::BLOB);
+    }
+    else {
+        xml.raiseError(QObject::tr("Invalid type for column found: %1").arg(xml.attributes().value("type").toString()));
+    }
+
 
     table->addColumn(column);
     xml.skipCurrentElement();
@@ -113,6 +156,7 @@ void SchemaDefinitionReader::readForeignKey(Table *table)
     Q_ASSERT(table != nullptr);
 
     ForeignKey fk;
+    fk.setTable(xml.attributes().value("table").toString());
 
     while (xml.readNextStartElement()) {
         if (xml.name() == "column") {

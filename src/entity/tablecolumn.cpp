@@ -15,12 +15,12 @@ void TableColumn::setName(const QString &value)
     name = value;
 }
 
-QString TableColumn::getType() const
+TableColumn::Type TableColumn::getType() const
 {
     return type;
 }
 
-void TableColumn::setType(const QString &value)
+void TableColumn::setType(const Type &value)
 {
     type = value;
 }

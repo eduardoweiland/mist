@@ -8,11 +8,27 @@ class TableColumn
 public:
     TableColumn();
 
+    enum Type {
+        VARCHAR,
+        CHAR,
+        TEXT,
+        INTEGER,
+        SMALLINT,
+        BIGINT,
+        BOOLEAN,
+        DECIMAL,
+        DATE,
+        TIME,
+        DATETIME,
+        FLOAT,
+        BLOB
+    };
+
     QString getName() const;
     void setName(const QString &value);
 
-    QString getType() const;
-    void setType(const QString &value);
+    Type getType() const;
+    void setType(const Type &value);
 
     bool getNullable() const;
     void setNullable(bool value);
@@ -28,7 +44,7 @@ public:
 
 private:
     QString name;
-    QString type;
+    Type type;
     bool nullable;
     int length;
     int precision;
