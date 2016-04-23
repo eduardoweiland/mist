@@ -17,10 +17,12 @@ SOURCES += \
     src/core/querylogreader.cpp \
     src/core/schemacreator.cpp \
     src/core/schemadefinitionreader.cpp \
+    src/entity/candidateindex.cpp \
     src/entity/filtercondition.cpp \
     src/entity/foreignkey.cpp \
     src/entity/foreignkeycolumn.cpp \
     src/entity/groupbyfield.cpp \
+    src/entity/indexcolumn.cpp \
     src/entity/jointable.cpp \
     src/entity/orderbyfield.cpp \
     src/entity/query.cpp \
@@ -36,10 +38,12 @@ HEADERS += \
     src/core/querylogreader.h \
     src/core/schemacreator.h \
     src/core/schemadefinitionreader.h \
+    src/entity/candidateindex.h \
     src/entity/filtercondition.h \
     src/entity/foreignkey.h \
     src/entity/foreignkeycolumn.h \
     src/entity/groupbyfield.h \
+    src/entity/indexcolumn.h \
     src/entity/jointable.h \
     src/entity/orderbyfield.h \
     src/entity/query.h \
