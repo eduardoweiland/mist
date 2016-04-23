@@ -4,7 +4,7 @@ Trabalho de Conclusão de Graduação do curso de Ciência da Computação da Un
 
 # License
 
-Copyright (C) 2015 Universidade de Santa Cruz do Sul
+Copyright (C) 2015-2016 Universidade de Santa Cruz do Sul
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation version 3., or (at your option) any later version.
 
