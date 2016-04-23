@@ -1,6 +1,7 @@
 #ifndef QUERY_H
 #define QUERY_H
 
+#include <QDebug>
 #include <QString>
 #include <QList>
 
@@ -49,5 +50,7 @@ private:
     QList<OrderByField> orderBy;
     QList<GroupByField> groupBy;
 };
+
+QDebug operator<<(QDebug debug, const Query &query);
 
 #endif // QUERY_H

@@ -1,6 +1,7 @@
 #ifndef JOINTABLE_H
 #define JOINTABLE_H
 
+#include <QDebug>
 #include <QList>
 
 #include "filtercondition.h"
@@ -33,5 +34,7 @@ private:
     QString table;
     QList<FilterCondition> conditions;
 };
+
+QDebug operator<<(QDebug debug, const JoinTable &jt);
 
 #endif // JOINTABLE_H

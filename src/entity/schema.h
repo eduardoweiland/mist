@@ -1,6 +1,7 @@
 #ifndef SCHEMA_H
 #define SCHEMA_H
 
+#include <QDebug>
 #include <QList>
 #include <QMap>
 
@@ -19,5 +20,7 @@ public:
 private:
     QMap<QString, Table> mapTables;
 };
+
+QDebug operator<<(QDebug debug, const Schema &schema);
 
 #endif // SCHEMA_H

@@ -1,6 +1,7 @@
 #ifndef TABLECOLUMN_H
 #define TABLECOLUMN_H
 
+#include <QDebug>
 #include <QString>
 
 class TableColumn
@@ -56,5 +57,7 @@ private:
     int precision;
     int distinctValues;
 };
+
+QDebug operator<<(QDebug debug, const TableColumn &tc);
 
 #endif // TABLECOLUMN_H

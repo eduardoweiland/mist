@@ -34,3 +34,28 @@ void FilterCondition::setType(const Type &value)
 {
     type = value;
 }
+
+QDebug operator<<(QDebug debug, const FilterCondition &fc)
+{
+    debug << fc.getTable() << '(' << fc.getField() << '=';
+
+    switch (fc.getType()) {
+        case FilterCondition::EXACTMATCH:
+            debug << "EXACTMATCH";
+            break;
+        case FilterCondition::RANGE:
+            debug << "RANGE";
+            break;
+        case FilterCondition::LIST:
+            debug << "LIST";
+            break;
+        case FilterCondition::LIKE:
+            debug << "LIKE";
+            break;
+        default:
+            debug << fc.getType();
+            break;
+    }
+
+    return debug;
+}

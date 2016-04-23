@@ -1,6 +1,7 @@
 #ifndef GROUPBYFIELD_H
 #define GROUPBYFIELD_H
 
+#include <QDebug>
 #include <QString>
 
 class GroupByField
@@ -18,5 +19,7 @@ private:
     QString table;
     QString field;
 };
+
+QDebug operator<<(QDebug debug, const GroupByField &gbf);
 
 #endif // GROUPBYFIELD_H

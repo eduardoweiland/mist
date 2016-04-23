@@ -24,3 +24,10 @@ void GroupByField::setField(const QString &value)
 {
     field = value;
 }
+
+QDebug operator<<(QDebug debug, const GroupByField &gbf)
+{
+    debug.noquote() << gbf.getTable() << '.' << gbf.getField();
+
+    return debug;
+}

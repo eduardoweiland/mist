@@ -29,3 +29,10 @@ void ForeignKey::addColumn(const ForeignKeyColumn &value)
 {
     columns.append(value);
 }
+
+QDebug operator<<(QDebug debug, const ForeignKey &fk)
+{
+    debug << fk.getTable() << fk.getColumns();
+
+    return debug;
+}

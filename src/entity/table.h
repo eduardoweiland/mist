@@ -1,6 +1,7 @@
 #ifndef TABLE_H
 #define TABLE_H
 
+#include <QDebug>
 #include <QList>
 #include <QString>
 
@@ -37,5 +38,7 @@ private:
     QStringList primaryKey;
     QList<ForeignKey> foreignKeys;
 };
+
+QDebug operator<<(QDebug debug, const Table &table);
 
 #endif // TABLE_H

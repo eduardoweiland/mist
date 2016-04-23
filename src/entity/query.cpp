@@ -101,3 +101,15 @@ void Query::addGroupBy(const GroupByField &value)
 {
     groupBy.append(value);
 }
+
+QDebug operator<<(QDebug debug, const Query &query)
+{
+    debug.nospace() << '#' << query.getId() << ' ' << query.getCount() << 'x';
+    debug << "FROM" << query.getFrom()
+          << "JOINS" << query.getJoins()
+          << "WHERE" << query.getWhere()
+          << "GROUP BY" << query.getGroupBy()
+          << "ORDER BY" << query.getOrderBy();
+
+    return debug;
+}

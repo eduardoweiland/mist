@@ -1,6 +1,7 @@
 #ifndef ORDERBYFIELD_H
 #define ORDERBYFIELD_H
 
+#include <QDebug>
 #include <QString>
 
 class OrderByField
@@ -27,5 +28,7 @@ private:
     QString field;
     Direction dir;
 };
+
+QDebug operator<<(QDebug debug, const OrderByField &obf);
 
 #endif // ORDERBYFIELD_H

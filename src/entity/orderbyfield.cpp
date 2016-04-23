@@ -34,3 +34,10 @@ void OrderByField::setDir(const Direction &value)
 {
     dir = value;
 }
+
+QDebug operator<<(QDebug debug, const OrderByField &obf)
+{
+    debug.noquote() << obf.getTable() << '.' << obf.getField();
+
+    return debug;
+}

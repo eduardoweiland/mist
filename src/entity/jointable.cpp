@@ -41,3 +41,25 @@ void JoinTable::addCondition(const FilterCondition &value)
 {
     conditions.append(value);
 }
+
+QDebug operator<<(QDebug debug, const JoinTable &jt)
+{
+    switch (jt.getType()) {
+        case JoinTable::INNER:
+            debug << "INNER JOIN";
+            break;
+        case JoinTable::LEFT:
+            debug << "LEFT JOIN";
+            break;
+        case JoinTable::RIGHT:
+            debug << "RIGHT JOIN";
+            break;
+        default:
+            debug << jt.getType();
+            break;
+    }
+
+    debug << jt.getTable() << jt.getConditions();
+
+    return debug;
+}

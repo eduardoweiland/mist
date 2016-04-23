@@ -1,6 +1,8 @@
 #ifndef CANDIDATEINDEX_H
 #define CANDIDATEINDEX_H
 
+#include <QDebug>
+
 #include "indexcolumn.h"
 #include "query.h"
 #include "table.h"

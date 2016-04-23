@@ -69,3 +69,10 @@ void Table::addForeignKey(const ForeignKey &value)
 {
     foreignKeys.append(value);
 }
+
+QDebug operator<<(QDebug debug, const Table &table)
+{
+    debug << table.getName();
+
+    return debug;
+}

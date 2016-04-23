@@ -1,6 +1,7 @@
 #ifndef FOREIGNKEYCOLUMN_H
 #define FOREIGNKEYCOLUMN_H
 
+#include <QDebug>
 #include <QString>
 
 class ForeignKeyColumn
@@ -18,5 +19,7 @@ private:
     QString name;
     QString referenced;
 };
+
+QDebug operator<<(QDebug debug, const ForeignKeyColumn &fkc);
 
 #endif // FOREIGNKEYCOLUMN_H

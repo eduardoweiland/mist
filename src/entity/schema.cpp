@@ -25,3 +25,10 @@ Table* Schema::getTable(QString name)
 {
     return &mapTables[name];
 }
+
+QDebug operator<<(QDebug debug, const Schema &schema)
+{
+    debug << schema.getTables();
+
+    return debug;
+}

@@ -1,6 +1,7 @@
 #ifndef FOREIGNKEY_H
 #define FOREIGNKEY_H
 
+#include <QDebug>
 #include <QList>
 #include <QString>
 
@@ -22,5 +23,7 @@ private:
     QString table;
     QList<ForeignKeyColumn> columns;
 };
+
+QDebug operator<<(QDebug debug, const ForeignKey &fk);
 
 #endif // FOREIGNKEY_H

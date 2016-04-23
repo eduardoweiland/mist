@@ -24,3 +24,10 @@ void ForeignKeyColumn::setReferenced(const QString &value)
 {
     referenced = value;
 }
+
+QDebug operator<<(QDebug debug, const ForeignKeyColumn &fkc)
+{
+    debug << fkc.getName() << '=' << fkc.getReferenced();
+
+    return debug;
+}

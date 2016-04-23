@@ -104,3 +104,10 @@ int TableColumn::getSize() const
 
     return 0;
 }
+
+QDebug operator<<(QDebug debug, const TableColumn &tc)
+{
+    debug << tc.getName();
+
+    return debug;
+}

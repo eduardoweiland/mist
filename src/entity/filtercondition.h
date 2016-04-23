@@ -1,6 +1,7 @@
 #ifndef FILTERCONDITION_H
 #define FILTERCONDITION_H
 
+#include <QDebug>
 #include <QString>
 
 class FilterCondition
@@ -29,5 +30,7 @@ private:
     QString field;
     Type type;
 };
+
+QDebug operator<<(QDebug debug, const FilterCondition &fc);
 
 #endif // FILTERCONDITION_H
