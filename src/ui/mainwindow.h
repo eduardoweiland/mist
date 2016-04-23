@@ -3,6 +3,8 @@
 
 #include "ui_mainwindow.h"
 
+#include "../entity/schema.h"
+
 enum QtMsgType;
 class AbstractXmlReader;
 
@@ -33,6 +35,8 @@ private slots:
 
 private:
     bool selectAndParseFile(const QString &title, const QString &filter, AbstractXmlReader *parser);
+
+    Schema schema;
 };
 
 #endif // MAINWINDOW_H

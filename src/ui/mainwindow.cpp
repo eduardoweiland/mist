@@ -55,6 +55,8 @@ void MainWindow::loadSchemaFile()
             tr("Successfully loaded %1 tables from definition file").arg(reader.getTables().size())
         );
 
+        schema.setTables(reader.getTables());
+
         SchemaCreator creator;
         foreach (Table table, reader.getTables()) {
             qDebug() << creator.getCreateTable(&table);

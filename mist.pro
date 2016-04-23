@@ -26,6 +26,7 @@ SOURCES += \
     src/entity/jointable.cpp \
     src/entity/orderbyfield.cpp \
     src/entity/query.cpp \
+    src/entity/schema.cpp \
     src/entity/table.cpp \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     src/entity/jointable.h \
     src/entity/orderbyfield.h \
     src/entity/query.h \
+    src/entity/schema.h \
     src/entity/table.h \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \
