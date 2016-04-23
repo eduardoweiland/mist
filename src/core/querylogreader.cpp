@@ -57,7 +57,7 @@ void QueryLogReader::readQuery()
 
     while (xml.readNextStartElement()) {
         if (xml.name() == "from") {
-            query.setFrom(xml.readElementText());
+            readFroms(&query);
         }
         else if (xml.name() == "joins") {
             readJoins(&query);
@@ -65,11 +65,11 @@ void QueryLogReader::readQuery()
         else if (xml.name() == "where") {
             readWhere(&query);
         }
-        else if (xml.name() == "orderby") {
-            readOrderBy(&query);
-        }
         else if (xml.name() == "groupby") {
             readGroupBy(&query);
+        }
+        else if (xml.name() == "orderby") {
+            readOrderBy(&query);
         }
         else {
             xml.raiseError(QObject::tr("Unknown tag found: %1").arg(xml.name().toString()));
@@ -77,6 +77,21 @@ void QueryLogReader::readQuery()
     }
 
     queries.append(query);
+}
+
+void QueryLogReader::readFroms(Query *query)
+{
+    Q_ASSERT(xml.isStartElement() && xml.name() == "from");
+    Q_ASSERT(query != nullptr);
+
+    while (xml.readNextStartElement()) {
+        if (xml.name() == "table") {
+            query->addFrom(xml.readElementText());
+        }
+        else {
+            xml.raiseError(QObject::tr("Unknown tag found: %1").arg(xml.name().toString()));
+        }
+    }
 }
 
 void QueryLogReader::readJoins(Query *query)

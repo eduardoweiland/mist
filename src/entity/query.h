@@ -20,8 +20,9 @@ public:
     int getCount() const;
     void setCount(int value);
 
-    QString getFrom() const;
-    void setFrom(const QString &value);
+    QStringList getFrom() const;
+    void setFrom(const QStringList &value);
+    void addFrom(const QString &value);
 
     QList<JoinTable> getJoins() const;
     void setJoins(const QList<JoinTable> &value);
@@ -42,7 +43,7 @@ public:
 private:
     int id;
     int count;
-    QString from;
+    QStringList from;
     QList<JoinTable> joins;
     QList<FilterCondition> where;
     QList<OrderByField> orderBy;

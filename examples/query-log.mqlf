@@ -24,7 +24,9 @@
             user.id
     -->
     <query id="1" count="42">
-        <from>user</from>
+        <from>
+            <table>user</table>
+        </from>
         <joins>
             <join type="inner" table="sale">
                 <condition field="user_id" type="exactmatch"/>
@@ -35,13 +37,13 @@
             <condition table="sale" field="status" type="list"/>
             <condition table="user" field="firstname" type="like"/>
         </where>
+        <groupby>
+            <field table="user" field="id"/>
+        </groupby>
         <orderby>
             <field table="user" field="firstname" dir="asc"/>
             <field table="user" field="lastname" dir="asc"/>
         </orderby>
-        <groupby>
-            <field table="user" field="id"/>
-        </groupby>
     </query>
 </queries>
 

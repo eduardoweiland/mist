@@ -23,6 +23,7 @@ private:
 
     void readQueries();
     void readQuery();
+    void readFroms(Query *query);
     void readJoins(Query *query);
     void readJoinConditions(JoinTable *join);
     void readWhere(Query *query);

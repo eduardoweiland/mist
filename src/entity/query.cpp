@@ -27,14 +27,19 @@ void Query::setCount(int value)
     count = value;
 }
 
-QString Query::getFrom() const
+QStringList Query::getFrom() const
 {
     return from;
 }
 
-void Query::setFrom(const QString &value)
+void Query::setFrom(const QStringList &value)
 {
     from = value;
+}
+
+void Query::addFrom(const QString &value)
+{
+    from.append(value);
 }
 
 QList<JoinTable> Query::getJoins() const
