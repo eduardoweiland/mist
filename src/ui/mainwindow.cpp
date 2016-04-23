@@ -83,7 +83,9 @@ void MainWindow::loadLogFile()
 
 bool MainWindow::selectAndParseFile(const QString &title, const QString &filter, AbstractXmlReader *parser)
 {
-    QString filename = QFileDialog::getOpenFileName(this, title, QDir::homePath(), filter);
+    static QString lastDirectory = QDir::homePath();
+
+    QString filename = QFileDialog::getOpenFileName(this, title, lastDirectory, filter);
 
     if (filename.isNull()) {
         // No file selected
@@ -105,6 +107,8 @@ bool MainWindow::selectAndParseFile(const QString &title, const QString &filter,
 
         return false;
     }
+
+    lastDirectory = QFileInfo(logFile).absolutePath();
 
     if (!parser->parse(&logFile)) {
         qCritical() << tr("Error parsing selected file %1: %2")
