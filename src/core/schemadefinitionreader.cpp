@@ -94,11 +94,17 @@ void SchemaDefinitionReader::readColumn(Table *table)
     else if (xml.attributes().value("type") == "text") {
         column.setType(TableColumn::TEXT);
     }
-    else if (xml.attributes().value("type") == "integer") {
-        column.setType(TableColumn::INTEGER);
+    else if (xml.attributes().value("type") == "tinyint") {
+        column.setType(TableColumn::TINYINT);
     }
     else if (xml.attributes().value("type") == "smallint") {
         column.setType(TableColumn::SMALLINT);
+    }
+    else if (xml.attributes().value("type") == "integer") {
+        column.setType(TableColumn::INTEGER);
+    }
+    else if (xml.attributes().value("type") == "mediumint") {
+        column.setType(TableColumn::MEDIUMINT);
     }
     else if (xml.attributes().value("type") == "bigint") {
         column.setType(TableColumn::BIGINT);
@@ -120,6 +126,9 @@ void SchemaDefinitionReader::readColumn(Table *table)
     }
     else if (xml.attributes().value("type") == "float") {
         column.setType(TableColumn::FLOAT);
+    }
+    else if (xml.attributes().value("type") == "double") {
+        column.setType(TableColumn::DOUBLE);
     }
     else if (xml.attributes().value("type") == "blob") {
         column.setType(TableColumn::BLOB);

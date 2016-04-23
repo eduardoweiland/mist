@@ -12,8 +12,10 @@ public:
         VARCHAR,
         CHAR,
         TEXT,
-        INTEGER,
+        TINYINT,
         SMALLINT,
+        MEDIUMINT,
+        INTEGER,
         BIGINT,
         BOOLEAN,
         DECIMAL,
@@ -21,6 +23,7 @@ public:
         TIME,
         DATETIME,
         FLOAT,
+        DOUBLE,
         BLOB
     };
 
@@ -41,6 +44,9 @@ public:
 
     int getDistinctValues() const;
     void setDistinctValues(int value);
+
+    /*! Get the size of the column in bytes */
+    int getSize() const;
 
 private:
     QString name;
