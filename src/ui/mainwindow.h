@@ -1,9 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QList>
+
 #include "ui_mainwindow.h"
 
 #include "../entity/schema.h"
+#include "../entity/query.h"
 
 enum QtMsgType;
 class AbstractXmlReader;
@@ -26,6 +29,7 @@ private slots:
 
     void loadLogFile(void);
     void loadSchemaFile(void);
+    void generateCandidates(void);
 
     void startServer(void);
     void stopServer(void);
@@ -37,6 +41,7 @@ private:
     bool selectAndParseFile(const QString &title, const QString &filter, AbstractXmlReader *parser);
 
     Schema schema;
+    QList<Query> queries;
 };
 
 #endif // MAINWINDOW_H

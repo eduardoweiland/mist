@@ -46,6 +46,8 @@ public:
     int getDistinctValues() const;
     void setDistinctValues(int value);
 
+    bool operator==(TableColumn &other) const;
+
     /*! Get the size of the column in bytes */
     int getSize() const;
 

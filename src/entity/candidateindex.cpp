@@ -25,6 +25,11 @@ void CandidateIndex::setColumns(const QList<IndexColumn> &value)
     columns = value;
 }
 
+void CandidateIndex::addColumn(const IndexColumn &value)
+{
+    columns.append(value);
+}
+
 QList<Query *> CandidateIndex::getAffectedQueries() const
 {
     return affectedQueries;

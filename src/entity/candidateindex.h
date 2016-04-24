@@ -17,6 +17,7 @@ public:
 
     QList<IndexColumn> getColumns() const;
     void setColumns(const QList<IndexColumn> &value);
+    void addColumn(const IndexColumn &value);
 
     QList<Query *> getAffectedQueries() const;
     void setAffectedQueries(const QList<Query *> &value);

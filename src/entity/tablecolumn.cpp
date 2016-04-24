@@ -65,6 +65,16 @@ void TableColumn::setDistinctValues(int value)
     distinctValues = value;
 }
 
+bool TableColumn::operator==(TableColumn &other) const
+{
+    return (name == other.name &&
+            type == other.type &&
+            nullable == other.nullable &&
+            length == other.length &&
+            precision == other.precision &&
+            distinctValues == other.distinctValues);
+}
+
 /*!
  * \see https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html
  */

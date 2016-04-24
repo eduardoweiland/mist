@@ -2,6 +2,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QDir>
+#include <QProgressDialog>
 #include <QDebug>
 
 #include "mainwindow.h"
@@ -11,6 +12,7 @@
 #include "../core/schemadefinitionreader.h"
 #include "../core/loghandler.h"
 #include "../core/schemacreator.h"
+#include "../core/generatecandidateindexes.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
@@ -80,6 +82,8 @@ void MainWindow::loadLogFile()
             tr("File loaded"),
             tr("Successfully loaded %1 queries from log file").arg(reader.getQueries().size())
         );
+
+        queries = reader.getQueries();
     }
 }
 
@@ -127,6 +131,28 @@ bool MainWindow::selectAndParseFile(const QString &title, const QString &filter,
     }
 
     return true;
+}
+
+void MainWindow::generateCandidates()
+{
+    QProgressDialog *progress = new QProgressDialog(
+        tr("Generating candidates..."),
+        tr("Cancel"),
+        0,
+        100,
+        this
+    );
+
+    progress->setModal(true);
+    progress->setValue(0);
+    progress->setMinimumDuration(0);
+
+    GenerateCandidateIndexes *gen = new GenerateCandidateIndexes(schema, queries);
+    connect(gen, SIGNAL(finished()), progress, SLOT(accept()));
+    connect(gen, SIGNAL(finished()), gen, SLOT(deleteLater()));
+    connect(gen, SIGNAL(progress(int)), progress, SLOT(setValue(int)));
+    connect(progress, SIGNAL(canceled()), gen, SLOT(terminate()));
+    gen->start();
 }
 
 void MainWindow::startServer()

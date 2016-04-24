@@ -40,6 +40,20 @@ void Table::addColumn(const TableColumn &value)
     columns.append(value);
 }
 
+const TableColumn* Table::getColumn(const QString name) const
+{
+    int size = columns.size();
+    int i;
+
+    for (i = 0; i < size; ++i) {
+        if (columns[i].getName() == name) {
+            return &columns[i];
+        }
+    }
+
+    return nullptr;
+}
+
 QStringList Table::getPrimaryKey() const
 {
     return primaryKey;

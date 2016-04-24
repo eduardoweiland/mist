@@ -13,6 +13,8 @@ SOURCES += \
     src/main.cpp \
     src/core/abstractxmlreader.cpp \
     src/core/embeddeddatabase.cpp \
+    src/core/generatecandidateindexes.cpp  \
+    src/core/indexcolumnsbuilder.cpp\
     src/core/loghandler.cpp \
     src/core/querylogreader.cpp \
     src/core/schemacreator.cpp \
@@ -35,6 +37,8 @@ SOURCES += \
 HEADERS += \
     src/core/abstractxmlreader.h \
     src/core/embeddeddatabase.h \
+    src/core/generatecandidateindexes.h \
+    src/core/indexcolumnsbuilder.h \
     src/core/loghandler.h \
     src/core/querylogreader.h \
     src/core/schemacreator.h \

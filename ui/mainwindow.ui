@@ -144,12 +144,28 @@
        <property name="text">
         <string>1. Load schema file</string>
        </property>
+       <property name="shortcut">
+        <string>Ctrl+1</string>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="buttonLoadLogFile">
        <property name="text">
         <string>2. Load log file</string>
+       </property>
+       <property name="shortcut">
+        <string>Ctrl+2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonGenerateCandidates">
+       <property name="text">
+        <string>3. Generate candidate indexes</string>
+       </property>
+       <property name="shortcut">
+        <string>Ctrl+3</string>
        </property>
       </widget>
      </item>
@@ -653,6 +669,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonGenerateCandidates</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>generateCandidates()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>82</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>about()</slot>
@@ -661,5 +693,6 @@
   <slot>startServer()</slot>
   <slot>loadSchemaFile()</slot>
   <slot>stopServer()</slot>
+  <slot>generateCandidates()</slot>
  </slots>
 </ui>

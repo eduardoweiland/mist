@@ -22,6 +22,7 @@ public:
     QList<TableColumn> getColumns() const;
     void setColumns(const QList<TableColumn> &value);
     void addColumn(const TableColumn &value);
+    const TableColumn* getColumn(const QString name) const;
 
     QStringList getPrimaryKey() const;
     void setPrimaryKey(const QStringList &value);
