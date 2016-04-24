@@ -10,7 +10,8 @@ public:
     FilterCondition();
 
     enum Type {
-        EXACTMATCH,
+        CONST,
+        MATCH,
         RANGE,
         LIST,
         LIKE

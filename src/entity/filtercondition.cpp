@@ -40,8 +40,11 @@ QDebug operator<<(QDebug debug, const FilterCondition &fc)
     debug << fc.getTable() << '(' << fc.getField() << '=';
 
     switch (fc.getType()) {
-        case FilterCondition::EXACTMATCH:
-            debug << "EXACTMATCH";
+        case FilterCondition::CONST:
+            debug << "CONST";
+            break;
+        case FilterCondition::MATCH:
+            debug << "MATCH";
             break;
         case FilterCondition::RANGE:
             debug << "RANGE";

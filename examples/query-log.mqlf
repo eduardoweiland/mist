@@ -29,7 +29,7 @@
         </from>
         <joins>
             <join type="inner" table="sale">
-                <condition field="user_id" type="exactmatch"/>
+                <condition field="user_id" type="match"/>
             </join>
         </joins>
         <where>

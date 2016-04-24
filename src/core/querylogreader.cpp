@@ -138,8 +138,11 @@ void QueryLogReader::readJoinConditions(JoinTable *join)
             condition.setTable(join->getTable());
             condition.setField(xml.attributes().value("field").toString());
 
-            if (xml.attributes().value("type") == "exactmatch") {
-                condition.setType(FilterCondition::EXACTMATCH);
+            if (xml.attributes().value("type") == "const") {
+                condition.setType(FilterCondition::CONST);
+            }
+            else if (xml.attributes().value("type") == "match") {
+                condition.setType(FilterCondition::MATCH);
             }
             else if (xml.attributes().value("type") == "range") {
                 condition.setType(FilterCondition::RANGE);
@@ -174,8 +177,11 @@ void QueryLogReader::readWhere(Query *query)
             condition.setTable(xml.attributes().value("table").toString());
             condition.setField(xml.attributes().value("field").toString());
 
-            if (xml.attributes().value("type") == "exactmatch") {
-                condition.setType(FilterCondition::EXACTMATCH);
+            if (xml.attributes().value("type") == "const") {
+                condition.setType(FilterCondition::CONST);
+            }
+            else if (xml.attributes().value("type") == "match") {
+                condition.setType(FilterCondition::MATCH);
             }
             else if (xml.attributes().value("type") == "range") {
                 condition.setType(FilterCondition::RANGE);
