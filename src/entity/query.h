@@ -41,6 +41,8 @@ public:
     void setGroupBy(const QList<GroupByField> &value);
     void addGroupBy(const GroupByField &value);
 
+    QStringList getUsedTables() const;
+
 private:
     int id;
     int count;

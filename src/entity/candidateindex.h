@@ -18,6 +18,7 @@ public:
     QList<IndexColumn> getColumns() const;
     void setColumns(const QList<IndexColumn> &value);
     void addColumn(const IndexColumn &value);
+    void addColumns(const QList<IndexColumn> &value);
 
     QList<Query *> getAffectedQueries() const;
     void setAffectedQueries(const QList<Query *> &value);
@@ -26,6 +27,8 @@ public:
 
     /*! \brief Get the estimated size in bytes for one entry in the index */
     int getEntrySize() const;
+
+    bool isValid() const;
 
     bool operator==(CandidateIndex &other) const;
 

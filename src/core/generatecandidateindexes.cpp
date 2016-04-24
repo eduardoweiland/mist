@@ -26,6 +26,8 @@ void GenerateCandidateIndexes::run()
 
         emit progress((int)((i + 1) / size));
     }
+
+    qDebug() << "Candidatos gerados" << possibleCandidates;
 }
 
 QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *query)
@@ -33,29 +35,55 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
     IndexColumnsBuilder builder(&schema);
     QList<CandidateIndex> candidates;
 
-    QList<FilterCondition> filters = query->getWhere();
-    foreach (JoinTable jt, query->getJoins()) {
-        filters << jt.getConditions();
-    }
-
+    CandidateIndex orderByCandidate;
     if (!query->getOrderBy().isEmpty()) {
-        CandidateIndex orderByCandidate = builder.getBestCandidateForOrderBy(query->getOrderBy());
+        orderByCandidate = builder.getBestCandidateForOrderBy(query->getOrderBy());
         qDebug() << "Melhor candidato para order by" << orderByCandidate;
-        candidates << orderByCandidate;
     }
 
+    CandidateIndex groupByCandidate;
     if (!query->getGroupBy().isEmpty()) {
-        CandidateIndex groupByCandidate = builder.getBestCandidateForGroupBy(query->getGroupBy());
+        groupByCandidate = builder.getBestCandidateForGroupBy(query->getGroupBy());
         qDebug() << "Melhor candidato para group by" << groupByCandidate;
-        candidates << groupByCandidate;
+    }
+
+    QStringList tables = query->getUsedTables();
+    foreach (QString tableName, tables) {
+        Table *table = schema.getTable(tableName);
+        QList<FilterCondition> filters = getFiltersForTable(query, tableName);
+
+        if (orderByCandidate.getTable() == table && groupByCandidate.getTable() == table) {
+            candidates << builder.combineOrderByGroupByIndexes(table, orderByCandidate, groupByCandidate, filters);
+        }
+        else if (orderByCandidate.getTable() == table) {
+            candidates << builder.combineOrderByIndexes(table, orderByCandidate, filters);
+        }
+        else if (groupByCandidate.getTable() == table) {
+            candidates << builder.combineGroupByIndexes(table, groupByCandidate, filters);
+        }
+        else {
+            candidates << builder.combineIndexes(table, filters);
+        }
     }
 
     return candidates;
 }
 
-QList<CandidateIndex> GenerateCandidateIndexes::combineIndexes(QList<CandidateIndex> &indexes)
+QList<FilterCondition> GenerateCandidateIndexes::getFiltersForTable(const Query *query, const QString tableName) const
 {
-    // Gerar novos candidatos combinando índices candidatos existentes
+    QList<FilterCondition> allFilters = query->getWhere();
+    foreach (JoinTable jt, query->getJoins()) {
+        allFilters << jt.getConditions();
+    }
+
+    QList<FilterCondition> tableFilters;
+    foreach (FilterCondition cond, allFilters) {
+        if (cond.getTable() == tableName) {
+            tableFilters << cond;
+        }
+    }
+
+    return tableFilters;
 }
 
 void GenerateCandidateIndexes::mergeUniqueIndexes(QList<CandidateIndex> &indexes)

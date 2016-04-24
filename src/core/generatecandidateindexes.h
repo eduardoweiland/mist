@@ -28,7 +28,7 @@ private:
     int percentProgress;
 
     QList<CandidateIndex> getIndexesForQuery(const Query *query);
-    QList<CandidateIndex> combineIndexes(QList<CandidateIndex> &indexes);
+    QList<FilterCondition> getFiltersForTable(const Query *query, const QString tableName) const;
     void mergeUniqueIndexes(QList<CandidateIndex> &indexes);
 };
 

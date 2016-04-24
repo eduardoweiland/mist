@@ -102,6 +102,17 @@ void Query::addGroupBy(const GroupByField &value)
     groupBy.append(value);
 }
 
+QStringList Query::getUsedTables() const
+{
+    QStringList tables = from;
+
+    foreach (JoinTable join, joins) {
+        tables.append(join.getTable());
+    }
+
+    return tables;
+}
+
 QDebug operator<<(QDebug debug, const Query &query)
 {
     debug.nospace() << '#' << query.getId() << ' ' << query.getCount() << 'x';

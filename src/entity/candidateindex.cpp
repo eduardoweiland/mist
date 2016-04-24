@@ -30,6 +30,11 @@ void CandidateIndex::addColumn(const IndexColumn &value)
     columns.append(value);
 }
 
+void CandidateIndex::addColumns(const QList<IndexColumn> &value)
+{
+    columns.append(value);
+}
+
 QList<Query *> CandidateIndex::getAffectedQueries() const
 {
     return affectedQueries;
@@ -61,6 +66,11 @@ int CandidateIndex::getEntrySize() const
     }
 
     return bytes;
+}
+
+bool CandidateIndex::isValid() const
+{
+    return ((table != nullptr) && (!columns.isEmpty()));
 }
 
 bool CandidateIndex::operator==(CandidateIndex &other) const
