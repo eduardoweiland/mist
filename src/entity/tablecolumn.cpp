@@ -65,6 +65,16 @@ void TableColumn::setDistinctValues(int value)
     distinctValues = value;
 }
 
+int TableColumn::getNullValues() const
+{
+    return nullValues;
+}
+
+void TableColumn::setNullValues(int value)
+{
+    nullValues = value;
+}
+
 bool TableColumn::operator==(TableColumn &other) const
 {
     return (name == other.name &&
@@ -72,7 +82,8 @@ bool TableColumn::operator==(TableColumn &other) const
             nullable == other.nullable &&
             length == other.length &&
             precision == other.precision &&
-            distinctValues == other.distinctValues);
+            distinctValues == other.distinctValues &&
+            nullValues == other.nullValues);
 }
 
 /*!

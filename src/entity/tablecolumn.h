@@ -46,6 +46,9 @@ public:
     int getDistinctValues() const;
     void setDistinctValues(int value);
 
+    int getNullValues() const;
+    void setNullValues(int value);
+
     bool operator==(TableColumn &other) const;
 
     /*! Get the size of the column in bytes */
@@ -58,6 +61,7 @@ private:
     int length;
     int precision;
     int distinctValues;
+    int nullValues;
 };
 
 QDebug operator<<(QDebug debug, const TableColumn &tc);

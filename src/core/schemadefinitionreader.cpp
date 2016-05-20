@@ -84,6 +84,7 @@ void SchemaDefinitionReader::readColumn(Table *table)
     column.setLength(xml.attributes().value("length").toInt());
     column.setPrecision(xml.attributes().value("precision").toInt());
     column.setDistinctValues(xml.attributes().value("distinct-values").toInt());
+    column.setNullValues(xml.attributes().value("null-values").toInt());
 
     if (xml.attributes().value("type") == "varchar") {
         column.setType(TableColumn::VARCHAR);
