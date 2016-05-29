@@ -25,6 +25,46 @@ void TableColumn::setType(const Type &value)
     type = value;
 }
 
+QString TableColumn::getTypeName() const
+{
+    switch (type) {
+        case VARCHAR:
+            return QString("varchar(%1)").arg(length);
+        case CHAR:
+            return QString("char(%1)").arg(length);
+        case DECIMAL:
+            return QString("decimal(%1, %2)").arg(length, precision);
+        case BOOLEAN:
+            return QString("boolean");
+        case TINYINT:
+            return QString("tinyint");
+        case SMALLINT:
+            return QString("smallint");
+        case MEDIUMINT:
+            return QString("mediumint");
+        case INTEGER:
+            return QString("integer");
+        case BIGINT:
+            return QString("bigint");
+        case DATE:
+            return QString("date");
+        case TIME:
+            return QString("time");
+        case DATETIME:
+            return QString("datetime");
+        case FLOAT:
+            return QString("float");
+        case DOUBLE:
+            return QString("double");
+        case TEXT:
+            return QString("text");
+        case BLOB:
+            return QString("blob");
+    }
+
+    return QString("-");
+}
+
 bool TableColumn::getNullable() const
 {
     return nullable;

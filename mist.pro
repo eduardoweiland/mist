@@ -32,7 +32,8 @@ SOURCES += \
     src/entity/table.cpp \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
-    src/ui/mainwindow.cpp
+    src/ui/mainwindow.cpp \
+    src/ui/tablelistwidget.cpp
 
 HEADERS += \
     src/core/abstractxmlreader.h \
@@ -56,11 +57,13 @@ HEADERS += \
     src/entity/table.h \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \
-    src/ui/mainwindow.h
+    src/ui/mainwindow.h \
+    src/ui/tablelistwidget.h
 
 FORMS += \
     ui/aboutdialog.ui \
-    ui/mainwindow.ui
+    ui/mainwindow.ui \
+    ui/tablelistwidget.ui
 
 RESOURCES += \
     res/paomedia-small-n-flat/iconset.qrc \

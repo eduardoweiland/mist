@@ -33,6 +33,7 @@ public:
 
     Type getType() const;
     void setType(const Type &value);
+    QString getTypeName() const;
 
     bool getNullable() const;
     void setNullable(bool value);

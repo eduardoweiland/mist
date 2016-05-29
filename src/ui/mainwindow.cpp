@@ -58,6 +58,7 @@ void MainWindow::loadSchemaFile()
         );
 
         schema.setTables(reader.getTables());
+        tableListWidget->setTables(reader.getTables());
 
         SchemaCreator creator;
         foreach (Table table, reader.getTables()) {

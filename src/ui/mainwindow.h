@@ -4,6 +4,7 @@
 #include <QList>
 
 #include "ui_mainwindow.h"
+#include "tablelistwidget.h"
 
 #include "../entity/schema.h"
 #include "../entity/query.h"

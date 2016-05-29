@@ -21,8 +21,6 @@
             user.firstname ASC,
             user.lastname ASC,
             sale.date DESC
-        GROUP BY
-            user.id
     -->
     <query id="1" count="42">
         <from>
@@ -38,9 +36,6 @@
             <condition table="sale" field="status" type="list"/>
             <condition table="user" field="firstname" type="like"/>
         </where>
-        <groupby>
-            <field table="user" field="id"/>
-        </groupby>
         <orderby>
             <field table="user" field="firstname" dir="asc"/>
             <field table="user" field="lastname" dir="asc"/>

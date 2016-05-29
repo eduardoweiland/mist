@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     app.setOrganizationDomain("unisc.br");
 
     QTranslator translator;
-    QLocale locale = QLocale::system();
+    QString locale = QLocale::system().name();
 
 #ifdef QT_DEBUG
     translator.load(locale, app.applicationDirPath() + "/lang");

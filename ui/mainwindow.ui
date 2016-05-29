@@ -13,7 +13,38 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabsWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="TableListWidget" name="tableListWidget">
+       <attribute name="title">
+        <string>Tables</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="queriesWidget">
+       <attribute name="title">
+        <string>Queries</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="candidateIndexesWidget">
+       <attribute name="title">
+        <string>Candidate Indexes</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -103,7 +134,6 @@
    <addaction name="actionOpenProject"/>
    <addaction name="actionSave"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="serverToolbar">
    <property name="windowTitle">
     <string>Server</string>
@@ -221,6 +251,7 @@
     </layout>
    </widget>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNewProject">
    <property name="icon">
     <iconset theme="list-add" resource="../res/paomedia-small-n-flat/iconset.qrc">
@@ -409,6 +440,14 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>TableListWidget</class>
+   <extends>QWidget</extends>
+   <header>src/ui/tablelistwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../res/paomedia-small-n-flat/iconset.qrc"/>
  </resources>
