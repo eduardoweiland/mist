@@ -32,6 +32,7 @@ SOURCES += \
     src/entity/table.cpp \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
+    src/ui/databaseconnectionpage.cpp \
     src/ui/mainwindow.cpp \
     src/ui/tablelistwidget.cpp
 
@@ -57,11 +58,13 @@ HEADERS += \
     src/entity/table.h \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \
+    src/ui/databaseconnectionpage.h \
     src/ui/mainwindow.h \
     src/ui/tablelistwidget.h
 
 FORMS += \
     ui/aboutdialog.ui \
+    ui/databaseconnectionpage.ui \
     ui/mainwindow.ui \
     ui/tablelistwidget.ui
 
