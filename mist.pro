@@ -34,6 +34,7 @@ SOURCES += \
     src/ui/aboutdialog.cpp \
     src/ui/databaseconnectionpage.cpp \
     src/ui/mainwindow.cpp \
+    src/ui/schemadefinitionpage.cpp \
     src/ui/tablelistwidget.cpp
 
 HEADERS += \
@@ -60,12 +61,14 @@ HEADERS += \
     src/ui/aboutdialog.h \
     src/ui/databaseconnectionpage.h \
     src/ui/mainwindow.h \
+    src/ui/schemadefinitionpage.h \
     src/ui/tablelistwidget.h
 
 FORMS += \
     ui/aboutdialog.ui \
     ui/databaseconnectionpage.ui \
     ui/mainwindow.ui \
+    ui/schemadefinitionpage.ui \
     ui/tablelistwidget.ui
 
 RESOURCES += \
