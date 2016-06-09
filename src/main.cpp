@@ -2,6 +2,7 @@
 #include <QTranslator>
 
 #include "ui/mainwindow.h"
+#include "ui/mainwizard.h"
 #include "core/loghandler.h"
 
 int main(int argc, char *argv[])
@@ -29,6 +30,9 @@ int main(int argc, char *argv[])
 
     MainWindow win;
     win.show();
+
+    MainWizard wizard;
+    wizard.open();
 
     return app.exec();
 }

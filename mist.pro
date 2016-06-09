@@ -34,6 +34,7 @@ SOURCES += \
     src/ui/aboutdialog.cpp \
     src/ui/databaseconnectionpage.cpp \
     src/ui/mainwindow.cpp \
+    src/ui/mainwizard.cpp \
     src/ui/querylogpage.cpp \
     src/ui/schemadefinitionpage.cpp \
     src/ui/tablelistwidget.cpp
@@ -62,6 +63,7 @@ HEADERS += \
     src/ui/aboutdialog.h \
     src/ui/databaseconnectionpage.h \
     src/ui/mainwindow.h \
+    src/ui/mainwizard.h \
     src/ui/querylogpage.h \
     src/ui/schemadefinitionpage.h \
     src/ui/tablelistwidget.h
@@ -70,6 +72,7 @@ FORMS += \
     ui/aboutdialog.ui \
     ui/databaseconnectionpage.ui \
     ui/mainwindow.ui \
+    ui/mainwizard.ui \
     ui/querylogpage.ui \
     ui/schemadefinitionpage.ui \
     ui/tablelistwidget.ui
