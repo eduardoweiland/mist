@@ -5,7 +5,7 @@
 #
 
 # General Qt settings
-QT += core widgets network xml
+QT += core widgets network xml sql
 CONFIG += ordered qt stl rtti exceptions warn_on c++11
 
 

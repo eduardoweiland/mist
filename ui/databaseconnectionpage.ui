@@ -129,5 +129,25 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonTestConnection</sender>
+   <signal>clicked()</signal>
+   <receiver>DatabaseConnectionPage</receiver>
+   <slot>onTestConnectionButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>562</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>315</x>
+     <y>224</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onTestConnectionButtonClicked()</slot>
+ </slots>
 </ui>
