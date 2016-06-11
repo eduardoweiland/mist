@@ -28,9 +28,6 @@ int main(int argc, char *argv[])
 #endif
     app.installTranslator(&translator);
 
-    MainWindow win;
-    win.show();
-
     MainWizard wizard;
     wizard.open();
 

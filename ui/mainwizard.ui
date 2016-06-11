@@ -17,7 +17,7 @@
    <enum>QWizard::ClassicStyle</enum>
   </property>
   <property name="options">
-   <set>QWizard::NoCancelButton</set>
+   <set>QWizard::HaveHelpButton|QWizard::NoCancelButton</set>
   </property>
   <widget class="DatabaseConnectionPage" name="wizardPage1"/>
   <widget class="SchemaDefinitionPage" name="wizardPage2"/>

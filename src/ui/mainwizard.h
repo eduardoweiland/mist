@@ -14,6 +14,11 @@ public:
 
 protected:
     void keyPressEvent(QKeyEvent *e);
+
+private slots:
+
+    //! \brief Shows a dialog containing information about MIST.
+    void about(void);
 };
 
 #endif // MAINWIZARD_H
