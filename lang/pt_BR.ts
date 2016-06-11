@@ -20,6 +20,70 @@
     </message>
 </context>
 <context>
+    <name>DatabaseConnectionPage</name>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="14"/>
+        <location filename="../ui/databaseconnectionpage.ui" line="17"/>
+        <source>Configure database connection</source>
+        <translation>Configurar a conexão com o banco de dados</translation>
+    </message>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="20"/>
+        <source>Configure the database connection used to run the performance tests. WARNING: do not use a production server here!</source>
+        <translation>Configure a conexão com o banco de dados utilizada para executar os testes de performance. AVISO: não use um servidor em produção aqui!</translation>
+    </message>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="26"/>
+        <source>Hostname:</source>
+        <translation>Hostname:</translation>
+    </message>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="40"/>
+        <source>Port number:</source>
+        <translation>Porta:</translation>
+    </message>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="60"/>
+        <source>Username:</source>
+        <translation>Nome de usuário:</translation>
+    </message>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="70"/>
+        <source>Password:</source>
+        <translation>Senha:</translation>
+    </message>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="84"/>
+        <source>Database:</source>
+        <translation>Banco de dados:</translation>
+    </message>
+    <message>
+        <location filename="../ui/databaseconnectionpage.ui" line="122"/>
+        <source>Test connection</source>
+        <translation>Testar conexão</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/databaseconnectionpage.cpp" line="35"/>
+        <source>Success</source>
+        <translation>Sucesso</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/databaseconnectionpage.cpp" line="35"/>
+        <source>Connection was successfull!</source>
+        <translation>Conectado com sucesso!</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/databaseconnectionpage.cpp" line="38"/>
+        <source>Error</source>
+        <translation>Erro</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/databaseconnectionpage.cpp" line="38"/>
+        <source>Cannot connect to the database with this parameters.</source>
+        <translation>Não é posível conectar ao banco de dados com estes parâmetros.</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
@@ -385,41 +449,11 @@
     </message>
 </context>
 <context>
-    <name>QCoreApplication</name>
+    <name>MainWizard</name>
     <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="31"/>
-        <source>Initializing MySQL library</source>
-        <translation>Inicializando biblioteca MySQL</translation>
-    </message>
-    <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="33"/>
-        <source>Could not initialize MySQL library</source>
-        <translation>Não foi possível inicializar a biblioteca MySQL</translation>
-    </message>
-    <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="37"/>
-        <source>MySQL library successfully initialized</source>
-        <translation>Biblioteca MySQL inicializada com sucesso</translation>
-    </message>
-    <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="47"/>
-        <source>MySQL Server is not running, cleaning up library</source>
-        <translation>Servidor MySQL não está em execução, finalizando a biblioteca</translation>
-    </message>
-    <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="54"/>
-        <source>Starting MySQL server</source>
-        <translation>Iniciando servidor MySQL</translation>
-    </message>
-    <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="71"/>
-        <source>MySQL server stopped</source>
-        <translation>Servidor MySQL parado</translation>
-    </message>
-    <message>
-        <location filename="../src/core/embeddeddatabase.cpp" line="76"/>
-        <source>Connecting to database %1</source>
-        <translation>Conectando ao banco de dados %1</translation>
+        <location filename="../ui/mainwizard.ui" line="14"/>
+        <source>Wizard</source>
+        <translation>Assistente</translation>
     </message>
 </context>
 <context>
@@ -480,6 +514,173 @@
         <source>Invalid type for column found: %1</source>
         <translation>Tipo inválido encontrado para a coluna: %1</translation>
     </message>
+    <message>
+        <location filename="../src/ui/fileopener.cpp" line="23"/>
+        <source>Selected file: %1</source>
+        <translation>Arquivo selecionado: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/fileopener.cpp" line="27"/>
+        <source>Error opening selected file %1</source>
+        <translation>Erro ao abrir arquivo selecionado %1</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/fileopener.cpp" line="31"/>
+        <location filename="../src/ui/fileopener.cpp" line="58"/>
+        <source>Error opening file</source>
+        <translation>Erro ao abrir arquivo</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/fileopener.cpp" line="32"/>
+        <source>There was an error opening the selected file. Check if you have permissions to read it.</source>
+        <translation>Houve um erro ao abrir o arquivo selecionado. Verifique se você possui permissão de leitura.</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/fileopener.cpp" line="52"/>
+        <source>Error parsing selected file %1: %2</source>
+        <translation>Erro ao ler o arquivo selecionado %1: %2</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/fileopener.cpp" line="59"/>
+        <source>There was an error parsing the selected file:
+%1</source>
+        <translation>Houve um erro ao ler o arquivo selecionado:
+%1</translation>
+    </message>
+</context>
+<context>
+    <name>QueryListWidget</name>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="48"/>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="53"/>
+        <source>Count</source>
+        <translation>Quantidade</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="58"/>
+        <source>Fields</source>
+        <translation>Campos</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="63"/>
+        <source>From</source>
+        <translation>From</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="68"/>
+        <source>Joins</source>
+        <translation>Joins</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="73"/>
+        <source>Where</source>
+        <translation>Where</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="78"/>
+        <source>Order by</source>
+        <translation>Order by</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylistwidget.ui" line="83"/>
+        <source>Group by</source>
+        <translation>Group by</translation>
+    </message>
+</context>
+<context>
+    <name>QueryLogPage</name>
+    <message>
+        <location filename="../ui/querylogpage.ui" line="14"/>
+        <source>Query log</source>
+        <translation>Log de consultas</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylogpage.ui" line="17"/>
+        <source>&amp;Query log</source>
+        <translation>&amp;Log de consultas</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylogpage.ui" line="20"/>
+        <source>Select your MIST Query Log File (*.mqlf)</source>
+        <translation>Selecione o seu arquivo de Log de Consultas do MIST (*.mqlf)</translation>
+    </message>
+    <message>
+        <location filename="../ui/querylogpage.ui" line="26"/>
+        <source>Select file...</source>
+        <translation>Selecionar arquivo...</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/querylogpage.cpp" line="24"/>
+        <source>Select query log file</source>
+        <translation>Selecione o arquivo de log de consultas</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/querylogpage.cpp" line="25"/>
+        <source>MIST Query Log File (*.mqlf)</source>
+        <translation>Arquivo de Log de Consultas do MIST (*.mqlf)</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/querylogpage.cpp" line="32"/>
+        <source>File loaded</source>
+        <translation>Arquivo carregado</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/querylogpage.cpp" line="33"/>
+        <source>Successfully loaded %1 queries from log file</source>
+        <translation>%1 consultas carregadas com sucesso do arquivo de log</translation>
+    </message>
+</context>
+<context>
+    <name>SchemaDefinitionPage</name>
+    <message>
+        <location filename="../ui/schemadefinitionpage.ui" line="14"/>
+        <source>Schema definition</source>
+        <translation>Definição do modelo do banco de dados</translation>
+    </message>
+    <message>
+        <location filename="../ui/schemadefinitionpage.ui" line="17"/>
+        <source>Sche&amp;ma definition</source>
+        <translation>Definição do &amp;modelo</translation>
+    </message>
+    <message>
+        <location filename="../ui/schemadefinitionpage.ui" line="20"/>
+        <source>Select your MIST Schema Definition File (*.msdf)</source>
+        <translation>Selecione o seu arquivo de Definição do Modelo do Banco de Dados do MIST (*.msdf)</translation>
+    </message>
+    <message>
+        <location filename="../ui/schemadefinitionpage.ui" line="26"/>
+        <source>Select file...</source>
+        <translation>Selecionar arquivo...</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/schemadefinitionpage.cpp" line="24"/>
+        <source>Select schema definition file</source>
+        <translation>Selecione o arquivo de definição do modelo do banco de dados</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/schemadefinitionpage.cpp" line="25"/>
+        <source>MIST Schema Definition File (*.msdf)</source>
+        <translation>Arquivo de Definição do Modelo do Banco de Dados do MIST (*.msdf)</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/schemadefinitionpage.cpp" line="32"/>
+        <source>File loaded</source>
+        <translation>Arquivo carregado</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/schemadefinitionpage.cpp" line="33"/>
+        <source>Successfully loaded %1 tables from definition file</source>
+        <translation>%1 tabelas carregadas com sucesso do arquivo de definição do modelo do banco de dados</translation>
+    </message>
 </context>
 <context>
     <name>TableListWidget</name>
@@ -489,42 +690,42 @@
         <translation>Tabelas</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="36"/>
+        <location filename="../ui/tablelistwidget.ui" line="51"/>
         <source>Table name</source>
         <translation>Nome da tabela</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="41"/>
+        <location filename="../ui/tablelistwidget.ui" line="56"/>
         <source>Primary key</source>
         <translation>Chave primária</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="46"/>
+        <location filename="../ui/tablelistwidget.ui" line="61"/>
         <source>Row count</source>
         <translation>Número de registros</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="70"/>
+        <location filename="../ui/tablelistwidget.ui" line="88"/>
         <source>Column name</source>
         <translation>Nome da coluna</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="75"/>
+        <location filename="../ui/tablelistwidget.ui" line="93"/>
         <source>Type</source>
         <translation>Tipo</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="80"/>
+        <location filename="../ui/tablelistwidget.ui" line="98"/>
         <source>Nullable</source>
         <translation>Aceita Null</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="85"/>
+        <location filename="../ui/tablelistwidget.ui" line="103"/>
         <source>Null values</source>
         <translation>Valores Null</translation>
     </message>
     <message>
-        <location filename="../ui/tablelistwidget.ui" line="90"/>
+        <location filename="../ui/tablelistwidget.ui" line="108"/>
         <source>Distinct values</source>
         <translation>Valores diferentes</translation>
     </message>
