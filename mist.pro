@@ -33,8 +33,10 @@ SOURCES += \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
     src/ui/databaseconnectionpage.cpp \
+    src/ui/fileopener.cpp \
     src/ui/mainwindow.cpp \
     src/ui/mainwizard.cpp \
+    src/ui/querylistwidget.cpp \
     src/ui/querylogpage.cpp \
     src/ui/schemadefinitionpage.cpp \
     src/ui/tablelistwidget.cpp
@@ -62,8 +64,10 @@ HEADERS += \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \
     src/ui/databaseconnectionpage.h \
+    src/ui/fileopener.h \
     src/ui/mainwindow.h \
     src/ui/mainwizard.h \
+    src/ui/querylistwidget.h \
     src/ui/querylogpage.h \
     src/ui/schemadefinitionpage.h \
     src/ui/tablelistwidget.h
@@ -73,6 +77,7 @@ FORMS += \
     ui/databaseconnectionpage.ui \
     ui/mainwindow.ui \
     ui/mainwizard.ui \
+    ui/querylistwidget.ui \
     ui/querylogpage.ui \
     ui/schemadefinitionpage.ui \
     ui/tablelistwidget.ui

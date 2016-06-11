@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TableListWidget</class>
- <widget class="QWidget" name="TableListWidget">
+ <class>QueryListWidget</class>
+ <widget class="QWidget" name="QueryListWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>627</width>
-    <height>411</height>
+    <width>607</width>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Tables</string>
+   <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTableWidget" name="tablesWidget">
+    <widget class="QTableWidget" name="queriesWidget">
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
@@ -43,69 +43,44 @@
      <property name="horizontalScrollMode">
       <enum>QAbstractItemView::ScrollPerPixel</enum>
      </property>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>180</number>
-     </attribute>
      <column>
       <property name="text">
-       <string>Table name</string>
+       <string>ID</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Primary key</string>
+       <string>Count</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Row count</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTableWidget" name="tableColumnsWidget">
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="horizontalScrollMode">
-      <enum>QAbstractItemView::ScrollPerPixel</enum>
-     </property>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>180</number>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>Column name</string>
+       <string>Fields</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Type</string>
+       <string>From</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Nullable</string>
+       <string>Joins</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Null values</string>
+       <string>Where</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Distinct values</string>
+       <string>Order by</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Group by</string>
       </property>
      </column>
     </widget>

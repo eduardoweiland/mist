@@ -29,7 +29,7 @@ bool FileOpener::selectFile(QWidget *parent, const QString &title, const QString
         QMessageBox::critical(
             parent,
             QObject::tr("Error opening file"),
-            QObject::tr("There was an error opening the selected schema definition file. "
+            QObject::tr("There was an error opening the selected file. "
                "Check if you have permissions to read it.")
         );
 

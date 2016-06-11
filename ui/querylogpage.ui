@@ -14,7 +14,7 @@
    <string>Query log</string>
   </property>
   <property name="title">
-   <string>Query log</string>
+   <string>&amp;Query log</string>
   </property>
   <property name="subTitle">
    <string>Select your MIST Query Log File (*.mqlf)</string>
@@ -31,10 +31,38 @@
     <widget class="QLineEdit" name="editSelectedFileName"/>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QWidget" name="queryLogWidget" native="true"/>
+    <widget class="QueryListWidget" name="queryLogWidget" native="true"/>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QueryListWidget</class>
+   <extends>QWidget</extends>
+   <header>src/ui/querylistwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonSelectFile</sender>
+   <signal>clicked()</signal>
+   <receiver>QueryLogPage</receiver>
+   <slot>loadQueriesFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>674</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadQueriesFile()</slot>
+ </slots>
 </ui>
