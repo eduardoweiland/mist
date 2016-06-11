@@ -22,6 +22,7 @@
   <widget class="DatabaseConnectionPage" name="wizardPage1"/>
   <widget class="SchemaDefinitionPage" name="wizardPage2"/>
   <widget class="QueryLogPage" name="wizardPage3"/>
+  <widget class="CandidateIndexesPage" name="wizardPage4"/>
  </widget>
  <customwidgets>
   <customwidget>
@@ -40,6 +41,12 @@
    <class>QueryLogPage</class>
    <extends>QWizardPage</extends>
    <header>src/ui/querylogpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CandidateIndexesPage</class>
+   <extends>QWizardPage</extends>
+   <header>src/ui/candidateindexespage.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

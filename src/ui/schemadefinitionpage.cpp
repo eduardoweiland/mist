@@ -2,6 +2,7 @@
 
 #include "schemadefinitionpage.h"
 #include "fileopener.h"
+#include "mainwizard.h"
 #include "../core/schemadefinitionreader.h"
 
 SchemaDefinitionPage::SchemaDefinitionPage(QWidget *parent) :
@@ -17,6 +18,7 @@ bool SchemaDefinitionPage::isComplete() const
 
 void SchemaDefinitionPage::loadSchemaFile()
 {
+    MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
     SchemaDefinitionReader reader;
 
     bool loaded = FileOpener::selectXmlFile(
@@ -32,6 +34,8 @@ void SchemaDefinitionPage::loadSchemaFile()
             tr("File loaded"),
             tr("Successfully loaded %1 tables from definition file").arg(reader.getTables().size())
         );
+
+        mainWizard->schema.setTables(reader.getTables());
 
         tableListWidget->setTables(reader.getTables());
         completed = true;

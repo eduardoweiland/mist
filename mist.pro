@@ -31,6 +31,7 @@ SOURCES += \
     src/entity/table.cpp \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
+    src/ui/candidateindexespage.cpp \
     src/ui/databaseconnectionpage.cpp \
     src/ui/fileopener.cpp \
     src/ui/mainwindow.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
     src/entity/table.h \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \
+    src/ui/candidateindexespage.h \
     src/ui/databaseconnectionpage.h \
     src/ui/fileopener.h \
     src/ui/mainwindow.h \
@@ -72,6 +74,7 @@ HEADERS += \
 
 FORMS += \
     ui/aboutdialog.ui \
+    ui/candidateindexespage.ui \
     ui/databaseconnectionpage.ui \
     ui/mainwindow.ui \
     ui/mainwizard.ui \

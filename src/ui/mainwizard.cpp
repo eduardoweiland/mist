@@ -13,6 +13,7 @@ MainWizard::MainWizard(QWidget *parent) :
     setButtonText(HelpButton, tr("&About"));
     setButtonText(BackButton, tr("< &Back"));
     setButtonText(NextButton, tr("&Next >"));
+    setButtonText(FinishButton, tr("&Finish"));
 }
 
 void MainWizard::keyPressEvent(QKeyEvent *e)

@@ -2,6 +2,7 @@
 
 #include "querylogpage.h"
 #include "fileopener.h"
+#include "mainwizard.h"
 #include "../core/querylogreader.h"
 
 QueryLogPage::QueryLogPage(QWidget *parent) :
@@ -17,6 +18,7 @@ bool QueryLogPage::isComplete() const
 
 void QueryLogPage::loadQueriesFile()
 {
+    MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
     QueryLogReader reader;
 
     bool loaded = FileOpener::selectXmlFile(
@@ -32,6 +34,8 @@ void QueryLogPage::loadQueriesFile()
             tr("File loaded"),
             tr("Successfully loaded %1 queries from log file").arg(reader.getQueries().size())
         );
+
+        mainWizard->queries = reader.getQueries();
 
         queryLogWidget->setQueries(reader.getQueries());
         completed = true;
