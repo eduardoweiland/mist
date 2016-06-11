@@ -7,7 +7,6 @@
 
 #include "mainwindow.h"
 #include "aboutdialog.h"
-#include "../core/embeddeddatabase.h"
 #include "../core/querylogreader.h"
 #include "../core/schemadefinitionreader.h"
 #include "../core/loghandler.h"
@@ -154,18 +153,6 @@ void MainWindow::generateCandidates()
     connect(gen, SIGNAL(progress(int)), progress, SLOT(setValue(int)));
     connect(progress, SIGNAL(canceled()), gen, SLOT(terminate()));
     gen->start();
-}
-
-void MainWindow::startServer()
-{
-    EmbeddedDatabase db;
-    db.start();
-}
-
-void MainWindow::stopServer()
-{
-    EmbeddedDatabase db;
-    db.stop();
 }
 
 void MainWindow::logHandler(const QString &msg)

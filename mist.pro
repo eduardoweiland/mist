@@ -12,7 +12,6 @@ TEMPLATE = app
 SOURCES += \
     src/main.cpp \
     src/core/abstractxmlreader.cpp \
-    src/core/embeddeddatabase.cpp \
     src/core/generatecandidateindexes.cpp  \
     src/core/indexcolumnsbuilder.cpp\
     src/core/loghandler.cpp \
@@ -43,7 +42,6 @@ SOURCES += \
 
 HEADERS += \
     src/core/abstractxmlreader.h \
-    src/core/embeddeddatabase.h \
     src/core/generatecandidateindexes.h \
     src/core/indexcolumnsbuilder.h \
     src/core/loghandler.h \

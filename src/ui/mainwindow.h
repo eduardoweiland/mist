@@ -32,9 +32,6 @@ private slots:
     void loadSchemaFile(void);
     void generateCandidates(void);
 
-    void startServer(void);
-    void stopServer(void);
-
 private slots:
     void logHandler(const QString &msg);
 
