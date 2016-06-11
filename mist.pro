@@ -12,10 +12,8 @@ TEMPLATE = app
 SOURCES += \
     src/main.cpp \
     src/core/abstractxmlreader.cpp \
-    src/core/embeddeddatabase.cpp \
     src/core/generatecandidateindexes.cpp  \
     src/core/indexcolumnsbuilder.cpp\
-    src/core/loghandler.cpp \
     src/core/querylogreader.cpp \
     src/core/schemacreator.cpp \
     src/core/schemadefinitionreader.cpp \
@@ -32,15 +30,19 @@ SOURCES += \
     src/entity/table.cpp \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
-    src/ui/mainwindow.cpp \
+    src/ui/candidateindexespage.cpp \
+    src/ui/databaseconnectionpage.cpp \
+    src/ui/fileopener.cpp \
+    src/ui/mainwizard.cpp \
+    src/ui/querylistwidget.cpp \
+    src/ui/querylogpage.cpp \
+    src/ui/schemadefinitionpage.cpp \
     src/ui/tablelistwidget.cpp
 
 HEADERS += \
     src/core/abstractxmlreader.h \
-    src/core/embeddeddatabase.h \
     src/core/generatecandidateindexes.h \
     src/core/indexcolumnsbuilder.h \
-    src/core/loghandler.h \
     src/core/querylogreader.h \
     src/core/schemacreator.h \
     src/core/schemadefinitionreader.h \
@@ -57,12 +59,23 @@ HEADERS += \
     src/entity/table.h \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \
-    src/ui/mainwindow.h \
+    src/ui/candidateindexespage.h \
+    src/ui/databaseconnectionpage.h \
+    src/ui/fileopener.h \
+    src/ui/mainwizard.h \
+    src/ui/querylistwidget.h \
+    src/ui/querylogpage.h \
+    src/ui/schemadefinitionpage.h \
     src/ui/tablelistwidget.h
 
 FORMS += \
     ui/aboutdialog.ui \
-    ui/mainwindow.ui \
+    ui/candidateindexespage.ui \
+    ui/databaseconnectionpage.ui \
+    ui/mainwizard.ui \
+    ui/querylistwidget.ui \
+    ui/querylogpage.ui \
+    ui/schemadefinitionpage.ui \
     ui/tablelistwidget.ui
 
 RESOURCES += \

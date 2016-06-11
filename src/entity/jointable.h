@@ -26,6 +26,7 @@ public:
     void setTable(const QString &value);
 
     QList<FilterCondition> getConditions() const;
+    QStringList getConditionFields() const;
     void setConditions(const QList<FilterCondition> &value);
     void addCondition(const FilterCondition &value);
 

@@ -32,6 +32,15 @@ QList<FilterCondition> JoinTable::getConditions() const
     return conditions;
 }
 
+QStringList JoinTable::getConditionFields() const
+{
+    QStringList list;
+    foreach (FilterCondition condition, conditions) {
+        list << condition.getField();
+    }
+    return list;
+}
+
 void JoinTable::setConditions(const QList<FilterCondition> &value)
 {
     conditions = value;

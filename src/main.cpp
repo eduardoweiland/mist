@@ -1,13 +1,11 @@
 #include <QApplication>
 #include <QTranslator>
 
-#include "ui/mainwindow.h"
-#include "core/loghandler.h"
+#include "ui/mainwizard.h"
 
 int main(int argc, char *argv[])
 {
     qSetMessagePattern("%{time h:mm:ss.zzz t} %{type}: %{message}");
-    qInstallMessageHandler(&LogHandler::handle);
 
     QApplication app(argc, argv);
 
@@ -27,8 +25,8 @@ int main(int argc, char *argv[])
 #endif
     app.installTranslator(&translator);
 
-    MainWindow win;
-    win.show();
+    MainWizard wizard;
+    wizard.open();
 
     return app.exec();
 }

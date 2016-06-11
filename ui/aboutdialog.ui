@@ -82,7 +82,10 @@ QDialog {
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="mysqlVersion">
+    <widget class="QLabel" name="label_10">
+     <property name="text">
+      <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/eduardoweiland/mist&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/eduardoweiland/mist&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>

@@ -5,7 +5,7 @@
 #
 
 # General Qt settings
-QT += core widgets network xml
+QT += core widgets network xml sql
 CONFIG += ordered qt stl rtti exceptions warn_on c++11
 
 
@@ -62,42 +62,3 @@ windows {
 # namespace can correctly configure the paths inside the code
 DEFINES += LANGDIR=\\\"$${LANGDIR}\\\"
 
-
-
-
-###
-### Configuração da biblioteca MySQL
-###
-MYSQL_SOURCE = $$(MYSQL_SOURCE)
-MYSQL_BUILD = $$(MYSQL_BUILD)
-
-if (isEmpty(MYSQL_SOURCE)) {
-    error(Variável MYSQL_SOURCE não foi especificada. Deve conter o caminho para o código-fonte do MySQL.);
-}
-if (isEmpty(MYSQL_BUILD)) {
-    error(Variável MYSQL_BUILD não foi especificada. Deve indicar o caminho onde o MySQL foi compilado.);
-}
-
-QMAKE_CXXFLAGS = -fabi-version=2 -fno-omit-frame-pointer
-
-DEFINES += MYSQL_SERVER=1
-
-INCLUDEPATH += $$MYSQL_SOURCE
-INCLUDEPATH += $$MYSQL_SOURCE/include
-INCLUDEPATH += $$MYSQL_SOURCE/libbinlogevents/export
-INCLUDEPATH += $$MYSQL_SOURCE/libbinlogevents/include
-INCLUDEPATH += $$MYSQL_SOURCE/sql
-
-INCLUDEPATH += $$MYSQL_BUILD/include
-INCLUDEPATH += $$MYSQL_BUILD/libbinlogevents/include
-
-LIBS += -L$$MYSQL_BUILD/libmysqld -lmysqld -lpthread -lm -lrt -lcrypt -ldl
-
-MYSQL_VERSION = $$system($$MYSQL_BUILD/scripts/mysql_config --version)
-MYSQL_VERSION_PARTS = $$split(MYSQL_VERSION, .)
-MYSQL_VERSION_MAJOR = $$member(MYSQL_VERSION_PARTS, 0)
-MYSQL_VERSION_MINOR = $$member(MYSQL_VERSION_PARTS, 1)
-
-if (lessThan(MYSQL_VERSION_MAJOR, 5)|lessThan(MYSQL_VERSION_MINOR, 7)) {
-    error('Versão mínima suportada do MySQL é 5.7, encontrado $$MYSQL_VERSION');
-}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SchemaDefinitionPage</class>
+ <widget class="QWizardPage" name="SchemaDefinitionPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>730</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Schema definition</string>
+  </property>
+  <property name="title">
+   <string>Sche&amp;ma definition</string>
+  </property>
+  <property name="subTitle">
+   <string>Select your MIST Schema Definition File (*.msdf)</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <widget class="QPushButton" name="buttonSelectFile">
+     <property name="text">
+      <string>Select file...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="TableListWidget" name="tableListWidget" native="true"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLineEdit" name="editSelectedFileName"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TableListWidget</class>
+   <extends>QWidget</extends>
+   <header>src/ui/tablelistwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonSelectFile</sender>
+   <signal>clicked()</signal>
+   <receiver>SchemaDefinitionPage</receiver>
+   <slot>loadSchemaFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>674</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadSchemaFile()</slot>
+ </slots>
+</ui>

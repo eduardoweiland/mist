@@ -21,6 +21,7 @@ public:
     void setField(const QString &value);
 
     Direction getDir() const;
+    QString getDirName() const;
     void setDir(const Direction &value);
 
 private:

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWizard</class>
+ <widget class="QWizard" name="MainWizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>880</width>
+    <height>579</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Wizard</string>
+  </property>
+  <property name="wizardStyle">
+   <enum>QWizard::ClassicStyle</enum>
+  </property>
+  <property name="options">
+   <set>QWizard::HaveHelpButton|QWizard::NoCancelButton</set>
+  </property>
+  <widget class="DatabaseConnectionPage" name="wizardPage1"/>
+  <widget class="SchemaDefinitionPage" name="wizardPage2"/>
+  <widget class="QueryLogPage" name="wizardPage3"/>
+  <widget class="CandidateIndexesPage" name="wizardPage4"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DatabaseConnectionPage</class>
+   <extends>QWizardPage</extends>
+   <header>src/ui/databaseconnectionpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SchemaDefinitionPage</class>
+   <extends>QWizardPage</extends>
+   <header>src/ui/schemadefinitionpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QueryLogPage</class>
+   <extends>QWizardPage</extends>
+   <header>src/ui/querylogpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CandidateIndexesPage</class>
+   <extends>QWizardPage</extends>
+   <header>src/ui/candidateindexespage.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

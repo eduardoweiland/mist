@@ -30,6 +30,18 @@ OrderByField::Direction OrderByField::getDir() const
     return dir;
 }
 
+QString OrderByField::getDirName() const
+{
+    switch (dir) {
+        case ASC:
+            return "ASC";
+        case DESC:
+            return "DESC";
+    }
+
+    return QString();
+}
+
 void OrderByField::setDir(const Direction &value)
 {
     dir = value;

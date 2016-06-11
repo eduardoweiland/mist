@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QueryLogPage</class>
+ <widget class="QWizardPage" name="QueryLogPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>730</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Query log</string>
+  </property>
+  <property name="title">
+   <string>&amp;Query log</string>
+  </property>
+  <property name="subTitle">
+   <string>Select your MIST Query Log File (*.mqlf)</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <widget class="QPushButton" name="buttonSelectFile">
+     <property name="text">
+      <string>Select file...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLineEdit" name="editSelectedFileName"/>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QueryListWidget" name="queryLogWidget" native="true"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QueryListWidget</class>
+   <extends>QWidget</extends>
+   <header>src/ui/querylistwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonSelectFile</sender>
+   <signal>clicked()</signal>
+   <receiver>QueryLogPage</receiver>
+   <slot>loadQueriesFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>674</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadQueriesFile()</slot>
+ </slots>
+</ui>
