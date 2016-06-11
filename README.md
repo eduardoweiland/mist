@@ -2,6 +2,23 @@
 
 Trabalho de Conclusão do curso de Graduação em Ciência da Computação pela Universidade de Santa Cruz do Sul.
 
+# Compilação
+
+O MIST é desenvolvido com Qt 5 e utiliza o **qmake** para o processo de compilação. Para compilar o MIST a partir do código-fonte, os comandos são:
+
+    $ mkdir build
+    $ cd build
+    $ qmake ../mist.pro
+    $ make
+
+O MIST pode ser executado diretamente do diretório de compilação com `./mist`. Opcionalmente, o MIST também pode ser instalado no sistema (por padrão em `/usr/local/bin/mist`):
+
+    $ sudo make install
+
+Para alterar o diretório de instalação, pode ser especificado um prefixo diferente para o comando `qmake`:
+
+    $ qmake ../mist.pro PREFIX=/usr      # Será instalado em /usr/bin/mist
+
 # License
 
 Copyright (C) 2015-2016 Eduardo Weiland<br/>
