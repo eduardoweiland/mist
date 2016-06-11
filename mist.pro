@@ -14,7 +14,6 @@ SOURCES += \
     src/core/abstractxmlreader.cpp \
     src/core/generatecandidateindexes.cpp  \
     src/core/indexcolumnsbuilder.cpp\
-    src/core/loghandler.cpp \
     src/core/querylogreader.cpp \
     src/core/schemacreator.cpp \
     src/core/schemadefinitionreader.cpp \
@@ -34,7 +33,6 @@ SOURCES += \
     src/ui/candidateindexespage.cpp \
     src/ui/databaseconnectionpage.cpp \
     src/ui/fileopener.cpp \
-    src/ui/mainwindow.cpp \
     src/ui/mainwizard.cpp \
     src/ui/querylistwidget.cpp \
     src/ui/querylogpage.cpp \
@@ -45,7 +43,6 @@ HEADERS += \
     src/core/abstractxmlreader.h \
     src/core/generatecandidateindexes.h \
     src/core/indexcolumnsbuilder.h \
-    src/core/loghandler.h \
     src/core/querylogreader.h \
     src/core/schemacreator.h \
     src/core/schemadefinitionreader.h \
@@ -65,7 +62,6 @@ HEADERS += \
     src/ui/candidateindexespage.h \
     src/ui/databaseconnectionpage.h \
     src/ui/fileopener.h \
-    src/ui/mainwindow.h \
     src/ui/mainwizard.h \
     src/ui/querylistwidget.h \
     src/ui/querylogpage.h \
@@ -76,7 +72,6 @@ FORMS += \
     ui/aboutdialog.ui \
     ui/candidateindexespage.ui \
     ui/databaseconnectionpage.ui \
-    ui/mainwindow.ui \
     ui/mainwizard.ui \
     ui/querylistwidget.ui \
     ui/querylogpage.ui \
