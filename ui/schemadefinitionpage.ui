@@ -14,7 +14,7 @@
    <string>Schema definition</string>
   </property>
   <property name="title">
-   <string>Schema definition</string>
+   <string>Sche&amp;ma definition</string>
   </property>
   <property name="subTitle">
    <string>Select your MIST Schema Definition File (*.msdf)</string>
@@ -44,5 +44,25 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonSelectFile</sender>
+   <signal>clicked()</signal>
+   <receiver>SchemaDefinitionPage</receiver>
+   <slot>loadSchemaFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>674</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadSchemaFile()</slot>
+ </slots>
 </ui>

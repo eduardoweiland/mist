@@ -9,6 +9,13 @@ class SchemaDefinitionPage : public QWizardPage, private Ui::SchemaDefinitionPag
 
 public:
     explicit SchemaDefinitionPage(QWidget *parent = 0);
+    bool isComplete() const;
+
+private slots:
+    void loadSchemaFile();
+
+private:
+    bool completed;
 };
 
 #endif // SCHEMADEFINITIONPAGE_H
