@@ -41,16 +41,15 @@ bool FileOpener::selectFile(QWidget *parent, const QString &title, const QString
     return true;
 }
 
-bool FileOpener::selectXmlFile(QWidget *parent, const QString &title, const QString &filter, AbstractXmlReader *parser)
+bool FileOpener::selectXmlFile(QWidget *parent, const QString &title, const QString &filter, AbstractXmlReader *parser, QFile *file)
 {
-    QFile file;
-    if (!selectFile(parent, title, filter, &file)) {
+    if (!selectFile(parent, title, filter, file)) {
         return false;
     }
 
-    if (!parser->parse(&file)) {
+    if (!parser->parse(file)) {
         qCritical() << QObject::tr("Error parsing selected file %1: %2")
-                       .arg(file.fileName())
+                       .arg(file->fileName())
                        .arg(parser->getError());
 
         QMessageBox::critical(

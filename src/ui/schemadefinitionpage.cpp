@@ -20,15 +20,21 @@ void SchemaDefinitionPage::loadSchemaFile()
 {
     MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
     SchemaDefinitionReader reader;
+    QFile file;
+
+    editSelectedFileName->setText(QString());
 
     bool loaded = FileOpener::selectXmlFile(
         this,
         tr("Select schema definition file"),
         tr("MIST Schema Definition File (*.msdf)"),
-        &reader
+        &reader,
+        &file
     );
 
     if (loaded) {
+        editSelectedFileName->setText(file.fileName());
+
         QMessageBox::information(
             this,
             tr("File loaded"),

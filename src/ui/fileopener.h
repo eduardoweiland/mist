@@ -9,7 +9,7 @@ class FileOpener
 {
 public:
     static bool selectFile(QWidget *parent, const QString &title, const QString &filter, QFile *file);
-    static bool selectXmlFile(QWidget *parent, const QString &title, const QString &filter, AbstractXmlReader *parser);
+    static bool selectXmlFile(QWidget *parent, const QString &title, const QString &filter, AbstractXmlReader *parser, QFile *file);
 
 private:
     FileOpener();

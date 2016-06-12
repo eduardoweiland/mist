@@ -20,15 +20,21 @@ void QueryLogPage::loadQueriesFile()
 {
     MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
     QueryLogReader reader;
+    QFile file;
+
+    editSelectedFileName->setText(QString());
 
     bool loaded = FileOpener::selectXmlFile(
         this,
         tr("Select query log file"),
         tr("MIST Query Log File (*.mqlf)"),
-        &reader
+        &reader,
+        &file
     );
 
     if (loaded) {
+        editSelectedFileName->setText(file.fileName());
+
         QMessageBox::information(
             this,
             tr("File loaded"),
