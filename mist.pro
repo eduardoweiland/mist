@@ -15,7 +15,6 @@ SOURCES += \
     src/core/generatecandidateindexes.cpp  \
     src/core/indexcolumnsbuilder.cpp\
     src/core/querylogreader.cpp \
-    src/core/schemacreator.cpp \
     src/core/schemadefinitionreader.cpp \
     src/entity/candidateindex.cpp \
     src/entity/filtercondition.cpp \
@@ -45,7 +44,6 @@ HEADERS += \
     src/core/generatecandidateindexes.h \
     src/core/indexcolumnsbuilder.h \
     src/core/querylogreader.h \
-    src/core/schemacreator.h \
     src/core/schemadefinitionreader.h \
     src/entity/candidateindex.h \
     src/entity/filtercondition.h \
