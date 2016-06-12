@@ -17,8 +17,6 @@ void GenerateCandidateIndexes::run()
     sleep(1);
 
     for (i = 0; i < size; ++i) {
-        qDebug() << "Gerando índices candidatos para consulta " << queries[i].getId();
-
         QList<CandidateIndex> indexes = getIndexesForQuery(&queries[i]);
         mergeUniqueIndexes(indexes);
 
@@ -28,8 +26,6 @@ void GenerateCandidateIndexes::run()
     }
 
     emit resultReady();
-
-    qDebug() << "Candidatos gerados" << possibleCandidates;
 }
 
 QList<CandidateIndex> GenerateCandidateIndexes::getGeneratedIndexes()
@@ -45,13 +41,11 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
     CandidateIndex orderByCandidate;
     if (!query->getOrderBy().isEmpty()) {
         orderByCandidate = builder.getBestCandidateForOrderBy(query->getOrderBy());
-        qDebug() << "Melhor candidato para order by" << orderByCandidate;
     }
 
     CandidateIndex groupByCandidate;
     if (!query->getGroupBy().isEmpty()) {
         groupByCandidate = builder.getBestCandidateForGroupBy(query->getGroupBy());
-        qDebug() << "Melhor candidato para group by" << groupByCandidate;
     }
 
     QStringList tables = query->getUsedTables();
