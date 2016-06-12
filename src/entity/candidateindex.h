@@ -23,7 +23,7 @@ public:
 
     QList<Query *> getAffectedQueries() const;
     void setAffectedQueries(const QList<Query *> &value);
-    void addAffectedQuery(Query *value);
+    void addAffectedQuery(const Query *value);
     bool affectsQuery(const Query *query) const;
 
     /*! \brief Get the estimated size in bytes for one entry in the index */

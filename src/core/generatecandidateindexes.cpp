@@ -73,6 +73,11 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
         }
     }
 
+    int i;
+    for (i = 0; i < candidates.size(); ++i) {
+        candidates[i].addAffectedQuery(query);
+    }
+
     return candidates;
 }
 

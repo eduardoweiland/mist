@@ -41,4 +41,5 @@ void CandidateIndexesPage::candidatesGenerated()
 {
     tableCandidates->setCandidates(generator->getGeneratedIndexes());
     delete generator;
+    generator = nullptr;
 }

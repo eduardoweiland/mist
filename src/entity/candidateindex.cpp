@@ -55,10 +55,10 @@ void CandidateIndex::setAffectedQueries(const QList<Query *> &value)
     affectedQueries = value;
 }
 
-void CandidateIndex::addAffectedQuery(Query *value)
+void CandidateIndex::addAffectedQuery(const Query *value)
 {
-    if (!affectedQueries.contains(value)) {
-        affectedQueries.append(value);
+    if (!affectedQueries.contains(const_cast<Query*>(value))) {
+        affectedQueries.append(const_cast<Query*>(value));
     }
 }
 
