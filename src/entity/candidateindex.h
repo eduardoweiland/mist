@@ -16,6 +16,7 @@ public:
     void setTable(const Table *value);
 
     QList<IndexColumn> getColumns() const;
+    QStringList getColumnNames() const;
     void setColumns(const QList<IndexColumn> &value);
     void addColumn(const IndexColumn &value);
     void addColumns(const QList<IndexColumn> &value);

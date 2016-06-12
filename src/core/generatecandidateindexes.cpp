@@ -27,7 +27,14 @@ void GenerateCandidateIndexes::run()
         emit progress((int)((i + 1) / size));
     }
 
+    emit resultReady();
+
     qDebug() << "Candidatos gerados" << possibleCandidates;
+}
+
+QList<CandidateIndex> GenerateCandidateIndexes::getGeneratedIndexes()
+{
+    return possibleCandidates;
 }
 
 QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *query)

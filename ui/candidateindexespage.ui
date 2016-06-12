@@ -14,12 +14,12 @@
    <string>WizardPage</string>
   </property>
   <property name="title">
-   <string>Candidate inde&amp;xes</string>
+   <string>Candidate indexes</string>
   </property>
   <property name="subTitle">
    <string>Generate a set of candidate indexes based on your queries and tables</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
      <item>
@@ -35,10 +35,18 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="tableCandidates"/>
+    <widget class="CandidatesListWidget" name="tableCandidates" native="true"/>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CandidatesListWidget</class>
+   <extends>QWidget</extends>
+   <header>src/ui/candidateslistwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

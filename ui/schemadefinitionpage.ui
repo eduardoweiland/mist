@@ -14,7 +14,7 @@
    <string>Schema definition</string>
   </property>
   <property name="title">
-   <string>Sche&amp;ma definition</string>
+   <string>Schema definition</string>
   </property>
   <property name="subTitle">
    <string>Select your MIST Schema Definition File (*.msdf)</string>

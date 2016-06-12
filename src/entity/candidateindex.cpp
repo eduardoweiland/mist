@@ -20,6 +20,16 @@ QList<IndexColumn> CandidateIndex::getColumns() const
     return columns;
 }
 
+QStringList CandidateIndex::getColumnNames() const
+{
+    QStringList names;
+    foreach (IndexColumn column, columns) {
+        names << column.getColumn()->getName();
+    }
+
+    return names;
+}
+
 void CandidateIndex::setColumns(const QList<IndexColumn> &value)
 {
     columns = value;

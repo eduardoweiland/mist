@@ -2,6 +2,8 @@
 #define CANDIDATEINDEXESPAGE_H
 
 #include "ui_candidateindexespage.h"
+#include "../entity/candidateindex.h"
+#include "../core/generatecandidateindexes.h"
 
 class CandidateIndexesPage : public QWizardPage, private Ui::CandidateIndexesPage
 {
@@ -12,6 +14,10 @@ public:
 
 private slots:
     void generateCandidates(void);
+    void candidatesGenerated();
+
+private:
+    GenerateCandidateIndexes *generator;
 };
 
 #endif // CANDIDATEINDEXESPAGE_H

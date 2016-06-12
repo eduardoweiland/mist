@@ -2,16 +2,19 @@
 
 #include "candidateindexespage.h"
 #include "mainwizard.h"
-#include "../core/generatecandidateindexes.h"
 
 CandidateIndexesPage::CandidateIndexesPage(QWidget *parent) :
-    QWizardPage(parent)
+    QWizardPage(parent), generator(nullptr)
 {
     setupUi(this);
 }
 
 void CandidateIndexesPage::generateCandidates()
 {
+    if (generator != nullptr) {
+        return;
+    }
+
     MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
 
     QProgressDialog *progress = new QProgressDialog(
@@ -26,10 +29,16 @@ void CandidateIndexesPage::generateCandidates()
     progress->setValue(0);
     progress->setMinimumDuration(0);
 
-    GenerateCandidateIndexes *gen = new GenerateCandidateIndexes(mainWizard->schema, mainWizard->queries);
-    connect(gen, SIGNAL(finished()), progress, SLOT(accept()));
-    connect(gen, SIGNAL(finished()), gen, SLOT(deleteLater()));
-    connect(gen, SIGNAL(progress(int)), progress, SLOT(setValue(int)));
-    connect(progress, SIGNAL(canceled()), gen, SLOT(terminate()));
-    gen->start();
+    generator = new GenerateCandidateIndexes(mainWizard->schema, mainWizard->queries);
+    connect(generator, SIGNAL(finished()), progress, SLOT(accept()));
+    connect(generator, SIGNAL(progress(int)), progress, SLOT(setValue(int)));
+    connect(generator, SIGNAL(resultReady()), this, SLOT(candidatesGenerated()));
+    connect(progress, SIGNAL(canceled()), generator, SLOT(terminate()));
+    generator->start();
+}
+
+void CandidateIndexesPage::candidatesGenerated()
+{
+    tableCandidates->setCandidates(generator->getGeneratedIndexes());
+    delete generator;
 }

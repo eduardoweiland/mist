@@ -31,6 +31,7 @@ SOURCES += \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
     src/ui/candidateindexespage.cpp \
+    src/ui/candidateslistwidget.cpp \
     src/ui/databaseconnectionpage.cpp \
     src/ui/fileopener.cpp \
     src/ui/mainwizard.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \
     src/ui/candidateindexespage.h \
+    src/ui/candidateslistwidget.h \
     src/ui/databaseconnectionpage.h \
     src/ui/fileopener.h \
     src/ui/mainwizard.h \
@@ -71,6 +73,7 @@ HEADERS += \
 FORMS += \
     ui/aboutdialog.ui \
     ui/candidateindexespage.ui \
+    ui/candidateslistwidget.ui \
     ui/databaseconnectionpage.ui \
     ui/mainwizard.ui \
     ui/querylistwidget.ui \

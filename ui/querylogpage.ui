@@ -14,7 +14,7 @@
    <string>Query log</string>
   </property>
   <property name="title">
-   <string>&amp;Query log</string>
+   <string>Query log</string>
   </property>
   <property name="subTitle">
    <string>Select your MIST Query Log File (*.mqlf)</string>

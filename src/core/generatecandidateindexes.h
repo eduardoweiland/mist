@@ -15,8 +15,10 @@ public:
 
     void run() Q_DECL_OVERRIDE;
 
+    QList<CandidateIndex> getGeneratedIndexes();
+
 signals:
-    void resultReady(const QList<CandidateIndex> &indexes);
+    void resultReady();
     void progress(const int percent);
 
 private:
