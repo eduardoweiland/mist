@@ -27,6 +27,16 @@ void Query::setCount(int value)
     count = value;
 }
 
+QString Query::getSql() const
+{
+    return sql;
+}
+
+void Query::setSql(const QString &value)
+{
+    sql = value;
+}
+
 QStringList Query::getFrom() const
 {
     return from;

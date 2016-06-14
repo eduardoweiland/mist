@@ -21,6 +21,9 @@ public:
     int getCount() const;
     void setCount(int value);
 
+    QString getSql() const;
+    void setSql(const QString &value);
+
     QStringList getFrom() const;
     void setFrom(const QStringList &value);
     void addFrom(const QString &value);
@@ -46,6 +49,7 @@ public:
 private:
     int id;
     int count;
+    QString sql;
     QStringList from;
     QList<JoinTable> joins;
     QList<FilterCondition> where;

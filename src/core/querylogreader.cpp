@@ -56,7 +56,10 @@ void QueryLogReader::readQuery()
     query.setCount(xml.attributes().value("count").toInt());
 
     while (xml.readNextStartElement()) {
-        if (xml.name() == "from") {
+        if (xml.name() == "sql") {
+            query.setSql(xml.readElementText());
+        }
+        else if (xml.name() == "from") {
             readFroms(&query);
         }
         else if (xml.name() == "joins") {
