@@ -64,12 +64,15 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
         }
     }
 
-    int i;
-    for (i = 0; i < candidates.size(); ++i) {
-        candidates[i].addAffectedQuery(query);
+    QList<CandidateIndex> finalCandidates;
+    for (int i = 0; i < candidates.size(); ++i) {
+        if (!candidates[i].isPrefixOf(candidates[i].getTable()->getPrimaryKey())) {
+            candidates[i].addAffectedQuery(query);
+            finalCandidates << candidates[i];
+        }
     }
 
-    return candidates;
+    return finalCandidates;
 }
 
 QList<FilterCondition> GenerateCandidateIndexes::getFiltersForTable(const Query *query, const QString tableName) const
