@@ -15,7 +15,6 @@ public:
     QList<CandidateIndex> combineIndexes(const Table *table, const QList<FilterCondition> filters);
     QList<CandidateIndex> combineOrderByIndexes(const Table *table, const CandidateIndex &orderBy, const QList<FilterCondition> filters);
     QList<CandidateIndex> combineGroupByIndexes(const Table *table, const CandidateIndex &groupBy, const QList<FilterCondition> filters);
-    QList<CandidateIndex> combineOrderByGroupByIndexes(const Table *table, const CandidateIndex &orderBy, const CandidateIndex &groupBy, const QList<FilterCondition> filters);
 
 private:
     Schema *schema;

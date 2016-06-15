@@ -166,50 +166,6 @@ QList<CandidateIndex> IndexColumnsBuilder::combineGroupByIndexes(const Table *ta
     return candidates;
 }
 
-// Todas as condições no filters devem ser da mesma tabela!
-QList<CandidateIndex> IndexColumnsBuilder::combineOrderByGroupByIndexes(const Table *table, const CandidateIndex &orderBy, const CandidateIndex &groupBy, const QList<FilterCondition> filters)
-{
-    QHash<FilterCondition::Type, QList<FilterCondition>> filtersByType = getFiltersByType(filters);
-
-    QList<IndexColumn> prefix = filtersToIndexColumns(filtersByType[FilterCondition::CONST]);
-    QList<IndexColumn> suffix = filtersToIndexColumns(filtersByType[FilterCondition::MATCH])
-                              + filtersToIndexColumns(filtersByType[FilterCondition::LIST])
-                              + filtersToIndexColumns(filtersByType[FilterCondition::RANGE])
-                              + filtersToIndexColumns(filtersByType[FilterCondition::LIKE]);
-
-    CandidateIndex indexPrefix;
-    indexPrefix.setTable(table);
-    indexPrefix.setColumns(prefix);
-    QList<CandidateIndex> indexPrefixes = reduceIndexes(indexPrefix);
-
-    CandidateIndex indexSuffix;
-    indexSuffix.setTable(table);
-    indexSuffix.setColumns(suffix);
-    QList<CandidateIndex> indexSuffixes = reduceIndexes(indexSuffix);
-
-    QList<CandidateIndex> candidates;
-    candidates << indexPrefixes << indexSuffixes << orderBy << groupBy;
-
-    // COM prefixo e SEM sufixo
-    foreach (CandidateIndex prefix, indexPrefixes) {
-        prefix.addColumns(orderBy.getColumns());
-        prefix.addColumns(groupBy.getColumns());
-        candidates << prefix;
-    }
-
-    // COM prefixo e COM sufixo
-    foreach (CandidateIndex prefix, indexPrefixes) {
-        prefix.addColumns(orderBy.getColumns());
-        prefix.addColumns(groupBy.getColumns());
-        foreach (CandidateIndex suffix, indexSuffixes) {
-            prefix.addColumns(suffix.getColumns());
-            candidates << prefix;
-        }
-    }
-
-    return candidates;
-}
-
 QHash<FilterCondition::Type, QList<FilterCondition>> IndexColumnsBuilder::getFiltersByType(const QList<FilterCondition> &filters) const
 {
     QHash<FilterCondition::Type, QList<FilterCondition>> filtersByType;

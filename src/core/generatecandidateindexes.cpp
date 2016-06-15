@@ -53,10 +53,7 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
         Table *table = schema.getTable(tableName);
         QList<FilterCondition> filters = getFiltersForTable(query, tableName);
 
-        if (orderByCandidate.getTable() == table && groupByCandidate.getTable() == table) {
-            candidates << builder.combineOrderByGroupByIndexes(table, orderByCandidate, groupByCandidate, filters);
-        }
-        else if (orderByCandidate.getTable() == table) {
+        if (orderByCandidate.getTable() == table) {
             candidates << builder.combineOrderByIndexes(table, orderByCandidate, filters);
         }
         else if (groupByCandidate.getTable() == table) {
