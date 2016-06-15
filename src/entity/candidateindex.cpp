@@ -88,6 +88,100 @@ bool CandidateIndex::operator==(CandidateIndex &other) const
     return (table == other.table && columns == other.columns);
 }
 
+bool CandidateIndex::isPrefix(const CandidateIndex &other) const
+{
+    return isPrefix(other.getColumns());
+}
+
+bool CandidateIndex::isPrefix(const QList<IndexColumn> &columns) const
+{
+    if (columns.size() > this->columns.size()) {
+        return false;
+    }
+
+    for (int i = 0, l = columns.size(); i < l; ++i) {
+        if (columns[i].getColumn()->getName() != this->columns[i].getColumn()->getName()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool CandidateIndex::isPrefix(const QList<TableColumn> &columns) const
+{
+    if (columns.size() > this->columns.size()) {
+        return false;
+    }
+
+    for (int i = 0, l = columns.size(); i < l; ++i) {
+        if (columns[i].getName() != this->columns[i].getColumn()->getName()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool CandidateIndex::isPrefix(const QStringList &columns) const
+{
+    if (columns.size() > this->columns.size()) {
+        return false;
+    }
+
+    for (int i = 0, l = columns.size(); i < l; ++i) {
+        if (columns[i] != this->columns[i].getColumn()->getName()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool CandidateIndex::isPrefixOf(const CandidateIndex &other) const
+{
+    return isPrefixOf(other.getColumns());
+}
+
+bool CandidateIndex::isPrefixOf(const QList<IndexColumn> &columns) const
+{
+    if (this->columns.size() > columns.size()) {
+        return false;
+    }
+
+    for (int i = 0, l = this->columns.size(); i < l; ++i) {
+        if (columns[i].getColumn()->getName() != this->columns[i].getColumn()->getName()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool CandidateIndex::isPrefixOf(const QList<TableColumn> &columns) const
+{
+    if (this->columns.size() > columns.size()) {
+        return false;
+    }
+
+    for (int i = 0, l = this->columns.size(); i < l; ++i) {
+        if (columns[i].getName() != this->columns[i].getColumn()->getName()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool CandidateIndex::isPrefixOf(const QStringList &columns) const
+{
+    if (this->columns.size() > columns.size()) {
+        return false;
+    }
+
+    for (int i = 0, l = this->columns.size(); i < l; ++i) {
+        if (columns[i] != this->columns[i].getColumn()->getName()) {
+            return false;
+        }
+    }
+    return true;
+}
+
 QDebug operator<<(QDebug debug, const CandidateIndex &ci)
 {
     debug << ci.getTable()->getName() << ci.getColumns();

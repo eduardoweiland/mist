@@ -33,6 +33,24 @@ public:
 
     bool operator==(CandidateIndex &other) const;
 
+    /*! \brief Check if other is a prefix of this index */
+    bool isPrefix(const CandidateIndex &other) const;
+    /*! \brief Check if columns form a prefix of this index */
+    bool isPrefix(const QList<IndexColumn> &columns) const;
+    /*! \brief Check if columns form a prefix of this index */
+    bool isPrefix(const QList<TableColumn> &columns) const;
+    /*! \brief Check if columns form a prefix of this index */
+    bool isPrefix(const QStringList &columns) const;
+
+    /*! \brief Check if this is a prefix of other index */
+    bool isPrefixOf(const CandidateIndex &other) const;
+    /*! \brief Check if this index is a prefix for columns */
+    bool isPrefixOf(const QList<IndexColumn> &columns) const;
+    /*! \brief Check if this index is a prefix for columns */
+    bool isPrefixOf(const QList<TableColumn> &columns) const;
+    /*! \brief Check if this index is a prefix for columns */
+    bool isPrefixOf(const QStringList &columns) const;
+
 private:
     /*! \brief The table in which the index shall be created */
     const Table *table;
