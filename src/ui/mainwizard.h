@@ -5,7 +5,7 @@
 
 #include "ui_mainwizard.h"
 
-#include "../entity/schema.h"
+#include "../entity/mistproject.h"
 #include "../entity/query.h"
 
 class QKeyEvent;
@@ -17,7 +17,7 @@ class MainWizard : public QWizard, private Ui::MainWizard
 public:
     explicit MainWizard(QWidget *parent = 0);
 
-    Schema schema;
+    MistProject project;
     QList<Query> queries;
 
 protected:

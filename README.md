@@ -4,7 +4,7 @@ Trabalho de Conclusão do curso de Graduação em Ciência da Computação pela 
 
 # Compilação
 
-O MIST é desenvolvido com Qt 5 e utiliza o **qmake** para o processo de compilação. Para compilar o MIST a partir do código-fonte, os comandos são:
+O MIST é desenvolvido com Qt 5.5+ e utiliza o **qmake** para o processo de compilação. Para compilar o MIST a partir do código-fonte, os comandos são:
 
     $ mkdir build
     $ cd build

@@ -41,7 +41,7 @@ void SchemaDefinitionPage::loadSchemaFile()
             tr("Successfully loaded %1 tables from definition file").arg(reader.getTables().size())
         );
 
-        mainWizard->schema.setTables(reader.getTables());
+        mainWizard->project.setTables(reader.getTables());
 
         tableListWidget->setTables(reader.getTables());
         completed = true;

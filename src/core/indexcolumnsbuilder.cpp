@@ -2,8 +2,8 @@
 
 #include "indexcolumnsbuilder.h"
 
-IndexColumnsBuilder::IndexColumnsBuilder(Schema *schema) :
-    schema(schema)
+IndexColumnsBuilder::IndexColumnsBuilder(MistProject *project) :
+    m_project(project)
 {
 }
 
@@ -15,7 +15,7 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForOrderBy(const QList<Order
 
     QString tableName = orderBy.first().getTable();
     OrderByField::Direction direction = orderBy.first().getDir();
-    candidate.setTable(schema->getTable(tableName));
+    candidate.setTable(m_project->getTable(tableName));
 
     foreach (OrderByField field, orderBy) {
 
@@ -43,7 +43,7 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForGroupBy(const QList<Group
     CandidateIndex candidate;
 
     QString tableName = groupBy.first().getTable();
-    candidate.setTable(schema->getTable(tableName));
+    candidate.setTable(m_project->getTable(tableName));
 
     foreach (GroupByField field, groupBy) {
 
@@ -183,7 +183,7 @@ QList<IndexColumn> IndexColumnsBuilder::filtersToIndexColumns(const QList<Filter
 
     foreach (FilterCondition fc, constFilters) {
         IndexColumn ic;
-        ic.setColumn(schema->getTable(fc.getTable())->getColumn(fc.getField()));
+        ic.setColumn(m_project->getTable(fc.getTable())->getColumn(fc.getField()));
         columns.append(ic);
     }
 

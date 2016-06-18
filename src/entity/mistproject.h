@@ -7,10 +7,10 @@
 
 #include "table.h"
 
-class Schema
+class MistProject
 {
 public:
-    Schema();
+    MistProject();
 
     QList<Table> getTables() const;
     void setTables(const QList<Table> &tables);
@@ -21,6 +21,6 @@ private:
     QMap<QString, Table> mapTables;
 };
 
-QDebug operator<<(QDebug debug, const Schema &schema);
+QDebug operator<<(QDebug debug, const MistProject &project);
 
 #endif // SCHEMA_H

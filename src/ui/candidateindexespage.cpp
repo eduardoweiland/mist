@@ -29,7 +29,7 @@ void CandidateIndexesPage::generateCandidates()
     progress->setValue(0);
     progress->setMinimumDuration(0);
 
-    generator = new GenerateCandidateIndexes(mainWizard->schema, mainWizard->queries);
+    generator = new GenerateCandidateIndexes(mainWizard->project, mainWizard->queries);
     connect(generator, SIGNAL(finished()), progress, SLOT(accept()));
     connect(generator, SIGNAL(progress(int)), progress, SLOT(setValue(int)));
     connect(generator, SIGNAL(resultReady()), this, SLOT(candidatesGenerated()));

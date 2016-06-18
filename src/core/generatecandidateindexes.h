@@ -3,7 +3,7 @@
 
 #include <QThread>
 
-#include "../entity/schema.h"
+#include "../entity/mistproject.h"
 #include "../entity/candidateindex.h"
 
 class GenerateCandidateIndexes : public QThread
@@ -11,7 +11,7 @@ class GenerateCandidateIndexes : public QThread
     Q_OBJECT
 
 public:
-    GenerateCandidateIndexes(Schema &schema, QList<Query> &queries);
+    GenerateCandidateIndexes(MistProject &project, QList<Query> &queries);
 
     void run() Q_DECL_OVERRIDE;
 
@@ -22,8 +22,8 @@ signals:
     void progress(const int percent);
 
 private:
-    Schema schema;
-    QList<Query> queries;
+    MistProject m_project;
+    QList<Query> m_queries;
 
     QList<CandidateIndex> possibleCandidates;
 

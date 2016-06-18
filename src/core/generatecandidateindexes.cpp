@@ -4,25 +4,25 @@
 #include "generatecandidateindexes.h"
 #include "indexcolumnsbuilder.h"
 
-GenerateCandidateIndexes::GenerateCandidateIndexes(Schema &schema, QList<Query> &queries) :
-    schema(schema), queries(queries)
+GenerateCandidateIndexes::GenerateCandidateIndexes(MistProject &project, QList<Query> &queries) :
+    m_project(project), m_queries(queries)
 {
 }
 
 void GenerateCandidateIndexes::run()
 {
-    int size = queries.size();
+    int size = m_queries.size();
     int i;
 
     sleep(1);
 
     for (i = 0; i < size; ++i) {
-        QList<CandidateIndex> indexes = getIndexesForQuery(&queries[i]);
+        QList<CandidateIndex> indexes = getIndexesForQuery(&m_queries[i]);
         mergeUniqueIndexes(indexes);
 
-        qInfo() << "Gerados " << indexes.size() << " índices candidatos para a consulta " << queries[i].getId();
+        qInfo() << "Gerados " << indexes.size() << " índices candidatos para a consulta " << m_queries[i].getId();
 
-        emit progress((int)((i + 1) / size));
+        emit progress(100 * (i + 1) / size);
     }
 
     emit resultReady();
@@ -35,7 +35,7 @@ QList<CandidateIndex> GenerateCandidateIndexes::getGeneratedIndexes()
 
 QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *query)
 {
-    IndexColumnsBuilder builder(&schema);
+    IndexColumnsBuilder builder(&m_project);
     QList<CandidateIndex> candidates;
 
     CandidateIndex orderByCandidate;
@@ -50,7 +50,7 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
 
     QStringList tables = query->getUsedTables();
     foreach (QString tableName, tables) {
-        Table *table = schema.getTable(tableName);
+        Table *table = m_project.getTable(tableName);
         QList<FilterCondition> filters = getFiltersForTable(query, tableName);
 
         if (orderByCandidate.getTable() == table) {
