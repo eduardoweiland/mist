@@ -28,6 +28,16 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForOrderBy(const QList<Order
             break;
         }
 
+        TableColumn::Type type = m_project->getTable(field.getTable())->getColumn(field.getField())->getType();
+
+        // MIST ainda não suporta geração de índices para colunas BLOB ou TEXT
+        // Seria necessário calcular um prefixo para ser utilizado no índice, em vez de utilizar a coluna completa
+        // Se um campo desse tipo for utilizado no ORDER BY, nenhum índice poderá ser utilizado para
+        // ordernar os campos seguintes
+        if (type == TableColumn::BLOB || type == TableColumn::TEXT) {
+            break;
+        }
+
         IndexColumn column;
         column.setColumn(field.getField());
         candidate.addColumn(column);
@@ -52,6 +62,16 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForGroupBy(const QList<Group
         // usada, encerra a listagem de colunas possíveis para índices no
         // agrupamento.
         if (field.getTable() != tableName) {
+            break;
+        }
+
+        TableColumn::Type type = m_project->getTable(field.getTable())->getColumn(field.getField())->getType();
+
+        // MIST ainda não suporta geração de índices para colunas BLOB ou TEXT
+        // Seria necessário calcular um prefixo para ser utilizado no índice, em vez de utilizar a coluna completa
+        // Se um campo desse tipo for utilizado no GROUP BY, nenhum índice poderá ser utilizado para
+        // agrupar os campos seguintes
+        if (type == TableColumn::BLOB || type == TableColumn::TEXT) {
             break;
         }
 
@@ -182,9 +202,15 @@ QList<IndexColumn> IndexColumnsBuilder::filtersToIndexColumns(const QList<Filter
     QList<IndexColumn> columns;
 
     foreach (FilterCondition fc, constFilters) {
-        IndexColumn ic;
-        ic.setColumn(fc.getField());
-        columns.append(ic);
+        TableColumn::Type type = m_project->getTable(fc.getTable())->getColumn(fc.getField())->getType();
+
+        // MIST ainda não suporta geração de índices para colunas BLOB ou TEXT
+        // Seria necessário calcular um prefixo para ser utilizado no índice, em vez de utilizar a coluna completa
+        if (type != TableColumn::BLOB && type != TableColumn::TEXT) {
+            IndexColumn ic;
+            ic.setColumn(fc.getField());
+            columns.append(ic);
+        }
     }
 
     return columns;
