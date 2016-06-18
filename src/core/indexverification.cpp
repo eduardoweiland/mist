@@ -1,8 +1,10 @@
 #include <QDebug>
-#include <QSqlQuery>
 #include <QSqlError>
+#include <QSqlQuery>
+#include <QSqlRecord>
 
 #include "indexverification.h"
+#include "../entity/queryexplain.h"
 
 IndexVerification::IndexVerification(MistProject project, QObject *parent) :
     QThread(parent), m_project(project)
@@ -36,10 +38,13 @@ void IndexVerification::testCandidate(CandidateIndex &candidate)
         Query *query = m_project.getQuery(id);
         writeLog(QString("EXPLAIN query #%1").arg(query->getId()));
 
-        m_db.exec("EXPLAIN " + query->getSql());
+        QSqlQuery res = m_db.exec("EXPLAIN " + query->getSql());
         if (m_db.lastError().isValid()) {
             writeLog(m_db.lastError().text());
         }
+
+        QueryExplain explain(res);
+        writeLog(explain.debug());
     }
 
     dropIndex(candidate);

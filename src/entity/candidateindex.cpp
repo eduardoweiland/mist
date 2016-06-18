@@ -83,15 +83,6 @@ bool CandidateIndex::isValid() const
     return ((table != nullptr) && (!columns.isEmpty()));
 }
 
-QString CandidateIndex::getCreateIndex() const
-{
-    QString dml = QString("ALTER TABLE %1 ADD INDEX (%2)")
-            .arg(table)
-            .arg(getColumnNames().join(", "));
-
-    return dml;
-}
-
 bool CandidateIndex::operator==(CandidateIndex &other) const
 {
     return (table == other.table && columns == other.columns);

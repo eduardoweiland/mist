@@ -27,6 +27,8 @@ SOURCES += \
     src/entity/mistproject.cpp \
     src/entity/orderbyfield.cpp \
     src/entity/query.cpp \
+    src/entity/queryexplain.cpp \
+    src/entity/queryexplainitem.cpp \
     src/entity/table.cpp \
     src/entity/tablecolumn.cpp \
     src/ui/aboutdialog.cpp \
@@ -58,6 +60,8 @@ HEADERS += \
     src/entity/mistproject.h \
     src/entity/orderbyfield.h \
     src/entity/query.h \
+    src/entity/queryexplain.h \
+    src/entity/queryexplainitem.h \
     src/entity/table.h \
     src/entity/tablecolumn.h \
     src/ui/aboutdialog.h \

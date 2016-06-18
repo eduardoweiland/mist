@@ -28,8 +28,6 @@ public:
 
     bool isValid() const;
 
-    QString getCreateIndex() const;
-
     bool operator==(CandidateIndex &other) const;
 
     /*! \brief Check if other is a prefix of this index */
