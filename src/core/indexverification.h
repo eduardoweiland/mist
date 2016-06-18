@@ -26,6 +26,10 @@ private:
     QSqlDatabase m_db;
 
     void testCandidate(CandidateIndex &candidate);
+    void createIndex(CandidateIndex &candidate);
+    void dropIndex(CandidateIndex &candidate);
+
+    void writeLog(QString msg);
 };
 
 #endif // INDEXVERIFICATION_H

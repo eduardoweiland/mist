@@ -7,6 +7,7 @@ CandidateIndexesPage::CandidateIndexesPage(QWidget *parent) :
     QWizardPage(parent), generator(nullptr)
 {
     setupUi(this);
+    setCommitPage(true);
 }
 
 void CandidateIndexesPage::generateCandidates()

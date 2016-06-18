@@ -1,3 +1,4 @@
+#include <QDebug>
 #include <QSqlQuery>
 #include <QSqlError>
 
@@ -19,6 +20,7 @@ void IndexVerification::run()
 
         testCandidate(ci);
 
+        emit log("------------------------------------");
         emit progress(100 * i++ / size);
     }
 
@@ -27,10 +29,50 @@ void IndexVerification::run()
 
 void IndexVerification::testCandidate(CandidateIndex &candidate)
 {
-    QString dml = candidate.getCreateIndex();
+    createIndex(candidate);
 
+    QList<int> queries = candidate.getAffectedQueries();
+    foreach (int id, queries) {
+        Query *query = m_project.getQuery(id);
+        writeLog(QString("EXPLAIN query #%1").arg(query->getId()));
+
+        m_db.exec("EXPLAIN " + query->getSql());
+        if (m_db.lastError().isValid()) {
+            writeLog(m_db.lastError().text());
+        }
+    }
+
+    dropIndex(candidate);
+}
+
+void IndexVerification::createIndex(CandidateIndex &candidate)
+{
+    QString dml = QString("ALTER TABLE %1 ADD INDEX __mist__index__ (%2)")
+            .arg(candidate.getTable())
+            .arg(candidate.getColumnNames().join(", "));
+
+    writeLog(dml);
     m_db.exec(dml);
     if (m_db.lastError().isValid()) {
-        emit log(m_db.lastError().text());
+        writeLog(m_db.lastError().text());
     }
+}
+
+void IndexVerification::dropIndex(CandidateIndex &candidate)
+{
+    QString dml = QString("ALTER TABLE %1 DROP INDEX __mist__index__")
+            .arg(candidate.getTable());
+
+    writeLog(dml);
+    m_db.exec(dml);
+    if (m_db.lastError().isValid()) {
+        writeLog(m_db.lastError().text());
+    }
+}
+
+
+void IndexVerification::writeLog(QString msg)
+{
+    qDebug() << "[IndexVerification]" << msg;
+    emit log(msg);
 }

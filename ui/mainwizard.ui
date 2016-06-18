@@ -23,6 +23,7 @@
   <widget class="SchemaDefinitionPage" name="wizardPage2"/>
   <widget class="QueryLogPage" name="wizardPage3"/>
   <widget class="CandidateIndexesPage" name="wizardPage4"/>
+  <widget class="IndexVerificationPage" name="wizardPage5"/>
  </widget>
  <customwidgets>
   <customwidget>
@@ -47,6 +48,12 @@
    <class>CandidateIndexesPage</class>
    <extends>QWizardPage</extends>
    <header>src/ui/candidateindexespage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>IndexVerificationPage</class>
+   <extends>QWizardPage</extends>
+   <header>src/ui/indexverificationpage.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

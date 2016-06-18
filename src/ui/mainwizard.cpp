@@ -14,11 +14,15 @@ MainWizard::MainWizard(QWidget *parent) :
     setButtonText(BackButton, tr("< &Back"));
     setButtonText(NextButton, tr("&Next >"));
     setButtonText(FinishButton, tr("&Finish"));
+    setButtonText(CommitButton, tr("&Execute"));
 }
 
 void MainWizard::keyPressEvent(QKeyEvent *e)
 {
-    if (e->key() != Qt::Key_Escape) {
+    if (e->matches(QKeySequence::Quit)) {
+        close();
+    }
+    else if (e->key() != Qt::Key_Escape) {
         QWizard::keyPressEvent(e);
     }
 }
