@@ -17,6 +17,7 @@ public:
     void setLength(int value);
 
     bool operator==(IndexColumn &other) const;
+    bool operator==(const IndexColumn &other) const;
 
 private:
     QString column;

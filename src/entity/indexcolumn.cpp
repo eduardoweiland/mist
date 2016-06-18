@@ -1,6 +1,7 @@
 #include "indexcolumn.h"
 
 IndexColumn::IndexColumn()
+    : length(0)
 {
 }
 
@@ -25,6 +26,11 @@ void IndexColumn::setLength(int value)
 }
 
 bool IndexColumn::operator==(IndexColumn &other) const
+{
+    return (column == other.column && length == other.length);
+}
+
+bool IndexColumn::operator==(const IndexColumn &other) const
 {
     return (column == other.column && length == other.length);
 }

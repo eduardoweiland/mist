@@ -31,17 +31,29 @@ QStringList CandidateIndex::getColumnNames() const
 
 void CandidateIndex::setColumns(const QList<IndexColumn> &value)
 {
-    columns = value;
+    columns.clear();
+
+    foreach (IndexColumn col, value) {
+        if (!columns.contains(col)) {
+            columns.append(col);
+        }
+    }
 }
 
 void CandidateIndex::addColumn(const IndexColumn &value)
 {
-    columns.append(value);
+    if (!columns.contains(value)) {
+        columns.append(value);
+    }
 }
 
 void CandidateIndex::addColumns(const QList<IndexColumn> &value)
 {
-    columns.append(value);
+    foreach (IndexColumn col, value) {
+        if (!columns.contains(col)) {
+            columns.append(col);
+        }
+    }
 }
 
 QList<int> CandidateIndex::getAffectedQueries() const
