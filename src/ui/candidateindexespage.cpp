@@ -29,7 +29,7 @@ void CandidateIndexesPage::generateCandidates()
     progress->setValue(0);
     progress->setMinimumDuration(0);
 
-    generator = new GenerateCandidateIndexes(mainWizard->project, mainWizard->queries);
+    generator = new GenerateCandidateIndexes(mainWizard->project);
     connect(generator, SIGNAL(finished()), progress, SLOT(accept()));
     connect(generator, SIGNAL(progress(int)), progress, SLOT(setValue(int)));
     connect(generator, SIGNAL(resultReady()), this, SLOT(candidatesGenerated()));
@@ -39,7 +39,10 @@ void CandidateIndexesPage::generateCandidates()
 
 void CandidateIndexesPage::candidatesGenerated()
 {
+    MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
+
     tableCandidates->setCandidates(generator->getGeneratedIndexes());
+    mainWizard->project.setCandidates(generator->getGeneratedIndexes());
     delete generator;
     generator = nullptr;
 }

@@ -41,7 +41,7 @@ void QueryLogPage::loadQueriesFile()
             tr("Successfully loaded %1 queries from log file").arg(reader.getQueries().size())
         );
 
-        mainWizard->queries = reader.getQueries();
+        mainWizard->project.setQueries(reader.getQueries());
 
         queryLogWidget->setQueries(reader.getQueries());
         completed = true;

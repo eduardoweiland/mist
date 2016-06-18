@@ -11,7 +11,7 @@ class GenerateCandidateIndexes : public QThread
     Q_OBJECT
 
 public:
-    GenerateCandidateIndexes(MistProject &project, QList<Query> &queries);
+    GenerateCandidateIndexes(MistProject &project);
 
     void run() Q_DECL_OVERRIDE;
 
@@ -23,7 +23,6 @@ signals:
 
 private:
     MistProject m_project;
-    QList<Query> m_queries;
 
     QList<CandidateIndex> possibleCandidates;
 

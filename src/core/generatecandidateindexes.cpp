@@ -4,23 +4,24 @@
 #include "generatecandidateindexes.h"
 #include "indexcolumnsbuilder.h"
 
-GenerateCandidateIndexes::GenerateCandidateIndexes(MistProject &project, QList<Query> &queries) :
-    m_project(project), m_queries(queries)
+GenerateCandidateIndexes::GenerateCandidateIndexes(MistProject &project) :
+    m_project(project)
 {
 }
 
 void GenerateCandidateIndexes::run()
 {
-    int size = m_queries.size();
+    QList<Query> queries = m_project.getQueries();
+    int size = m_project.getQueries().size();
     int i;
 
     sleep(1);
 
     for (i = 0; i < size; ++i) {
-        QList<CandidateIndex> indexes = getIndexesForQuery(&m_queries[i]);
+        QList<CandidateIndex> indexes = getIndexesForQuery(&queries[i]);
         mergeUniqueIndexes(indexes);
 
-        qInfo() << "Gerados " << indexes.size() << " índices candidatos para a consulta " << m_queries[i].getId();
+        qInfo() << "Gerados " << indexes.size() << " índices candidatos para a consulta " << queries[i].getId();
 
         emit progress(100 * (i + 1) / size);
     }

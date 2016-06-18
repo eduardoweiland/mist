@@ -18,7 +18,6 @@ public:
     explicit MainWizard(QWidget *parent = 0);
 
     MistProject project;
-    QList<Query> queries;
 
 protected:
     void keyPressEvent(QKeyEvent *e);
