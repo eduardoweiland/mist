@@ -97,8 +97,11 @@ void GenerateCandidateIndexes::mergeUniqueIndexes(QList<CandidateIndex> &indexes
     foreach (CandidateIndex ni, indexes) {
         bool found = false;
 
-        foreach (CandidateIndex ei, possibleCandidates) {
-            if (ei == ni) {
+        for (int i = 0; i < possibleCandidates.size(); ++i) {
+            if (possibleCandidates[i] == ni) {
+                foreach (Query *q, ni.getAffectedQueries()) {
+                    possibleCandidates[i].addAffectedQuery(q);
+                }
                 found = true;
                 break;
             }
