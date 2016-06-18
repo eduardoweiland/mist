@@ -2,15 +2,14 @@
 
 CandidateIndex::CandidateIndex()
 {
-
 }
 
-const Table *CandidateIndex::getTable() const
+QString CandidateIndex::getTable() const
 {
     return table;
 }
 
-void CandidateIndex::setTable(const Table *value)
+void CandidateIndex::setTable(const QString value)
 {
     table = value;
 }
@@ -24,7 +23,7 @@ QStringList CandidateIndex::getColumnNames() const
 {
     QStringList names;
     foreach (IndexColumn column, columns) {
-        names << column.getColumn()->getName();
+        names << column.getColumn();
     }
 
     return names;
@@ -45,42 +44,40 @@ void CandidateIndex::addColumns(const QList<IndexColumn> &value)
     columns.append(value);
 }
 
-QList<Query *> CandidateIndex::getAffectedQueries() const
+QList<int> CandidateIndex::getAffectedQueries() const
 {
     return affectedQueries;
 }
 
-void CandidateIndex::setAffectedQueries(const QList<Query *> &value)
+void CandidateIndex::setAffectedQueries(const QList<int> &value)
 {
     affectedQueries = value;
 }
 
-void CandidateIndex::addAffectedQuery(const Query *value)
+void CandidateIndex::addAffectedQuery(const int value)
 {
-    if (!affectedQueries.contains(const_cast<Query*>(value))) {
-        affectedQueries.append(const_cast<Query*>(value));
+    if (!affectedQueries.contains(value)) {
+        affectedQueries.append(value);
     }
 }
 
-bool CandidateIndex::affectsQuery(const Query *query) const
+bool CandidateIndex::affectsQuery(const int query) const
 {
-    return affectedQueries.contains(const_cast<Query*>(query));
-}
-
-int CandidateIndex::getEntrySize() const
-{
-    int bytes = 0;
-
-    foreach (IndexColumn col, columns) {
-        bytes += col.getColumn()->getSize();
-    }
-
-    return bytes;
+    return affectedQueries.contains(query);
 }
 
 bool CandidateIndex::isValid() const
 {
     return ((table != nullptr) && (!columns.isEmpty()));
+}
+
+QString CandidateIndex::getCreateIndex() const
+{
+    QString dml = QString("ALTER TABLE %1 ADD INDEX (%2)")
+            .arg(table)
+            .arg(getColumnNames().join(", "));
+
+    return dml;
 }
 
 bool CandidateIndex::operator==(CandidateIndex &other) const
@@ -100,7 +97,7 @@ bool CandidateIndex::isPrefix(const QList<IndexColumn> &columns) const
     }
 
     for (int i = 0, l = columns.size(); i < l; ++i) {
-        if (columns[i].getColumn()->getName() != this->columns[i].getColumn()->getName()) {
+        if (columns[i].getColumn() != this->columns[i].getColumn()) {
             return false;
         }
     }
@@ -114,7 +111,7 @@ bool CandidateIndex::isPrefix(const QList<TableColumn> &columns) const
     }
 
     for (int i = 0, l = columns.size(); i < l; ++i) {
-        if (columns[i].getName() != this->columns[i].getColumn()->getName()) {
+        if (columns[i].getName() != this->columns[i].getColumn()) {
             return false;
         }
     }
@@ -128,7 +125,7 @@ bool CandidateIndex::isPrefix(const QStringList &columns) const
     }
 
     for (int i = 0, l = columns.size(); i < l; ++i) {
-        if (columns[i] != this->columns[i].getColumn()->getName()) {
+        if (columns[i] != this->columns[i].getColumn()) {
             return false;
         }
     }
@@ -147,7 +144,7 @@ bool CandidateIndex::isPrefixOf(const QList<IndexColumn> &columns) const
     }
 
     for (int i = 0, l = this->columns.size(); i < l; ++i) {
-        if (columns[i].getColumn()->getName() != this->columns[i].getColumn()->getName()) {
+        if (columns[i].getColumn() != this->columns[i].getColumn()) {
             return false;
         }
     }
@@ -161,7 +158,7 @@ bool CandidateIndex::isPrefixOf(const QList<TableColumn> &columns) const
     }
 
     for (int i = 0, l = this->columns.size(); i < l; ++i) {
-        if (columns[i].getName() != this->columns[i].getColumn()->getName()) {
+        if (columns[i].getName() != this->columns[i].getColumn()) {
             return false;
         }
     }
@@ -175,7 +172,7 @@ bool CandidateIndex::isPrefixOf(const QStringList &columns) const
     }
 
     for (int i = 0, l = this->columns.size(); i < l; ++i) {
-        if (columns[i] != this->columns[i].getColumn()->getName()) {
+        if (columns[i] != this->columns[i].getColumn()) {
             return false;
         }
     }
@@ -184,7 +181,7 @@ bool CandidateIndex::isPrefixOf(const QStringList &columns) const
 
 QDebug operator<<(QDebug debug, const CandidateIndex &ci)
 {
-    debug << ci.getTable()->getName() << ci.getColumns();
+    debug << ci.getTable() << ci.getColumns();
 
     return debug;
 }

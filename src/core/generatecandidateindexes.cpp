@@ -31,7 +31,7 @@ void GenerateCandidateIndexes::run()
 
 QList<CandidateIndex> GenerateCandidateIndexes::getGeneratedIndexes()
 {
-    return possibleCandidates;
+    return generatedCandidates;
 }
 
 QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *query)
@@ -54,10 +54,10 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
         Table *table = m_project.getTable(tableName);
         QList<FilterCondition> filters = getFiltersForTable(query, tableName);
 
-        if (orderByCandidate.getTable() == table) {
+        if (orderByCandidate.getTable() == table->getName()) {
             candidates << builder.combineOrderByIndexes(table, orderByCandidate, filters);
         }
-        else if (groupByCandidate.getTable() == table) {
+        else if (groupByCandidate.getTable() == table->getName()) {
             candidates << builder.combineGroupByIndexes(table, groupByCandidate, filters);
         }
         else {
@@ -67,8 +67,8 @@ QList<CandidateIndex> GenerateCandidateIndexes::getIndexesForQuery(const Query *
 
     QList<CandidateIndex> finalCandidates;
     for (int i = 0; i < candidates.size(); ++i) {
-        if (!candidates[i].isPrefixOf(candidates[i].getTable()->getPrimaryKey())) {
-            candidates[i].addAffectedQuery(query);
+        if (!candidates[i].isPrefixOf(m_project.getTable(candidates[i].getTable())->getPrimaryKey())) {
+            candidates[i].addAffectedQuery(query->getId());
             finalCandidates << candidates[i];
         }
     }
@@ -93,15 +93,17 @@ QList<FilterCondition> GenerateCandidateIndexes::getFiltersForTable(const Query 
     return tableFilters;
 }
 
-void GenerateCandidateIndexes::mergeUniqueIndexes(QList<CandidateIndex> &indexes)
+void GenerateCandidateIndexes::mergeUniqueIndexes(QList<CandidateIndex> indexes)
 {
-    foreach (CandidateIndex ni, indexes) {
+    int i, j;
+
+    for (i = 0; i < indexes.size(); ++i) {
         bool found = false;
 
-        for (int i = 0; i < possibleCandidates.size(); ++i) {
-            if (possibleCandidates[i] == ni) {
-                foreach (Query *q, ni.getAffectedQueries()) {
-                    possibleCandidates[i].addAffectedQuery(q);
+        for (j = 0; j < generatedCandidates.size(); ++j) {
+            if (generatedCandidates[j] == indexes[i]) {
+                foreach (int id, indexes[i].getAffectedQueries()) {
+                    generatedCandidates[j].addAffectedQuery(id);
                 }
                 found = true;
                 break;
@@ -109,7 +111,7 @@ void GenerateCandidateIndexes::mergeUniqueIndexes(QList<CandidateIndex> &indexes
         }
 
         if (!found) {
-            possibleCandidates.append(ni);
+            generatedCandidates.append(indexes[i]);
         }
     }
 }

@@ -13,15 +13,17 @@ class MistProject
 {
 public:
     MistProject();
+    MistProject(MistProject &other);
 
     QList<Table> getTables() const;
     void setTables(const QList<Table> &tables);
     void addTable(Table &table);
-    Table* getTable(QString name);
+    Table* getTable(const QString name);
 
     QList<Query> getQueries() const;
     void setQueries(const QList<Query> &queries);
     void addQuery(const Query &query);
+    Query *getQuery(const int id);
 
     QList<CandidateIndex> getCandidates() const;
     void setCandidates(const QList<CandidateIndex> &candidates);

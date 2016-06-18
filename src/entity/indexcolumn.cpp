@@ -2,15 +2,14 @@
 
 IndexColumn::IndexColumn()
 {
-
 }
 
-const TableColumn *IndexColumn::getColumn() const
+const QString IndexColumn::getColumn() const
 {
     return column;
 }
 
-void IndexColumn::setColumn(const TableColumn *value)
+void IndexColumn::setColumn(const QString value)
 {
     column = value;
 }
@@ -32,7 +31,7 @@ bool IndexColumn::operator==(IndexColumn &other) const
 
 QDebug operator<<(QDebug debug, const IndexColumn &ic)
 {
-    debug << ic.getColumn()->getName();
+    debug << ic.getColumn();
 
     return debug;
 }

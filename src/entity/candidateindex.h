@@ -12,8 +12,8 @@ class CandidateIndex
 public:
     CandidateIndex();
 
-    const Table *getTable() const;
-    void setTable(const Table *value);
+    QString getTable() const;
+    void setTable(const QString value);
 
     QList<IndexColumn> getColumns() const;
     QStringList getColumnNames() const;
@@ -21,15 +21,14 @@ public:
     void addColumn(const IndexColumn &value);
     void addColumns(const QList<IndexColumn> &value);
 
-    QList<Query *> getAffectedQueries() const;
-    void setAffectedQueries(const QList<Query *> &value);
-    void addAffectedQuery(const Query *value);
-    bool affectsQuery(const Query *query) const;
-
-    /*! \brief Get the estimated size in bytes for one entry in the index */
-    int getEntrySize() const;
+    QList<int> getAffectedQueries() const;
+    void setAffectedQueries(const QList<int> &value);
+    void addAffectedQuery(const int value);
+    bool affectsQuery(const int query) const;
 
     bool isValid() const;
+
+    QString getCreateIndex() const;
 
     bool operator==(CandidateIndex &other) const;
 
@@ -53,13 +52,13 @@ public:
 
 private:
     /*! \brief The table in which the index shall be created */
-    const Table *table;
+    QString table;
 
     /*! \brief The list of columns in this index */
     QList<IndexColumn> columns;
 
     /*! \brief List of queries that may be affected by this candidate index */
-    QList<Query *> affectedQueries;
+    QList<int> affectedQueries;
 };
 
 QDebug operator<<(QDebug debug, const CandidateIndex &ic);

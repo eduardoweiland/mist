@@ -10,8 +10,8 @@ class IndexColumn
 public:
     IndexColumn();
 
-    const TableColumn *getColumn() const;
-    void setColumn(const TableColumn *value);
+    const QString getColumn() const;
+    void setColumn(const QString value);
 
     int getLength() const;
     void setLength(int value);
@@ -19,7 +19,7 @@ public:
     bool operator==(IndexColumn &other) const;
 
 private:
-    const TableColumn *column;
+    QString column;
     int length;
 };
 

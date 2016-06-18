@@ -15,7 +15,7 @@ void IndexVerification::run()
     int i = 1, size = candidates.size();
 
     foreach (CandidateIndex ci, candidates) {
-        emit log(QString("Testing candidate index #%1 on table %2").arg(i).arg(ci.getTable()->getName()));
+        emit log(QString("Testing candidate index #%1 on table %2").arg(i).arg(ci.getTable()));
 
         testCandidate(ci);
 

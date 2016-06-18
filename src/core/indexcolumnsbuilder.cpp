@@ -15,7 +15,7 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForOrderBy(const QList<Order
 
     QString tableName = orderBy.first().getTable();
     OrderByField::Direction direction = orderBy.first().getDir();
-    candidate.setTable(m_project->getTable(tableName));
+    candidate.setTable(tableName);
 
     foreach (OrderByField field, orderBy) {
 
@@ -29,7 +29,7 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForOrderBy(const QList<Order
         }
 
         IndexColumn column;
-        column.setColumn(candidate.getTable()->getColumn(field.getField()));
+        column.setColumn(field.getField());
         candidate.addColumn(column);
     }
 
@@ -43,7 +43,7 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForGroupBy(const QList<Group
     CandidateIndex candidate;
 
     QString tableName = groupBy.first().getTable();
-    candidate.setTable(m_project->getTable(tableName));
+    candidate.setTable(tableName);
 
     foreach (GroupByField field, groupBy) {
 
@@ -56,7 +56,7 @@ CandidateIndex IndexColumnsBuilder::getBestCandidateForGroupBy(const QList<Group
         }
 
         IndexColumn column;
-        column.setColumn(candidate.getTable()->getColumn(field.getField()));
+        column.setColumn(field.getField());
         candidate.addColumn(column);
     }
 
@@ -75,7 +75,7 @@ QList<CandidateIndex> IndexColumnsBuilder::combineIndexes(const Table *table, co
                                + filtersToIndexColumns(filtersByType[FilterCondition::LIKE]);
 
     CandidateIndex index;
-    index.setTable(table);
+    index.setTable(table->getName());
     index.setColumns(columns);
 
     return reduceIndexes(index);
@@ -94,12 +94,12 @@ QList<CandidateIndex> IndexColumnsBuilder::combineOrderByIndexes(const Table *ta
                               + filtersToIndexColumns(filtersByType[FilterCondition::LIKE]);
 
     CandidateIndex indexPrefix;
-    indexPrefix.setTable(table);
+    indexPrefix.setTable(table->getName());
     indexPrefix.setColumns(prefix);
     QList<CandidateIndex> indexPrefixes = reduceIndexes(indexPrefix);
 
     CandidateIndex indexSuffix;
-    indexSuffix.setTable(table);
+    indexSuffix.setTable(table->getName());
     indexSuffix.setColumns(suffix);
     QList<CandidateIndex> indexSuffixes = reduceIndexes(indexSuffix);
 
@@ -136,12 +136,12 @@ QList<CandidateIndex> IndexColumnsBuilder::combineGroupByIndexes(const Table *ta
                               + filtersToIndexColumns(filtersByType[FilterCondition::LIKE]);
 
     CandidateIndex indexPrefix;
-    indexPrefix.setTable(table);
+    indexPrefix.setTable(table->getName());
     indexPrefix.setColumns(prefix);
     QList<CandidateIndex> indexPrefixes = reduceIndexes(indexPrefix);
 
     CandidateIndex indexSuffix;
-    indexSuffix.setTable(table);
+    indexSuffix.setTable(table->getName());
     indexSuffix.setColumns(suffix);
     QList<CandidateIndex> indexSuffixes = reduceIndexes(indexSuffix);
 
@@ -183,7 +183,7 @@ QList<IndexColumn> IndexColumnsBuilder::filtersToIndexColumns(const QList<Filter
 
     foreach (FilterCondition fc, constFilters) {
         IndexColumn ic;
-        ic.setColumn(m_project->getTable(fc.getTable())->getColumn(fc.getField()));
+        ic.setColumn(fc.getField());
         columns.append(ic);
     }
 

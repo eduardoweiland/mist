@@ -24,13 +24,11 @@ signals:
 private:
     MistProject m_project;
 
-    QList<CandidateIndex> possibleCandidates;
-
-    int percentProgress;
+    QList<CandidateIndex> generatedCandidates;
 
     QList<CandidateIndex> getIndexesForQuery(const Query *query);
     QList<FilterCondition> getFiltersForTable(const Query *query, const QString tableName) const;
-    void mergeUniqueIndexes(QList<CandidateIndex> &indexes);
+    void mergeUniqueIndexes(QList<CandidateIndex> indexes);
 };
 
 #endif // GENERATECANDIDATEINDEXES_H
