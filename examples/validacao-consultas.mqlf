@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<queries version="1.0">
+    <query id="1" count="154">
+        <sql>
+            SELECT
+                   lancamento.versao_lancamento,
+                   lancamento.empresa_id,
+                   lancamento.lancamento_id,
+                   lancamento.num_lancamento,
+                   lancamento.tipo,
+                   lancamento.data,
+                   lancamento.observacao,
+                   SUM(parcela.valor) AS valor,
+                   COUNT(IF(parcela.data_pagamento IS NOT NULL, 1, NULL)) AS parcela_pago,
+                   COUNT(IF(parcela.data_pagamento IS NULL, 1, NULL)) AS parcela_aberto,
+                   categoria.descricao AS categoria,
+                   cad.nome AS cadastro_nome,
+                   cad.razao AS cadastro_razao,
+                   cadv.nome AS vendedor_nome,
+                   cadv.razao AS vendedor_razao
+            FROM   lancamento
+                   INNER JOIN parcela
+                           ON parcela.lancamento_id = lancamento.lancamento_id
+                              AND parcela.versao_lancamento = lancamento.versao_lancamento
+                              AND parcela.empresa_id = lancamento.empresa_id
+                   LEFT JOIN categoria
+                          ON lancamento.empresa_id = categoria.empresa_id
+                             AND lancamento.categoria_id = categoria.categoria_id
+                   LEFT JOIN cadastro AS cad
+                          ON cad.cadastro_id = lancamento.cadastro_id
+                             AND cad.empresa_id = lancamento.empresa_id
+                   LEFT JOIN cadastro AS cadv
+                          ON cadv.cadastro_id = lancamento.vendedor_id
+                          AND cadv.empresa_id = lancamento.empresa_id
+            WHERE  lancamento.empresa_id = '10'
+                   AND lancamento.removido = 0
+                   AND lancamento.tipo = 0
+                   AND lancamento.data BETWEEN '2015-01-01' AND '2016-04-18'
+                   AND parcela.removido = 0
+                   AND parcela.recorrencia = 0
+            GROUP  BY lancamento.lancamento_id, lancamento.versao_lancamento;
+        </sql>
+        <from>
+            <table>lancamento</table>
+        </from>
+        <joins>
+            <join type="inner" table="parcela">
+                <condition field="lancamento_id" type="match"/>
+                <condition field="versao_lancamento" type="match"/>
+                <condition field="empresa_id" type="match"/>
+            </join>
+            <join type="left" table="categoria">
+                <condition field="empresa_id" type="match"/>
+                <condition field="categoria_id" type="match"/>
+            </join>
+            <join type="left" table="cadastro">
+                <condition field="empresa_id" type="match"/>
+                <condition field="cadastro_id" type="match"/>
+            </join>
+            <join type="left" table="cadastro">
+                <condition field="empresa_id" type="match"/>
+                <condition field="cadastro_id" type="match"/>
+            </join>
+        </joins>
+        <where>
+            <condition table="lancamento" field="empresa_id" type="const"/>
+            <condition table="lancamento" field="removido" type="const"/>
+            <condition table="lancamento" field="tipo" type="const"/>
+            <condition table="lancamento" field="data" type="range"/>
+            <condition table="parcela" field="removido" type="const"/>
+            <condition table="parcela" field="recorrencia" type="const"/>
+        </where>
+        <groupby>
+            <field table="lancamento" field="lancamento_id"/>
+        </groupby>
+    </query>
+    <query id="2" count="429">
+        <sql>
+            SELECT lancamento.lancamento_id,
+                   lancamento.num_lancamento,
+                   lancamento.tipo,
+                   lancamento.data,
+                   lancamento.observacao,
+                   SUM(parcela.valor) AS valor,
+                   Count(IF(parcela.data_pagamento IS NOT NULL, 1, NULL)) AS parcela_quitado,
+                   Count(IF(parcela.data_pagamento IS NULL, 1, NULL))     AS parcela_aberto,
+                   categoria.descricao AS categoria,
+                   cad.nome                                   AS cadastro_nome,
+                   cad.razao                                  AS cadastro_razao,
+                   cadv.nome                                  AS vendedor_nome,
+                   cadv.razao                                 AS vendedor_razao
+            FROM   lancamento
+                   INNER JOIN parcela
+                           ON parcela.lancamento_id = lancamento.lancamento_id
+                              AND parcela.versao_lancamento = lancamento.versao_lancamento
+                              AND parcela.empresa_id = lancamento.empresa_id
+                   LEFT JOIN categoria
+                          ON lancamento.empresa_id = categoria.empresa_id
+                             AND lancamento.categoria_id = categoria.categoria_id
+                   LEFT JOIN cadastro AS cad
+                          ON cad.cadastro_id = lancamento.cadastro_id
+                          AND cad.empresa_id = lancamento.empresa_id
+                   LEFT JOIN cadastro AS cadv
+                          ON cadv.cadastro_id = lancamento.vendedor_id
+                          AND cadv.empresa_id = lancamento.empresa_id
+            WHERE  lancamento.empresa_id = '10'
+                   AND lancamento.removido = 0
+                   AND lancamento.data BETWEEN '2015-01-01' AND '2016-04-18'
+                   AND parcela.removido = 0
+                   AND parcela.recorrencia = 0
+            GROUP  BY lancamento.lancamento_id, lancamento.versao_lancamento;
+        </sql>
+        <from>
+            <table>lancamento</table>
+        </from>
+        <joins>
+            <join type="inner" table="parcela">
+                <condition field="lancamento_id" type="match"/>
+                <condition field="versao_lancamento" type="match"/>
+                <condition field="empresa_id" type="match"/>
+            </join>
+            <join type="left" table="categoria">
+                <condition field="empresa_id" type="match"/>
+                <condition field="categoria_id" type="match"/>
+            </join>
+            <join type="left" table="cadastro">
+                <condition field="empresa_id" type="match"/>
+                <condition field="cadastro_id" type="match"/>
+            </join>
+            <join type="left" table="cadastro">
+                <condition field="empresa_id" type="match"/>
+                <condition field="cadastro_id" type="match"/>
+            </join>
+        </joins>
+        <where>
+            <condition table="lancamento" field="empresa_id" type="const"/>
+            <condition table="lancamento" field="removido" type="const"/>
+            <condition table="lancamento" field="data" type="range"/>
+            <condition table="parcela" field="removido" type="const"/>
+            <condition table="parcela" field="recorrencia" type="const"/>
+        </where>
+        <groupby>
+            <field table="lancamento" field="lancamento_id"/>
+        </groupby>
+    </query>
+    <query id="3" count="61">
+        <sql>
+            SELECT categoria.descricao AS categoria,
+                   SUM(parcela.valor) AS total
+            FROM   parcela
+                   LEFT JOIN categoria
+                          ON parcela.empresa_id = categoria.empresa_id
+                             AND parcela.categoria_id = categoria.categoria_id
+            WHERE  parcela.empresa_id = '10'
+                   AND parcela.lancamento_id IS NULL
+                   AND parcela.data_pagamento BETWEEN '2015-01-01' AND '2016-04-18'
+                   AND removido = 0
+                   AND recorrencia = 0
+            GROUP  BY categoria.categoria_id
+            ORDER  BY categoria.descricao;
+        </sql>
+        <from>
+            <table>parcela</table>
+        </from>
+        <joins>
+            <join type="left" table="categoria">
+                <condition field="empresa_id" type="match"/>
+                <condition field="categoria_id" type="match"/>
+            </join>
+        </joins>
+        <where>
+            <condition table="parcela" field="empresa_id" type="const"/>
+            <condition table="parcela" field="lancamento_id" type="const"/>
+            <condition table="parcela" field="data_pagamento" type="range"/>
+            <condition table="parcela" field="removido" type="const"/>
+            <condition table="parcela" field="recorrencia" type="const"/>
+        </where>
+        <groupby>
+            <field table="categoria" field="categoria_id"/>
+        </groupby>
+        <orderby>
+            <field table="categoria" field="descricao" dir="asc"/>
+        </orderby>
+    </query>
+    <query id="4" count="360">
+        <sql>
+            SELECT    parcela.parcela_id,
+                      parcela.tipo,
+                      parcela.data_pagamento,
+                      parcela.data_vencimento,
+                      parcela.observacao,
+                      parcela.valor,
+                      categoria.descricao  AS categoria,
+                      cad.nome       AS cadastro_nome,
+                      cad.razao      AS cadastro_razao,
+                      'NE'           AS status
+            FROM      parcela
+            LEFT JOIN categoria
+                   ON parcela.empresa_id = categoria.empresa_id
+                      AND parcela.categoria_id = categoria.categoria_id
+            LEFT JOIN cadastro AS cad
+                   ON cad.cadastro_id = parcela.cadastro_id
+                   AND cad.empresa_id = parcela.empresa_id
+            WHERE     parcela.empresa_id = '10'
+            AND       parcela.lancamento_id IS NULL
+            AND       parcela.data_pagamento BETWEEN '2015-01-01' AND '2016-04-18'
+            AND       parcela.removido = 0
+            AND       parcela.recorrencia = 0;
+        </sql>
+        <from>
+            <table>parcela</table>
+        </from>
+        <joins>
+            <join type="left" table="categoria">
+                <condition field="empresa_id" type="match"/>
+                <condition field="categoria_id" type="match"/>
+            </join>
+            <join type="left" table="cadastro">
+                <condition field="empresa_id" type="match"/>
+                <condition field="cadastro_id" type="match"/>
+            </join>
+        </joins>
+        <where>
+            <condition table="parcela" field="empresa_id" type="const"/>
+            <condition table="parcela" field="lancamento_id" type="const"/>
+            <condition table="parcela" field="data_pagamento" type="range"/>
+            <condition table="parcela" field="removido" type="const"/>
+            <condition table="parcela" field="recorrencia" type="const"/>
+        </where>
+    </query>
+</queries>

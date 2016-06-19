@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema version="1.0">
+    <table name="empresa" row-count="3670">
+        <column name="empresa_id" type="integer" nullable="false" distinct-values="3670"/>
+        <column name="nome_fantasia" type="text" nullable="false" distinct-values="3362"/>
+        <column name="razao_social" type="text" nullable="true" null-values="2845" distinct-values="485"/>
+        <column name="cnpj" type="bigint" nullable="true" null-values="3127" distinct-values="456"/>
+        <column name="telefone" type="varchar" length="11" nullable="true" null-values="3127" distinct-values="451"/>
+        <column name="logradouro" type="text" nullable="true" null-values="2845" distinct-values="433"/>
+        <column name="numero" type="text" nullable="true" null-values="2845" distinct-values="380"/>
+        <column name="complemento" type="text" nullable="true" null-values="2845" distinct-values="150"/>
+        <column name="bairro" type="text" nullable="true" null-values="2845" distinct-values="261"/>
+        <column name="cep" type="text" nullable="true" null-values="3127" distinct-values="407"/>
+        <column name="cod_municipio" type="integer" nullable="true" null-values="3186" distinct-values="191"/>
+        <column name="inscr_municipal" type="varchar" length="20" nullable="true" null-values="3179" distinct-values="116"/>
+        <column name="inscr_estadual" type="char" length="14" nullable="true" null-values="3168" distinct-values="278"/>
+
+        <primary-key>
+            <column name="empresa_id"/>
+        </primary-key>
+    </table>
+
+    <table name="forma_pagamento" row-count="13">
+        <column name="forma_pagamento_id" type="integer" nullable="false" distinct-values="13"/>
+        <column name="descricao" type="varchar" length="40" nullable="true" null-values="0" distinct-values="13"/>
+        <column name="codigo" type="char" length="2" nullable="true" null-values="0" distinct-values="10"/>
+        <column name="caixa" type="boolean" nullable="false" distinct-values="2"/>
+        <column name="banco" type="boolean" nullable="false" distinct-values="2"/>
+
+        <primary-key>
+            <column name="forma_pagamento_id"/>
+        </primary-key>
+    </table>
+
+    <table name="categoria" row-count="4841">
+        <column name="categoria_id" type="integer" nullable="false" distinct-values="4841"/>
+        <column name="empresa_id" type="integer" nullable="false" distinct-values="3606"/>
+        <column name="entrada_saida" type="char" length="1" nullable="false" distinct-values="2"/>
+        <column name="descricao" type="text" nullable="false" distinct-values="953"/>
+
+        <primary-key>
+            <column name="categoria_id"/>
+        </primary-key>
+        <foreign-key table="empresa">
+            <column name="empresa_id" referenced="empresa_id"/>
+        </foreign-key>
+    </table>
+
+    <table name="cadastro" row-count="120125">
+        <column name="cadastro_id" type="integer" nullable="false" distinct-values="120125"/>
+        <column name="empresa_id" type="integer" nullable="false" distinct-values="1245"/>
+        <column name="cpf_cnpj" type="char" length="14" nullable="true" null-values="78524" distinct-values="33226"/>
+        <column name="inscr_estadual" type="char" length="14" nullable="true" null-values="88612" distinct-values="9281"/>
+        <column name="nome" type="text" nullable="true" null-values="1965" distinct-values="88632"/>
+        <column name="razao" type="text" nullable="true" null-values="80215" distinct-values="19975"/>
+        <column name="nasc_fundacao" type="date" nullable="true" null-values="100154" distinct-values="12438"/>
+        <column name="sexo" type="char" length="1" nullable="true" null-values="57485" distinct-values="3"/>
+        <column name="telefones" type="text" nullable="true" null-values="79854" distinct-values="22303"/>
+        <column name="email" type="text" nullable="true" null-values="96524" distinct-values="4837"/>
+        <column name="website" type="text" nullable="true" null-values="97154" distinct-values="488"/>
+        <column name="endereco" type="text" nullable="true" null-values="4154" distinct-values="10769"/>
+        <column name="numero" type="text" nullable="true" null-values="7954" distinct-values="3698"/>
+        <column name="complemento" type="text" nullable="true" null-values="37541" distinct-values="2200"/>
+        <column name="cod_municipio" type="integer" nullable="true" null-values="11415" distinct-values="648"/>
+        <column name="bairro" type="text" nullable="true" null-values="9415" distinct-values="2525"/>
+        <column name="cep" type="text" nullable="true" null-values="12843" distinct-values="4389"/>
+        <column name="limite_cred" type="decimal" length="12" precision="2" nullable="true" null-values="69510" distinct-values="128"/>
+        <column name="vendedor_id" type="integer" nullable="true" null-values="109847" distinct-values="438"/>
+        <column name="prioridade" type="integer" nullable="true" null-values="59638" distinct-values="3"/>
+        <column name="observacao" type="text" nullable="true" null-values="116358" distinct-values="2606"/>
+        <column name="situacao" type="char" length="1" nullable="true" null-values="29418" distinct-values="3"/>
+        <column name="rg" type="char" length="10" nullable="true" null-values="118846" distinct-values="2441"/>
+        <column name="inscr_municipal" type="char" length="20" nullable="true" null-values="119743" distinct-values="380"/>
+        <column name="pessoa" type="char" length="2" nullable="true" null-values="0" distinct-values="3"/>
+        <column name="empresa" type="boolean" nullable="false" distinct-values="2"/>
+        <column name="fornecedor" type="boolean" nullable="false" distinct-values="2"/>
+        <column name="vendedor" type="boolean" nullable="false" distinct-values="2"/>
+        <column name="transportador" type="boolean" nullable="false" distinct-values="2"/>
+        <column name="funcionario" type="boolean" nullable="false" distinct-values="2"/>
+        <column name="renda_mensal" type="decimal" length="12" precision="2" nullable="true" null-values="114956" distinct-values="133"/>
+        <column name="referencias_comerciais" type="text" nullable="true" null-values="120052" distinct-values="247"/>
+
+        <primary-key>
+            <column name="cadastro_id"/>
+        </primary-key>
+        <foreign-key table="empresa">
+            <column name="empresa_id" referenced="empresa_id"/>
+        </foreign-key>
+        <foreign-key table="cadastro">
+            <column name="vendedor_id" referenced="cadastro_id"/>
+        </foreign-key>
+    </table>
+
+    <table name="banco" row-count="2140">
+        <column name="banco_id" type="integer" nullable="false" distinct-values="2140"/>
+        <column name="empresa_id" type="integer" nullable="false" distinct-values="1066"/>
+        <column name="cod_febraban" type="integer" nullable="true" null-values="0" distinct-values="9"/>
+        <column name="descricao" type="text" nullable="true" null-values="0" distinct-values="857"/>
+        <column name="removido" type="boolean" nullable="false" distinct-values="2"/>
+
+        <primary-key>
+            <column name="banco_id"/>
+        </primary-key>
+        <foreign-key table="empresa">
+            <column name="empresa_id" referenced="empresa_id"/>
+        </foreign-key>
+    </table>
+
+    <table name="lancamento" row-count="748899">
+        <column name="lancamento_id" type="integer" nullable="false" distinct-values="748899"/>
+        <column name="empresa_id" type="integer" nullable="false" distinct-values="1112"/>
+        <column name="versao_lancamento" type="integer" nullable="false" distinct-values="57"/>
+        <column name="num_lancamento" type="integer" nullable="true" null-values="4215" distinct-values="28730"/>
+        <column name="tipo" type="integer" nullable="false" distinct-values="2"/>
+        <column name="categoria_id" type="integer" nullable="false" distinct-values="10289"/>
+        <column name="data" type="datetime" nullable="false" distinct-values="1603"/>
+        <column name="observacao" type="text" nullable="true" null-values="0" distinct-values="180669"/>
+        <column name="cadastro_id" type="integer" nullable="true" null-values="346520" distinct-values="85592"/>
+        <column name="desconto" type="decimal" length="15" precision="2" nullable="true" null-values="230485" distinct-values="6048"/>
+        <column name="vendedor_id" type="integer" nullable="true" null-values="632145" distinct-values="1169"/>
+        <column name="removido" type="boolean" nullable="false" distinct-values="2"/>
+
+        <primary-key>
+            <column name="lancamento_id"/>
+            <column name="versao_lancamento"/>
+        </primary-key>
+        <foreign-key table="empresa">
+            <column name="empresa_id" referenced="empresa_id"/>
+        </foreign-key>
+        <foreign-key table="cadastro">
+            <column name="cadastro_id" referenced="cadastro_id"/>
+        </foreign-key>
+        <foreign-key table="cadastro">
+            <column name="vendedor_id" referenced="cadastro_id"/>
+        </foreign-key>
+        <foreign-key table="categoria">
+            <column name="categoria_id" referenced="categoria_id"/>
+        </foreign-key>
+    </table>
+
+    <table name="parcela" row-count="1159483">
+        <column name="parcela_id" type="integer" nullable="false" distinct-values="1159483"/>
+        <column name="empresa_id" type="integer" nullable="false" distinct-values="1137"/>
+        <column name="tipo" type="varchar" length="7" nullable="false" distinct-values="2"/>
+        <column name="lancamento_id" type="integer" nullable="true" null-values="65254" distinct-values="748719"/>
+        <column name="versao_lancamento" type="integer" nullable="true" null-values="65254" distinct-values="118"/>
+        <column name="data_vencimento" type="date" nullable="false" distinct-values="3014"/>
+        <column name="data_pagamento" type="date" nullable="true" null-values="187452" distinct-values="1785"/>
+        <column name="valor" type="decimal" length="12" precision="2" nullable="false" distinct-values="109334"/>
+        <column name="juros" type="decimal" length="12" precision="2" nullable="false" distinct-values="2043"/>
+        <column name="multa" type="decimal" length="12" precision="2" nullable="false" distinct-values="539"/>
+        <column name="tarifas" type="decimal" length="12" precision="2" nullable="false" distinct-values="393"/>
+        <column name="categoria_id" type="integer" nullable="true" null-values="4321" distinct-values="11073"/>
+        <column name="observacao" type="text" nullable="true" null-values="0" distinct-values="224517"/>
+        <column name="cadastro_id" type="integer" nullable="true" null-values="418965" distinct-values="88686"/>
+        <column name="banco_id" type="integer" nullable="true" null-values="741352" distinct-values="936"/>
+        <column name="forma_pagamento_id" type="integer" nullable="true" null-values="0" distinct-values="14"/>
+        <column name="removido" type="boolean" nullable="false" distinct-values="2"/>
+        <column name="recorrencia" type="integer" nullable="true" null-values="1102532" distinct-values="5"/>
+
+        <primary-key>
+            <column name="parcela_id"/>
+        </primary-key>
+        <foreign-key table="empresa">
+            <column name="empresa_id" referenced="empresa_id"/>
+        </foreign-key>
+        <foreign-key table="cadastro">
+            <column name="cadastro_id" referenced="cadastro_id"/>
+        </foreign-key>
+        <foreign-key table="categoria">
+            <column name="categoria_id" referenced="categoria_id"/>
+        </foreign-key>
+        <foreign-key table="lancamento">
+            <column name="lancamento_id" referenced="lancamento_id"/>
+            <column name="versao_lancamento" referenced="versao_lancamento"/>
+        </foreign-key>
+    </table>
+</schema>
