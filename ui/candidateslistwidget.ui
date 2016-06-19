@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>618</width>
-    <height>409</height>
+    <width>784</width>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,11 +59,6 @@
      <column>
       <property name="text">
        <string>Affected Queries</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Estimated Size</string>
       </property>
      </column>
     </widget>

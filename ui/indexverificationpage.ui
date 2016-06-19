@@ -14,7 +14,7 @@
    <string>Index verification</string>
   </property>
   <property name="title">
-   <string>Index &amp;verification</string>
+   <string>Index verification</string>
   </property>
   <property name="subTitle">
    <string>Processing the generated candidate indexes to know which are better</string>
