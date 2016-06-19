@@ -111,6 +111,7 @@ void GenerateCandidateIndexes::mergeUniqueIndexes(QList<CandidateIndex> indexes)
         }
 
         if (!found) {
+            indexes[i].setId(j);
             generatedCandidates.append(indexes[i]);
         }
     }

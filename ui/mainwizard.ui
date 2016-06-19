@@ -24,6 +24,7 @@
   <widget class="QueryLogPage" name="wizardPage3"/>
   <widget class="CandidateIndexesPage" name="wizardPage4"/>
   <widget class="IndexVerificationPage" name="wizardPage5"/>
+  <widget class="SolutionSummaryPage" name="wizardPage6"/>
  </widget>
  <customwidgets>
   <customwidget>
@@ -54,6 +55,12 @@
    <class>IndexVerificationPage</class>
    <extends>QWizardPage</extends>
    <header>src/ui/indexverificationpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SolutionSummaryPage</class>
+   <extends>QWizardPage</extends>
+   <header>src/ui/solutionsummarypage.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

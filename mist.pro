@@ -12,11 +12,12 @@ TEMPLATE = app
 SOURCES += \
     src/main.cpp \
     src/core/abstractxmlreader.cpp \
-    src/core/generatecandidateindexes.cpp  \
+    src/core/generatecandidateindexes.cpp \
     src/core/indexcolumnsbuilder.cpp \
     src/core/indexverification.cpp \
     src/core/querylogreader.cpp \
     src/core/schemadefinitionreader.cpp \
+    src/core/solutionbuilder.cpp \
     src/entity/candidateindex.cpp \
     src/entity/filtercondition.cpp \
     src/entity/foreignkey.cpp \
@@ -41,6 +42,7 @@ SOURCES += \
     src/ui/querylistwidget.cpp \
     src/ui/querylogpage.cpp \
     src/ui/schemadefinitionpage.cpp \
+    src/ui/solutionsummarypage.cpp \
     src/ui/tablelistwidget.cpp
 
 HEADERS += \
@@ -50,6 +52,7 @@ HEADERS += \
     src/core/indexverification.h \
     src/core/querylogreader.h \
     src/core/schemadefinitionreader.h \
+    src/core/solutionbuilder.h \
     src/entity/candidateindex.h \
     src/entity/filtercondition.h \
     src/entity/foreignkey.h \
@@ -74,6 +77,7 @@ HEADERS += \
     src/ui/querylistwidget.h \
     src/ui/querylogpage.h \
     src/ui/schemadefinitionpage.h \
+    src/ui/solutionsummarypage.h \
     src/ui/tablelistwidget.h
 
 FORMS += \
@@ -86,6 +90,7 @@ FORMS += \
     ui/querylistwidget.ui \
     ui/querylogpage.ui \
     ui/schemadefinitionpage.ui \
+    ui/solutionsummarypage.ui \
     ui/tablelistwidget.ui
 
 RESOURCES += \

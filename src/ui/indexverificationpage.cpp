@@ -2,7 +2,7 @@
 #include "mainwizard.h"
 
 IndexVerificationPage::IndexVerificationPage(QWidget *parent) :
-    QWizardPage(parent)
+    QWizardPage(parent), completed(false)
 {
     setupUi(this);
 }
@@ -18,7 +18,19 @@ void IndexVerificationPage::initializePage()
     m_thread->start();
 }
 
+bool IndexVerificationPage::isComplete() const
+{
+    return completed;
+}
+
 void IndexVerificationPage::verificationFinished()
 {
     logViewer->append("Done!");
+
+    MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
+    mainWizard->project.setSolution(m_thread->getSolution());
+    delete m_thread;
+
+    completed = true;
+    emit completeChanged();
 }

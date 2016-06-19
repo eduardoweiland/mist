@@ -74,6 +74,29 @@ void MistProject::addCandidate(const CandidateIndex &candidate)
     m_candidates.append(candidate);
 }
 
+QList<CandidateIndex> MistProject::getCandidatesForQuery(const int id) const
+{
+    QList<CandidateIndex> list;
+
+    foreach (CandidateIndex candidate, m_candidates) {
+        if (candidate.affectsQuery(id)) {
+            list.append(candidate);
+        }
+    }
+
+    return list;
+}
+
+QList<CandidateIndex> MistProject::getSolution() const
+{
+    return m_solution;
+}
+
+void MistProject::setSolution(const QList<CandidateIndex> &solution)
+{
+    m_solution = solution;
+}
+
 QDebug operator<<(QDebug debug, const MistProject &project)
 {
     debug << project.getTables();

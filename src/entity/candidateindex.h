@@ -12,6 +12,9 @@ class CandidateIndex
 public:
     CandidateIndex();
 
+    int getId() const;
+    void setId(const int value);
+
     QString getTable() const;
     void setTable(const QString value);
 
@@ -27,8 +30,6 @@ public:
     bool affectsQuery(const int query) const;
 
     bool isValid() const;
-
-    bool operator==(CandidateIndex &other) const;
 
     /*! \brief Check if other is a prefix of this index */
     bool isPrefix(const CandidateIndex &other) const;
@@ -48,7 +49,12 @@ public:
     /*! \brief Check if this index is a prefix for columns */
     bool isPrefixOf(const QStringList &columns) const;
 
+    bool operator==(CandidateIndex &other) const;
+    bool operator==(const CandidateIndex &other) const;
+
 private:
+    int id;
+
     /*! \brief The table in which the index shall be created */
     QString table;
 
@@ -59,6 +65,8 @@ private:
     QList<int> affectedQueries;
 };
 
-QDebug operator<<(QDebug debug, const CandidateIndex &ic);
+QDebug operator<<(QDebug debug, const CandidateIndex &ci);
+
+uint qHash(const CandidateIndex &candidate);
 
 #endif // CANDIDATEINDEX_H

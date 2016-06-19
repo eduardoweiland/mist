@@ -28,11 +28,16 @@ public:
     QList<CandidateIndex> getCandidates() const;
     void setCandidates(const QList<CandidateIndex> &candidates);
     void addCandidate(const CandidateIndex &candidate);
+    QList<CandidateIndex> getCandidatesForQuery(const int id) const;
+
+    QList<CandidateIndex> getSolution() const;
+    void setSolution(const QList<CandidateIndex> &solution);
 
 private:
     QMap<QString, Table> m_mapTables;
     QList<Query> m_queries;
     QList<CandidateIndex> m_candidates;
+    QList<CandidateIndex> m_solution;
 };
 
 QDebug operator<<(QDebug debug, const MistProject &project);

@@ -10,7 +10,7 @@
 #include "../entity/queryexplain.h"
 
 IndexVerification::IndexVerification(MistProject project, QObject *parent) :
-    QThread(parent), m_project(project)
+    QThread(parent), m_project(project), m_solutionBuilder(m_project)
 {
     m_db = QSqlDatabase::database();
 }
@@ -25,11 +25,22 @@ void IndexVerification::run()
 
         testCandidate(ci);
 
-        emit log("------------------------------------");
+        writeLog("------------------------------------");
         emit progress(100 * i++ / size);
     }
 
+    writeLog("Calculating best solution...");
+    QSet<CandidateIndex> solution = m_solutionBuilder.getBestSolution();
+    foreach (CandidateIndex index, solution) {
+        writeLog("SOLUTION: " + index.getTable() + "(" + index.getColumnNames().join(", ") + ")");
+    }
+
     emit resultReady();
+}
+
+QList<CandidateIndex> IndexVerification::getSolution()
+{
+    return m_solutionBuilder.getBestSolution().toList();
 }
 
 void IndexVerification::testCandidate(CandidateIndex &candidate)
@@ -51,6 +62,8 @@ void IndexVerification::testCandidate(CandidateIndex &candidate)
             QJsonDocument doc = QJsonDocument::fromJson(json);
             double cost = doc.object().take("query_block").toObject().take("cost_info").toObject().take("query_cost").toString().toDouble();
             writeLog(QString("Query cost: %1").arg(cost));
+
+            m_solutionBuilder.setCost(candidate.getId(), id, cost);
         }
     }
 

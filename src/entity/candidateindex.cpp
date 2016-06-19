@@ -4,6 +4,16 @@ CandidateIndex::CandidateIndex()
 {
 }
 
+int CandidateIndex::getId() const
+{
+    return id;
+}
+
+void CandidateIndex::setId(const int value)
+{
+    id = value;
+}
+
 QString CandidateIndex::getTable() const
 {
     return table;
@@ -81,11 +91,6 @@ bool CandidateIndex::affectsQuery(const int query) const
 bool CandidateIndex::isValid() const
 {
     return ((table != nullptr) && (!columns.isEmpty()));
-}
-
-bool CandidateIndex::operator==(CandidateIndex &other) const
-{
-    return (table == other.table && columns == other.columns);
 }
 
 bool CandidateIndex::isPrefix(const CandidateIndex &other) const
@@ -182,9 +187,24 @@ bool CandidateIndex::isPrefixOf(const QStringList &columns) const
     return true;
 }
 
+bool CandidateIndex::operator==(CandidateIndex &other) const
+{
+    return (table == other.table && columns == other.columns);
+}
+
+bool CandidateIndex::operator==(const CandidateIndex &other) const
+{
+    return (table == other.table && columns == other.columns);
+}
+
 QDebug operator<<(QDebug debug, const CandidateIndex &ci)
 {
     debug << ci.getTable() << ci.getColumns();
 
     return debug;
+}
+
+uint qHash(const CandidateIndex &candidate)
+{
+    return qHash(candidate.getTable() + candidate.getColumnNames().join(", "));
 }

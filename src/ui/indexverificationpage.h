@@ -10,6 +10,7 @@ class IndexVerificationPage : public QWizardPage, private Ui::IndexVerificationP
 
 public:
     explicit IndexVerificationPage(QWidget *parent = 0);
+    bool isComplete() const;
 
     void initializePage() Q_DECL_OVERRIDE;
 
@@ -18,6 +19,7 @@ private slots:
 
 private:
     IndexVerification *m_thread;
+    bool completed;
 };
 
 #endif // INDEXVERIFICATIONPAGE_H
