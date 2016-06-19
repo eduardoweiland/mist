@@ -29,6 +29,8 @@ void IndexVerificationPage::verificationFinished()
 
     MainWizard *mainWizard = static_cast<MainWizard*>(wizard());
     mainWizard->project.setSolution(m_thread->getSolution());
+    mainWizard->project.setBaseTotalCost(m_thread->getBaseTotalCost());
+    mainWizard->project.setOptimizedTotalCost(m_thread->getOptimizedTotalCost());
     delete m_thread;
 
     completed = true;

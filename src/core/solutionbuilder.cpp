@@ -22,10 +22,9 @@ double SolutionBuilder::getCost(const int candidate, const int query) const
     return m_queryCosts[query][candidate];
 }
 
-QSet<CandidateIndex> SolutionBuilder::getBestSolution()
+QList<CandidateIndex> SolutionBuilder::getBestSolution()
 {
     QSet<CandidateIndex> solution;
-    QList<CandidateIndex> candidates = m_project.getCandidates();
 
     foreach (Query query, m_project.getQueries()) {
         foreach (QString table, query.getUsedTables()) {
@@ -33,7 +32,7 @@ QSet<CandidateIndex> SolutionBuilder::getBestSolution()
         }
     }
 
-    return solution;
+    return solution.toList();
 }
 
 CandidateIndex SolutionBuilder::getBestIndexForQueryAndTable(const int query, const QString table)

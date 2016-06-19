@@ -13,7 +13,7 @@ public:
 
     void setCost(const int candidate, const int query, const double cost);
     double getCost(const int candidate, const int query) const;
-    QSet<CandidateIndex> getBestSolution();
+    QList<CandidateIndex> getBestSolution();
 
 private:
     MistProject m_project;

@@ -33,11 +33,20 @@ public:
     QList<CandidateIndex> getSolution() const;
     void setSolution(const QList<CandidateIndex> &solution);
 
+    double getBaseTotalCost() const;
+    void setBaseTotalCost(double value);
+
+    double getOptimizedTotalCost() const;
+    void setOptimizedTotalCost(double value);
+
 private:
     QMap<QString, Table> m_mapTables;
     QList<Query> m_queries;
     QList<CandidateIndex> m_candidates;
     QList<CandidateIndex> m_solution;
+
+    double baseTotalCost;
+    double optimizedTotalCost;
 };
 
 QDebug operator<<(QDebug debug, const MistProject &project);

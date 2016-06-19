@@ -97,9 +97,29 @@ void MistProject::setSolution(const QList<CandidateIndex> &solution)
     m_solution = solution;
 }
 
+double MistProject::getBaseTotalCost() const
+{
+    return baseTotalCost;
+}
+
+void MistProject::setBaseTotalCost(double value)
+{
+    baseTotalCost = value;
+}
+
+double MistProject::getOptimizedTotalCost() const
+{
+    return optimizedTotalCost;
+}
+
+void MistProject::setOptimizedTotalCost(double value)
+{
+    optimizedTotalCost = value;
+}
+
 QDebug operator<<(QDebug debug, const MistProject &project)
 {
     debug << project.getTables();
-
+    
     return debug;
 }

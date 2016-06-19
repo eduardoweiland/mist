@@ -17,6 +17,8 @@ public:
 
     void run() Q_DECL_OVERRIDE;
     QList<CandidateIndex> getSolution();
+    double getBaseTotalCost() const;
+    double getOptimizedTotalCost() const;
 
 signals:
     void resultReady();
@@ -28,11 +30,19 @@ private:
     SolutionBuilder m_solutionBuilder;
     QSqlDatabase m_db;
 
+    double baseTotalCost;
+    double optimizedTotalCost;
+
     void testCandidate(CandidateIndex &candidate);
+
+    void createIndexes(QList<CandidateIndex> &candidates);
     void createIndex(CandidateIndex &candidate);
+    void dropIndexes(QList<CandidateIndex> &candidates);
     void dropIndex(CandidateIndex &candidate);
 
     void writeLog(QString msg);
+
+    double getQueryCost(const Query *query);
 };
 
 #endif // INDEXVERIFICATION_H
