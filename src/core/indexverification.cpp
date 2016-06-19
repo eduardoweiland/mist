@@ -1,4 +1,7 @@
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
@@ -38,13 +41,17 @@ void IndexVerification::testCandidate(CandidateIndex &candidate)
         Query *query = m_project.getQuery(id);
         writeLog(QString("EXPLAIN query #%1").arg(query->getId()));
 
-        QSqlQuery res = m_db.exec("EXPLAIN " + query->getSql());
+        QSqlQuery res = m_db.exec("EXPLAIN format=json " + query->getSql());
         if (m_db.lastError().isValid()) {
             writeLog(m_db.lastError().text());
         }
 
-        QueryExplain explain(res);
-        writeLog(explain.debug());
+        if (res.next()) {
+            QByteArray json = res.value(0).toByteArray();
+            QJsonDocument doc = QJsonDocument::fromJson(json);
+            double cost = doc.object().take("query_block").toObject().take("cost_info").toObject().take("query_cost").toString().toDouble();
+            writeLog(QString("Query cost: %1").arg(cost));
+        }
     }
 
     dropIndex(candidate);
