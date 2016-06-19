@@ -90,8 +90,8 @@ QList<CandidateIndex> IndexColumnsBuilder::combineIndexes(const Table *table, co
 
     QList<IndexColumn> columns = filtersToIndexColumns(filtersByType[FilterCondition::CONST])
                                + filtersToIndexColumns(filtersByType[FilterCondition::MATCH])
-                               + filtersToIndexColumns(filtersByType[FilterCondition::LIST])
                                + filtersToIndexColumns(filtersByType[FilterCondition::RANGE])
+                               + filtersToIndexColumns(filtersByType[FilterCondition::LIST])
                                + filtersToIndexColumns(filtersByType[FilterCondition::LIKE]);
 
     CandidateIndex index;
@@ -109,8 +109,8 @@ QList<CandidateIndex> IndexColumnsBuilder::combineOrderByIndexes(const Table *ta
 
     QList<IndexColumn> prefix = filtersToIndexColumns(filtersByType[FilterCondition::CONST]);
     QList<IndexColumn> suffix = filtersToIndexColumns(filtersByType[FilterCondition::MATCH])
-                              + filtersToIndexColumns(filtersByType[FilterCondition::LIST])
                               + filtersToIndexColumns(filtersByType[FilterCondition::RANGE])
+                              + filtersToIndexColumns(filtersByType[FilterCondition::LIST])
                               + filtersToIndexColumns(filtersByType[FilterCondition::LIKE]);
 
     CandidateIndex indexPrefix;
