@@ -20,7 +20,7 @@ bool FileOpener::selectFile(QWidget *parent, const QString &title, const QString
         return false;
     }
 
-    qInfo() << QObject::tr("Selected file: %1").arg(filename);
+    qDebug() << QObject::tr("Selected file: %1").arg(filename);
 
     file->setFileName(filename);
     if (!file->open(QFile::ReadOnly | QFile::Text)) {

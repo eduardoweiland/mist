@@ -27,7 +27,7 @@ void GroupByField::setField(const QString &value)
 
 QDebug operator<<(QDebug debug, const GroupByField &gbf)
 {
-    debug.noquote() << gbf.getTable() << '.' << gbf.getField();
+    debug << gbf.getTable() << '.' << gbf.getField();
 
     return debug;
 }

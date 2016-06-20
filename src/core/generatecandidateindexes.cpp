@@ -21,7 +21,7 @@ void GenerateCandidateIndexes::run()
         QList<CandidateIndex> indexes = getIndexesForQuery(&queries[i]);
         mergeUniqueIndexes(indexes);
 
-        qInfo() << "Gerados " << indexes.size() << " índices candidatos para a consulta " << queries[i].getId();
+        qDebug() << "Gerados " << indexes.size() << " índices candidatos para a consulta " << queries[i].getId();
 
         emit progress(100 * (i + 1) / size);
     }
