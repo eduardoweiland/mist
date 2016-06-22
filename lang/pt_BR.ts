@@ -401,6 +401,29 @@
     </message>
 </context>
 <context>
+    <name>SolutionSummaryPage</name>
+    <message>
+        <location filename="../ui/solutionsummarypage.ui" line="14"/>
+        <source>WizardPage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/solutionsummarypage.ui" line="28"/>
+        <source>Total cost with suggested indexes:</source>
+        <translation>Custo total com os índices sugeridos:</translation>
+    </message>
+    <message>
+        <location filename="../ui/solutionsummarypage.ui" line="41"/>
+        <source>Total cost without indexes:</source>
+        <translation>Custo total sem índices:</translation>
+    </message>
+    <message>
+        <location filename="../ui/solutionsummarypage.ui" line="70"/>
+        <source>Suggested indexes</source>
+        <translation>Índices sugeridos</translation>
+    </message>
+</context>
+<context>
     <name>TableListWidget</name>
     <message>
         <location filename="../ui/tablelistwidget.ui" line="14"/>
