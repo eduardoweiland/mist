@@ -2,7 +2,10 @@
 
 Trabalho de Conclusão do curso de Graduação em Ciência da Computação pela Universidade de Santa Cruz do Sul.
 
-# Compilação
+* **[TRABALHO](docs/TCC_II.pdf)**
+* **[SLIDES](https://docs.zoho.com/show/publish/enphvc99b57e91e89494488de7772078d821b)**
+
+## Compilação
 
 O MIST é desenvolvido com Qt 5.3+ e utiliza o **qmake** para o processo de compilação. Para compilar o MIST a partir do código-fonte, os comandos são:
 
@@ -19,7 +22,7 @@ Para alterar o diretório de instalação, pode ser especificado um prefixo dife
 
     $ qmake ../mist.pro PREFIX=/usr      # Será instalado em /usr/bin/mist
 
-# License
+## License
 
 Copyright (C) 2015-2016 Eduardo Weiland<br/>
 Copyright (C) 2015-2016 Universidade de Santa Cruz do Sul
